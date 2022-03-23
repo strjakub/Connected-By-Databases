@@ -1,7 +1,7 @@
 # DataBase-II-Project
 # Aplikacja do organizacji turniejów piłkarskich
 # Technologie :
-# - MongoDV
+# - MongoDB
 # - Scala Language
 # - TypeScript (Angular/React)
 # Skład :
