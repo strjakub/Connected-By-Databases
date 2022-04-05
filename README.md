@@ -1,4 +1,4 @@
-# DataBase-II-ProjectCancel changes
+# DataBase-II-Project
 Aplikacja do organizacji turniejów piłkarskich
 ### Technologie:  
 - MongoDB
