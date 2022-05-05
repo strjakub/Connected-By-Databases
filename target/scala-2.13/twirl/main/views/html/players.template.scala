@@ -23,23 +23,18 @@ object players extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Ht
       {
 
 
-Seq[Any](format.raw/*2.1*/("""
+Seq[Any](format.raw/*1.4*/("""
+
 """),_display_(/*3.2*/main("Players")/*3.17*/ {_display_(Seq[Any](format.raw/*3.19*/("""
     """),_display_(/*4.6*/defining(play.core.PlayVersion.current)/*4.45*/ { version =>_display_(Seq[Any](format.raw/*4.58*/("""
 
-        """),format.raw/*6.9*/("""<section id="content">
-            <div class="wrapper doc">
+            """),format.raw/*6.13*/("""<div class="wrapper doc">
                 <article>
                         <!-- CONTENT HERE -->
                     <p>PLAYERS INFO HERE</p>
                 </article>
-                <aside>
-                    """),_display_(/*13.22*/commonSidebar()),format.raw/*13.37*/("""
-                """),format.raw/*14.17*/("""</aside>
             </div>
-        </section>
-    """),_display_(/*17.6*/commonFooter()),format.raw/*17.20*/("""
-    """)))}),format.raw/*18.6*/("""
+    """)))}),format.raw/*12.6*/("""
 """)))}))
       }
     }
@@ -57,9 +52,9 @@ Seq[Any](format.raw/*2.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/players.scala.html
-                  HASH: 8ec25e37abea0248984a8fea7b72e76f1c838205
-                  MATRIX: 724->1|820->4|847->6|870->21|909->23|940->29|987->68|1037->81|1073->91|1350->341|1386->356|1431->373|1509->425|1544->439|1580->445
-                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|30->6|37->13|37->13|38->14|41->17|41->17|42->18
+                  HASH: 6621bf6f166847aae6d3238ee456ad1d7e8c6045
+                  MATRIX: 724->1|820->3|850->8|873->23|912->25|944->32|991->71|1041->84|1084->100|1314->300
+                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|31->6|37->12
                   -- GENERATED --
               */
           

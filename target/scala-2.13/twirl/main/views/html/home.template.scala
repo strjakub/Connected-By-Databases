@@ -27,20 +27,14 @@ Seq[Any](format.raw/*1.4*/("""
 
 """),_display_(/*3.2*/main("Home page")/*3.19*/ {_display_(Seq[Any](format.raw/*3.21*/("""
   """),_display_(/*4.4*/defining(play.core.PlayVersion.current)/*4.43*/ { version =>_display_(Seq[Any](format.raw/*4.56*/("""
-
-  """),format.raw/*6.3*/("""<section id="content">
-    <div class="wrapper doc">
+    """),format.raw/*5.5*/("""<div class="wrapper doc">
       <article>
-        <!-- CONTENT HERE -->
-        <p>HOME CONTENT HERE</p>
+        <p>
+          HOME CONTENT HERE
+        </p>
       </article>
-      <aside>
-        """),_display_(/*13.10*/commonSidebar()),format.raw/*13.25*/("""
-      """),format.raw/*14.7*/("""</aside>
     </div>
-  </section>
-  """),_display_(/*17.4*/commonFooter()),format.raw/*17.18*/("""
-  """)))}),format.raw/*18.4*/("""
+  """)))}),format.raw/*12.4*/("""
 """)))}))
       }
     }
@@ -58,9 +52,9 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/home.scala.html
-                  HASH: 3eeb2797b212a13a52316ccd47338be37360f92f
-                  MATRIX: 721->1|817->3|847->8|872->25|911->27|941->32|988->71|1038->84|1070->90|1276->269|1312->284|1347->292|1412->331|1447->345|1482->350
-                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|31->6|38->13|38->13|39->14|42->17|42->17|43->18
+                  HASH: 3e0b997932330cdb997b901077ea89048af9a86e
+                  MATRIX: 721->1|817->3|847->8|872->25|911->27|941->32|988->71|1038->84|1070->90|1233->223
+                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|37->12
                   -- GENERATED --
               */
           

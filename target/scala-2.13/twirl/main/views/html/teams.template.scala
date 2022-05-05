@@ -27,20 +27,13 @@ Seq[Any](format.raw/*1.4*/("""
 
 """),_display_(/*3.2*/main("Teams")/*3.15*/ {_display_(Seq[Any](format.raw/*3.17*/("""
     """),_display_(/*4.6*/defining(play.core.PlayVersion.current)/*4.45*/ { version =>_display_(Seq[Any](format.raw/*4.58*/("""
-
-        """),format.raw/*6.9*/("""<section id="content">
-            <div class="wrapper doc">
+            """),format.raw/*5.13*/("""<div class="wrapper doc">
                 <article>
                         <!-- CONTENT HERE -->
                     <p>TEAMS INFO HERE</p>
                 </article>
-                <aside>
-                    """),_display_(/*13.22*/commonSidebar()),format.raw/*13.37*/("""
-                """),format.raw/*14.17*/("""</aside>
             </div>
-        </section>
-    """),_display_(/*17.6*/commonFooter()),format.raw/*17.20*/("""
-    """)))}),format.raw/*18.6*/("""
+    """)))}),format.raw/*11.6*/("""
 """)))}))
       }
     }
@@ -58,9 +51,9 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/teams.scala.html
-                  HASH: 8529dab18fab0450441b38fc98591d9a9146c364
-                  MATRIX: 722->1|818->3|848->8|869->21|908->23|940->30|987->69|1037->82|1075->94|1357->349|1393->364|1439->382|1520->437|1555->451|1592->458
-                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|31->6|38->13|38->13|39->14|42->17|42->17|43->18
+                  HASH: 34b617a8adecc025b5fc4412939e70ceb41110e1
+                  MATRIX: 722->1|818->3|848->8|869->21|908->23|940->30|987->69|1037->82|1078->96|1306->294
+                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|36->11
                   -- GENERATED --
               */
           

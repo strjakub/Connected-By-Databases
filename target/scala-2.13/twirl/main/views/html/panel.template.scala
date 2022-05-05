@@ -23,23 +23,17 @@ object panel extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Html
       {
 
 
-Seq[Any](format.raw/*2.1*/("""
+Seq[Any](format.raw/*1.4*/("""
+
 """),_display_(/*3.2*/main("Panel")/*3.15*/ {_display_(Seq[Any](format.raw/*3.17*/("""
     """),_display_(/*4.6*/defining(play.core.PlayVersion.current)/*4.45*/ { version =>_display_(Seq[Any](format.raw/*4.58*/("""
-
-        """),format.raw/*6.9*/("""<section id="content">
-            <div class="wrapper doc">
+            """),format.raw/*5.13*/("""<div class="wrapper doc">
                 <article>
                         <!-- CONTENT HERE -->
                     <p>PANEL INFO HERE</p>
                 </article>
-                <aside>
-                    """),_display_(/*13.22*/commonSidebar()),format.raw/*13.37*/("""
-                """),format.raw/*14.17*/("""</aside>
             </div>
-        </section>
-    """),_display_(/*17.6*/commonFooter()),format.raw/*17.20*/("""
-    """)))}),format.raw/*18.6*/("""
+    """)))}),format.raw/*11.6*/("""
 """)))}))
       }
     }
@@ -57,9 +51,9 @@ Seq[Any](format.raw/*2.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/panel.scala.html
-                  HASH: 113aa9d5aadf0e222625f14b0ba7d3a9efa89155
-                  MATRIX: 722->1|818->4|845->6|866->19|905->21|936->27|983->66|1033->79|1069->89|1344->337|1380->352|1425->369|1503->421|1538->435|1574->441
-                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|30->6|37->13|37->13|38->14|41->17|41->17|42->18
+                  HASH: 9f1250434baf527454863e1d82c37ab927819395
+                  MATRIX: 722->1|818->3|848->8|869->21|908->23|940->30|987->69|1037->82|1078->96|1306->294
+                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|36->11
                   -- GENERATED --
               */
           

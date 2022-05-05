@@ -6,10 +6,10 @@ import play.api.routing.JavaScriptReverseRoute
 
 import _root_.controllers.Assets.Asset
 
-// @LINE:7
+// @LINE:3
 package controllers.javascript {
 
-  // @LINE:7
+  // @LINE:3
   class ReverseHomeController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -17,7 +17,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:10
+    // @LINE:6
     def players: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.players",
       """
@@ -27,7 +27,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:8
+    // @LINE:4
     def tournaments: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.tournaments",
       """
@@ -37,7 +37,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:11
+    // @LINE:7
     def panel: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.panel",
       """
@@ -47,7 +47,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:7
+    // @LINE:3
     def home: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.home",
       """
@@ -57,7 +57,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:9
+    // @LINE:5
     def teams: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.teams",
       """
@@ -69,7 +69,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:14
+  // @LINE:10
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -77,7 +77,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:14
+    // @LINE:10
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

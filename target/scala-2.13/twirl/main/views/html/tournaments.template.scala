@@ -27,20 +27,13 @@ Seq[Any](format.raw/*1.4*/("""
 
 """),_display_(/*3.2*/main("Tournaments")/*3.21*/ {_display_(Seq[Any](format.raw/*3.23*/("""
   """),_display_(/*4.4*/defining(play.core.PlayVersion.current)/*4.43*/ { version =>_display_(Seq[Any](format.raw/*4.56*/("""
-
-    """),format.raw/*6.5*/("""<section id="content">
-      <div class="wrapper doc">
+      """),format.raw/*5.7*/("""<div class="wrapper doc">
         <article>
             <!-- CONTENT HERE -->
           TOURNAMENTS INFO HERE
         </article>
-        <aside>
-          """),_display_(/*13.12*/commonSidebar()),format.raw/*13.27*/("""
-        """),format.raw/*14.9*/("""</aside>
       </div>
-    </section>
-  """),_display_(/*17.4*/commonFooter()),format.raw/*17.18*/("""
-  """)))}),format.raw/*18.4*/("""
+  """)))}),format.raw/*11.4*/("""
 """)))}))
       }
     }
@@ -58,9 +51,9 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/tournaments.scala.html
-                  HASH: 59022f94900527e1a037ed575e9e95bac5779ebb
-                  MATRIX: 728->1|824->3|854->8|881->27|920->29|950->34|997->73|1047->86|1081->94|1300->286|1336->301|1373->311|1442->354|1477->368|1512->373
-                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|31->6|38->13|38->13|39->14|42->17|42->17|43->18
+                  HASH: 014a5008d76da72eda1893cf1ac4f7673efc4532
+                  MATRIX: 728->1|824->3|854->8|881->27|920->29|950->34|997->73|1047->86|1081->94|1262->245
+                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|36->11
                   -- GENERATED --
               */
           
