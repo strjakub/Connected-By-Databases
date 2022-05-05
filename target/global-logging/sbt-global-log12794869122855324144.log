@@ -1,0 +1,526 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(early(addDefaultCommands), None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(addDefaultCommands, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(early(initialize), None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(initialize, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(boot, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(writeSbtVersion, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(reload, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(sbtStashOnFailure, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(onFailure loadFailed, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(loadp, None, None)[0m
+[0m[[0m[0minfo[0m] [0m[0mwelcome to sbt 1.6.2 (Red Hat, Inc. Java 11.0.14.1)[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.defaultLoad until apply took 468.703696ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m          Load.loadUnit: plugins took 105.679483ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m          Load.loadUnit: defsScala took 0.297402ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Scanning directory /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/project[0m
+[0m[[0m[0mdebug[0m] [0m[0m            Load.loadUnit: mkEval took 10.247003ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Found non-root projects [0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Done in /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/project, returning: ()[0m
+[0m[[0m[0mdebug[0m] [0m[0mdeducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))[0m
+[0m[[0m[0mdebug[0m] [0m[0m  :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)[0m
+[0m[[0m[0mdebug[0m] [0m[0mPlugins.deducer#function took 11.845156 ms[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project play-samples-play-scala-hello-world-tutorial-build from plugins.sbt,scaffold.sbt ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m              Load.resolveProject(play-samples-play-scala-hello-world-tutorial-build) took 38.28507ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m            Load.loadTransitive: finalizeProject(Project(id play-samples-play-scala-hello-world-tutorial-build, base: /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/project, plugins: List(<none>))) took 57.009824ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Done in /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/project, returning: (play-samples-play-scala-hello-world-tutorial-build)[0m
+[0m[[0m[0mdebug[0m] [0m[0m          Load.loadUnit: loadedProjectsRaw took 2132.095286ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m          Load.loadUnit: cleanEvalClasses took 6.301003ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m        Load.loadUnit(file:/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/project/, ...) took 2248.706876ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: load took 2388.325297ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: resolveProjects took 4.79944ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: finalTransforms took 54.526929ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: config.delegates took 6.201014ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: Def.make(settings)... took 395.312935ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: structureIndex took 76.739541ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: mkStreams took 1.378203ms[0m
+[0m[[0m[0minfo[0m] [0m[0mloading project definition from /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/project[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating [0m
+[0m[[0m[0minfo[0m] [0m[0mResolved  dependencies[0m
+[0m[[0m[0minfo[0m] [0m[0mFetching artifacts of [0m
+[0m[[0m[0minfo[0m] [0m[0mFetched artifacts of [0m
+[0m[[0m[0mdebug[0m] [0m[0m    Load.loadUnit: plugins took 15886.211434ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Load.loadUnit: defsScala took 0.003393ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Scanning directory /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.loadUnit: mkEval took 1.77998ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Found root project root w/ remaining [0m
+[0m[[0m[0mdebug[0m] [0m[0mdeducing auto plugins based on known facts Set(Atom(play.sbt.PlayScala), Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.Play),Set(Atom(play.sbt.routes.RoutesCompiler)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.Play),Set(Atom(com.typesafe.sbt.jse.SbtJsTask)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.Play),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaServerAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.Play),Set(Atom(play.twirl.sbt.SbtTwirl)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayAkkaHttp2Support),Set(Atom(play.sbt.PlayAkkaHttpServer)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayAkkaHttp2Support),Set(Atom(com.lightbend.sbt.javaagent.JavaAgent)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayAkkaHttpServer),Set(Atom(play.sbt.PlayService)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayFilters),Set(Atom(play.sbt.PlayWeb)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayJava),Set(Atom(play.sbt.PlayWeb)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayLayoutPlugin),Set(Atom(play.sbt.PlayWeb)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayLogback),Set(Atom(play.sbt.PlayService)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayMinimalJava),Set(Atom(play.sbt.PlayWeb)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayNettyServer),Set(Atom(play.sbt.PlayService)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayScala),Set(Atom(play.sbt.PlayWeb)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayService),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaServerAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayWeb),Set(Atom(play.sbt.routes.RoutesCompiler)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayWeb),Set(Atom(com.typesafe.sbt.jse.SbtJsTask)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayWeb),Set(Atom(play.sbt.PlayService)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayWeb),Set(Atom(play.twirl.sbt.SbtTwirl)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.routes.RoutesCompiler),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.test.MediatorWorkaroundPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(giter8.ScaffoldPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.twirl.sbt.SbtTwirl),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.SbtNativePackager),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.windows.WindowsPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.docker.DockerPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.debian.DebianPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.rpm.RpmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.JavaServerAppPackaging),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.jar.ClasspathJarPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.jar.LauncherJarPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.jlink.JlinkPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemVPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemdPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin),Set(Atom(com.typesafe.sbt.packager.debian.DebianPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin),Set(Atom(com.typesafe.sbt.packager.rpm.RpmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.systemloader.UpstartPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.debian.DebianDeployPlugin),Set(Atom(com.typesafe.sbt.packager.debian.DebianPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.debian.DebianPlugin),Set(Atom(com.typesafe.sbt.packager.linux.LinuxPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.debian.JDebPackaging),Set(Atom(com.typesafe.sbt.packager.debian.DebianPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.docker.DockerPlugin),Set(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.docker.DockerSpotifyClientPlugin),Set(Atom(com.typesafe.sbt.packager.docker.DockerPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.graalvmnativeimage.GraalVMNativeImagePlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.jdkpackager.JDKPackagerDeployPlugin),Set(Atom(com.typesafe.sbt.packager.jdkpackager.JDKPackagerPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.jdkpackager.JDKPackagerPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.jdkpackager.JDKPackagerPlugin),Set(Atom(com.typesafe.sbt.packager.archetypes.jar.LauncherJarPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.linux.LinuxPlugin),Set(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.rpm.RpmDeployPlugin),Set(Atom(com.typesafe.sbt.packager.rpm.RpmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.rpm.RpmPlugin),Set(Atom(com.typesafe.sbt.packager.linux.LinuxPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.universal.UniversalDeployPlugin),Set(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin),Set(Atom(com.typesafe.sbt.SbtNativePackager)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.windows.WindowsDeployPlugin),Set(Atom(com.typesafe.sbt.packager.windows.WindowsPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.windows.WindowsPlugin),Set(Atom(com.typesafe.sbt.packager.universal.UniversalPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.lightbend.sbt.javaagent.JavaAgent),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.lightbend.sbt.javaagent.JavaAgentPackaging),Set(Atom(com.lightbend.sbt.javaagent.JavaAgent)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.lightbend.sbt.javaagent.JavaAgentPackaging),Set(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.web.SbtWeb),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.jse.SbtJsEngine),Set(Atom(com.typesafe.sbt.web.SbtWeb)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.jse.SbtJsTask),Set(Atom(com.typesafe.sbt.jse.SbtJsEngine)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayService),Set(Atom(play.sbt.PlayAkkaHttpServer)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayWeb),Set(Atom(play.sbt.PlayFilters)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayWeb),Set(Atom(play.sbt.PlayLayoutPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(play.sbt.PlayService),Set(Atom(play.sbt.PlayLogback)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(giter8.ScaffoldPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging),Set(Atom(com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(And(Set(Atom(com.lightbend.sbt.javaagent.JavaAgent), Atom(com.typesafe.sbt.packager.archetypes.JavaAppPackaging))),Set(Atom(com.lightbend.sbt.javaagent.JavaAgentPackaging)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.web.SbtWeb),Set(Atom(com.typesafe.sbt.jse.SbtJsEngine)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(com.typesafe.sbt.jse.SbtJsEngine),Set(Atom(com.typesafe.sbt.jse.SbtJsTask))))[0m
+[0m[[0m[0mdebug[0m] [0m[0m  :: deduced result: Matched(sbt.plugins.CorePlugin,play.sbt.PlayScala,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,play.sbt.PlayWeb,play.twirl.sbt.SbtTwirl,sbt.plugins.JvmPlugin,play.sbt.PlayService,play.sbt.PlayFilters,play.sbt.PlayLayoutPlugin,play.sbt.routes.RoutesCompiler,com.typesafe.sbt.jse.SbtJsTask,com.typesafe.sbt.packager.archetypes.JavaServerAppPackaging,sbt.plugins.SemanticdbPlugin,sbt.plugins.JUnitXmlReportPlugin,play.sbt.PlayLogback,giter8.ScaffoldPlugin,sbt.plugins.MiniDependencyTreePlugin,com.typesafe.sbt.jse.SbtJsEngine,play.sbt.PlayAkkaHttpServer,com.typesafe.sbt.web.SbtWeb,com.typesafe.sbt.packager.archetypes.JavaAppPackaging,com.typesafe.sbt.packager.rpm.RpmPlugin,com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin,com.typesafe.sbt.packager.windows.WindowsPlugin,com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin,com.typesafe.sbt.packager.docker.DockerPlugin,com.typesafe.sbt.packager.debian.DebianPlugin,com.typesafe.sbt.packager.universal.UniversalPlugin,com.typesafe.sbt.packager.linux.LinuxPlugin,com.typesafe.sbt.SbtNativePackager)[0m
+[0m[[0m[0mdebug[0m] [0m[0mPlugins.deducer#function took 9.268119 ms[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project root from build.sbt ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m        Load.resolveProject(root) took 126.89978ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.loadTransitive: finalizeProject(Project(id root, base: /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial, plugins: List(play.sbt.PlayScala))) took 138.604151ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Done in /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial, returning: (root)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Load.loadUnit: loadedProjectsRaw took 1251.176531ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Load.loadUnit: cleanEvalClasses took 2.075764ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Load.loadUnit(file:/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/, ...) took 17140.511245ms[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.apply: load took 17167.664889ms[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.apply: resolveProjects took 0.101388ms[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.apply: finalTransforms took 20.942056ms[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.apply: config.delegates took 0.672028ms[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.apply: Def.make(settings)... took 115.788013ms[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.apply: structureIndex took 32.556202ms[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.apply: mkStreams took 0.002138ms[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  __              __[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  \ \     ____   / /____ _ __  __[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m   \ \   / __ \ / // __ `// / / /[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m   / /  / /_/ // // /_/ // /_/ /[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  /_/  / .___//_/ \__,_/ \__, /[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m      /_/               /____/[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mVersion 2.8.15 running Java 11.0.14.1[0m
+[0m[[0m[0minfo[0m] [0m[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[1mPlay is run entirely by the community. Please consider contributing and/or donating:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mhttps://www.playframework.com/sponsors[0m
+[0m[[0m[0minfo[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(sbtPopOnFailure, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(resumeFromFailure, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(notifyUsersAboutShell, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(iflast shell, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(run, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / run[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating [0m
+[0m[[0m[0minfo[0m] [0m[0mResolved  dependencies[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating [0m
+[0m[[0m[0minfo[0m] [0m[0mResolved  dependencies[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating [0m
+[0m[[0m[0minfo[0m] [0m[0mResolved  dependencies[0m
+[0m[[0m[0minfo[0m] [0m[0mFetching artifacts of [0m
+[0m[[0m[0minfo[0m] [0m[0mFetched artifacts of [0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 10 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mNon-compiled module 'compiler-bridge_2.13' for Scala 2.13.8. Compiling...[0m
+[0m[[0m[0minfo[0m] [0m[0m  Compilation completed in 7.979s.[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 6 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 4 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 5 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 3 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 2 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 12 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/app/views/commonSidebar.scala.html:5:39: value index is not a member of controllers.ReverseHomeController[0m
+[0m[[0m[31merror[0m] [0m[0m  <li><a href="@routes.HomeController.index()">Home</a>[0m
+[0m[[0m[31merror[0m] [0m[0m                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/app/views/panel.scala.html:6:45: value index is not a member of controllers.ReverseHomeController[0m
+[0m[[0m[31merror[0m] [0m[0m        <li><a href="@routes.HomeController.index()">Welcome</a>[0m
+[0m[[0m[31merror[0m] [0m[0m                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 12 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/app/views/panel.scala.html:6:45: value index is not a member of controllers.ReverseHomeController[0m
+[0m[[0m[31merror[0m] [0m[0m        <li><a href="@routes.HomeController.index()">Welcome</a>[0m
+[0m[[0m[31merror[0m] [0m[0m                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 12 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/app/views/panel.scala.html:6:45: value index is not a member of controllers.ReverseHomeController[0m
+[0m[[0m[31merror[0m] [0m[0m        <li><a href="@routes.HomeController.index()">Welcome</a>[0m
+[0m[[0m[31merror[0m] [0m[0m                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 12 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 12 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 4 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/app/controllers/HomeController.scala:30:19: object teams is not a member of package views.html[0m
+[0m[[0m[31merror[0m] [0m[0m    Ok(views.html.teams())[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 12 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/app/views/commonSidebar.scala.html:7:39: value tutorial is not a member of controllers.ReverseHomeController[0m
+[0m[[0m[31merror[0m] [0m[0m  <li><a href="@routes.HomeController.tutorial()">Teams</a>[0m
+[0m[[0m[31merror[0m] [0m[0m                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/app/views/tournaments.scala.html:80:106: value tutorial is not a member of controllers.ReverseHomeController[0m
+[0m[[0m[31merror[0m] [0m[0m        <p>With this overview of the teams application, you are ready to <a href="@routes.HomeController.tutorial()">add[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 12 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/app/views/tournaments.scala.html:80:106: value tutorial is not a member of controllers.ReverseHomeController[0m
+[0m[[0m[31merror[0m] [0m[0m        <p>With this overview of the teams application, you are ready to <a href="@routes.HomeController.tutorial()">add[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 12 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 6 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 4 Scala sources and 1 Java source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 3 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 5 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 2 Scala sources to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/students/s/k/skowron/play-samples-play-scala-hello-world-tutorial/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-scala-hello-world-tutorial[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
