@@ -6,10 +6,10 @@ import play.api.routing.JavaScriptReverseRoute
 
 import _root_.controllers.Assets.Asset
 
-// @LINE:3
+// @LINE:4
 package controllers.javascript {
 
-  // @LINE:3
+  // @LINE:4
   class ReverseHomeController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -17,7 +17,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:6
+    // @LINE:15
     def players: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.players",
       """
@@ -27,7 +27,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:4
+    // @LINE:13
     def tournaments: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.tournaments",
       """
@@ -37,7 +37,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:7
+    // @LINE:16
     def panel: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.panel",
       """
@@ -47,17 +47,21 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:3
+    // @LINE:4
     def home: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.home",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + """"})
+        
+          if (true) {
+            return _wA({method:"GET", url:"""" + _prefix + """"})
+          }
+        
         }
       """
     )
   
-    // @LINE:5
+    // @LINE:14
     def teams: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.teams",
       """
@@ -69,7 +73,57 @@ package controllers.javascript {
   
   }
 
-  // @LINE:10
+  // @LINE:6
+  class ReverseAuthUserController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:6
+    def login: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AuthUserController.login",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
+        }
+      """
+    )
+  
+    // @LINE:7
+    def register: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AuthUserController.register",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "register"})
+        }
+      """
+    )
+  
+    // @LINE:9
+    def validateLoginPost: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AuthUserController.validateLoginPost",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "validatePost"})
+        }
+      """
+    )
+  
+    // @LINE:11
+    def createUser: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AuthUserController.createUser",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "createUser"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:19
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -77,7 +131,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:10
+    // @LINE:19
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

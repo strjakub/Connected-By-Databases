@@ -136,3 +136,10 @@ footer p {
  background-color:#b91414;
  transition: 0.3s ease;
 }
+.wrapper article{
+ display: block;
+}
+.auth-link a{
+ color: blue;
+ font-weight: bold;
+}

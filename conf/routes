@@ -1,6 +1,15 @@
 # Routes
 
+#ANOTHER PAGE?
 GET     /                                   controllers.HomeController.home()
+
+GET     /login                              controllers.AuthUserController.login()
+GET     /register                           controllers.AuthUserController.register()
++ nocsrf
+POST    /validatePost                       controllers.AuthUserController.validateLoginPost()
++ nocsrf
+POST    /createUser                         controllers.AuthUserController.createUser()
+GET     /home                               controllers.HomeController.home()
 GET     /tournaments                        controllers.HomeController.tournaments()
 GET     /teams                              controllers.HomeController.teams()
 GET     /players                            controllers.HomeController.players()
