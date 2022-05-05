@@ -31,14 +31,15 @@ Seq[Any](format.raw/*2.1*/("""
             <div class="wrapper doc">
                 <article>
                         <!-- CONTENT HERE -->
+                    <p>PANEL INFO HERE</p>
                 </article>
                 <aside>
-                    """),_display_(/*12.22*/commonSidebar()),format.raw/*12.37*/("""
-                """),format.raw/*13.17*/("""</aside>
+                    """),_display_(/*13.22*/commonSidebar()),format.raw/*13.37*/("""
+                """),format.raw/*14.17*/("""</aside>
             </div>
         </section>
-    """),_display_(/*16.6*/commonFooter()),format.raw/*16.20*/("""
-    """)))}),format.raw/*17.6*/("""
+    """),_display_(/*17.6*/commonFooter()),format.raw/*17.20*/("""
+    """)))}),format.raw/*18.6*/("""
 """)))}))
       }
     }
@@ -56,9 +57,9 @@ Seq[Any](format.raw/*2.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/panel.scala.html
-                  HASH: 96b6bee536cf242d6ecd4bfe2c1ada0920acbbc9
-                  MATRIX: 722->1|818->4|845->6|866->19|905->21|936->27|983->66|1033->79|1069->89|1301->294|1337->309|1382->326|1460->378|1495->392|1531->398
-                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|30->6|36->12|36->12|37->13|40->16|40->16|41->17
+                  HASH: 113aa9d5aadf0e222625f14b0ba7d3a9efa89155
+                  MATRIX: 722->1|818->4|845->6|866->19|905->21|936->27|983->66|1033->79|1069->89|1344->337|1380->352|1425->369|1503->421|1538->435|1574->441
+                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|30->6|37->13|37->13|38->14|41->17|41->17|42->18
                   -- GENERATED --
               */
           

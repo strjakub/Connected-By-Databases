@@ -31,14 +31,15 @@ Seq[Any](format.raw/*2.1*/("""
             <div class="wrapper doc">
                 <article>
                         <!-- CONTENT HERE -->
+                    <p>PLAYERS INFO HERE</p>
                 </article>
                 <aside>
-                    """),_display_(/*12.22*/commonSidebar()),format.raw/*12.37*/("""
-                """),format.raw/*13.17*/("""</aside>
+                    """),_display_(/*13.22*/commonSidebar()),format.raw/*13.37*/("""
+                """),format.raw/*14.17*/("""</aside>
             </div>
         </section>
-    """),_display_(/*16.6*/commonFooter()),format.raw/*16.20*/("""
-    """)))}),format.raw/*17.6*/("""
+    """),_display_(/*17.6*/commonFooter()),format.raw/*17.20*/("""
+    """)))}),format.raw/*18.6*/("""
 """)))}))
       }
     }
@@ -56,9 +57,9 @@ Seq[Any](format.raw/*2.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/players.scala.html
-                  HASH: 7eaab86e41cc381d931882e5797caecf47d0eb83
-                  MATRIX: 724->1|820->4|847->6|870->21|909->23|940->29|987->68|1037->81|1073->91|1305->296|1341->311|1386->328|1464->380|1499->394|1535->400
-                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|30->6|36->12|36->12|37->13|40->16|40->16|41->17
+                  HASH: 8ec25e37abea0248984a8fea7b72e76f1c838205
+                  MATRIX: 724->1|820->4|847->6|870->21|909->23|940->29|987->68|1037->81|1073->91|1350->341|1386->356|1431->373|1509->425|1544->439|1580->445
+                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|30->6|37->13|37->13|38->14|41->17|41->17|42->18
                   -- GENERATED --
               */
           
