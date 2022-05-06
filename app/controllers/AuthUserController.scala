@@ -33,7 +33,7 @@ class AuthUserController @Inject()(cc: ControllerComponents) extends AbstractCon
         Redirect(routes.HomeController.home()).withSession("username" -> username)
       }
       else {
-        Redirect(routes.AuthUserController.login())
+        Redirect(routes.AuthUserController.login()).flashing("error" -> "Invalid username or password!")
       }
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
@@ -47,7 +47,7 @@ class AuthUserController @Inject()(cc: ControllerComponents) extends AbstractCon
         Redirect(routes.AuthUserController.login()).withSession("username" -> username)
       }
       else {
-        Redirect(routes.AuthUserController.login())
+        Redirect(routes.AuthUserController.login()).flashing("error" -> "Error while creating user account!")
       }
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }

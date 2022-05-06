@@ -15,15 +15,15 @@ import play.api.templates.PlayMagic._
 import play.api.mvc._
 import play.api.data._
 
-object register extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[RequestHeader,play.twirl.api.HtmlFormat.Appendable] {
+object register extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[RequestHeader,Flash,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/()(implicit request: RequestHeader):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/()(implicit request: RequestHeader, flash: Flash):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](format.raw/*1.37*/("""
+Seq[Any](format.raw/*1.51*/("""
 
 """),_display_(/*3.2*/outmain("Login")/*3.18*/ {_display_(Seq[Any](format.raw/*3.20*/("""
     """),_display_(/*4.6*/defining(play.core.PlayVersion.current)/*4.45*/ { version =>_display_(Seq[Any](format.raw/*4.58*/("""
@@ -46,9 +46,9 @@ Seq[Any](format.raw/*1.37*/("""
     }
   }
 
-  def render(request:RequestHeader): play.twirl.api.HtmlFormat.Appendable = apply()(request)
+  def render(request:RequestHeader,flash:Flash): play.twirl.api.HtmlFormat.Appendable = apply()(request,flash)
 
-  def f:(() => (RequestHeader) => play.twirl.api.HtmlFormat.Appendable) = () => (request) => apply()(request)
+  def f:(() => (RequestHeader,Flash) => play.twirl.api.HtmlFormat.Appendable) = () => (request,flash) => apply()(request,flash)
 
   def ref: this.type = this
 
@@ -58,8 +58,8 @@ Seq[Any](format.raw/*1.37*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/register.scala.html
-                  HASH: 70b918997c4eb8301fa4b89349faf3d4192a4ee5
-                  MATRIX: 739->1|869->36|899->41|923->57|962->59|994->66|1041->105|1091->118|1127->128|1244->219|1258->225|1310->257|1427->348|1441->354|1476->369|1526->391|1840->678|1855->684|1903->711|1995->773
+                  HASH: 805c881f9cb41a9c4acc728ba14563a30d7d2e46
+                  MATRIX: 745->1|889->50|919->55|943->71|982->73|1014->80|1061->119|1111->132|1147->142|1264->233|1278->239|1330->271|1447->362|1461->368|1496->383|1546->405|1860->692|1875->698|1923->725|2015->787
                   LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|32->7|32->7|32->7|34->9|34->9|34->9|35->10|40->15|40->15|40->15|43->18
                   -- GENERATED --
               */

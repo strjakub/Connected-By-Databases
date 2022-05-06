@@ -15,7 +15,7 @@ import play.api.templates.PlayMagic._
 import play.api.mvc._
 import play.api.data._
 
-object outmain extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[String,Html,play.twirl.api.HtmlFormat.Appendable] {
+object outmain extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template3[String,Html,Flash,play.twirl.api.HtmlFormat.Appendable] {
 
   /*
 * This template is called from the `home` template. This template
@@ -23,12 +23,12 @@ object outmain extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Ht
 * two arguments, a `String` for the title of the page and an `Html`
 * object to insert into the body of the page.
 */
-  def apply/*7.2*/(title: String)(content: Html):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*7.2*/(title: String)(content: Html)(implicit flash: Flash):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](format.raw/*7.32*/("""
+Seq[Any](format.raw/*7.55*/("""
 
 """),format.raw/*9.1*/("""<!DOCTYPE html>
 <html lang="en">
@@ -47,10 +47,14 @@ Seq[Any](format.raw/*7.32*/("""
         </header>
         <article>
             """),_display_(/*25.14*/content),format.raw/*25.21*/("""
-        """),format.raw/*26.9*/("""</article>
+            """),format.raw/*26.13*/("""<div class="flash-message">
+                """),_display_(/*27.18*/flash/*27.23*/.get("error")),format.raw/*27.36*/("""
+                """),_display_(/*28.18*/flash/*28.23*/.get("success")),format.raw/*28.38*/("""
+            """),format.raw/*29.13*/("""</div>
+        </article>
         <footer>
-            """),_display_(/*28.14*/commonFooter()),format.raw/*28.28*/("""
-        """),format.raw/*29.9*/("""</footer>
+            """),_display_(/*32.14*/commonFooter()),format.raw/*32.28*/("""
+        """),format.raw/*33.9*/("""</footer>
     </body>
 
 </html>"""))
@@ -58,9 +62,9 @@ Seq[Any](format.raw/*7.32*/("""
     }
   }
 
-  def render(title:String,content:Html): play.twirl.api.HtmlFormat.Appendable = apply(title)(content)
+  def render(title:String,content:Html,flash:Flash): play.twirl.api.HtmlFormat.Appendable = apply(title)(content)(flash)
 
-  def f:((String) => (Html) => play.twirl.api.HtmlFormat.Appendable) = (title) => (content) => apply(title)(content)
+  def f:((String) => (Html) => (Flash) => play.twirl.api.HtmlFormat.Appendable) = (title) => (content) => (flash) => apply(title)(content)(flash)
 
   def ref: this.type = this
 
@@ -70,9 +74,9 @@ Seq[Any](format.raw/*7.32*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/outmain.scala.html
-                  HASH: e6f30b12c823e6989af3c7d8c93e59ab49731d1c
-                  MATRIX: 989->260|1114->290|1144->294|1236->359|1262->364|1432->507|1447->513|1510->554|1744->761|1772->768|1809->778|1879->821|1914->835|1951->845
-                  LINES: 26->7|31->7|33->9|37->13|37->13|39->15|39->15|39->15|49->25|49->25|50->26|52->28|52->28|53->29
+                  HASH: c7d298e26a6037e585d1c663b6ae941fbbec1eaf
+                  MATRIX: 995->260|1143->313|1173->317|1265->382|1291->387|1461->530|1476->536|1539->577|1773->784|1801->791|1843->805|1916->851|1930->856|1964->869|2010->888|2024->893|2060->908|2102->922|2188->981|2223->995|2260->1005
+                  LINES: 26->7|31->7|33->9|37->13|37->13|39->15|39->15|39->15|49->25|49->25|50->26|51->27|51->27|51->27|52->28|52->28|52->28|53->29|56->32|56->32|57->33
                   -- GENERATED --
               */
           
