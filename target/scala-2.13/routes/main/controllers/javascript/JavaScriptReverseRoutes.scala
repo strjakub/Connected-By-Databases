@@ -17,7 +17,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:16
+    // @LINE:14
     def players: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.players",
       """
@@ -27,7 +27,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:14
+    // @LINE:12
     def tournaments: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.tournaments",
       """
@@ -37,7 +37,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:17
+    // @LINE:15
     def panel: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.panel",
       """
@@ -61,7 +61,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:15
+    // @LINE:13
     def teams: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.teams",
       """
@@ -81,7 +81,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:11
+    // @LINE:9
     def createUser: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AuthUserController.createUser",
       """
@@ -91,7 +91,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:12
+    // @LINE:10
     def logout: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AuthUserController.logout",
       """
@@ -101,7 +101,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:9
+    // @LINE:8
     def validateLoginPost: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AuthUserController.validateLoginPost",
       """
@@ -133,7 +133,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:20
+  // @LINE:18
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -141,7 +141,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:20
+    // @LINE:18
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

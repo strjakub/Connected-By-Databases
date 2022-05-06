@@ -5,9 +5,7 @@ GET     /                                   controllers.HomeController.home()
 
 GET     /login                              controllers.AuthUserController.login()
 GET     /register                           controllers.AuthUserController.register()
-+ nocsrf
 POST    /validatePost                       controllers.AuthUserController.validateLoginPost()
-+ nocsrf
 POST    /createUser                         controllers.AuthUserController.createUser()
 GET     /logout                             controllers.AuthUserController.logout()
 GET     /home                               controllers.HomeController.home()

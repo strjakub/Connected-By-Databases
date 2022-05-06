@@ -24,7 +24,7 @@ class AuthUserController @Inject()(cc: ControllerComponents) extends AbstractCon
     }.getOrElse(Ok(views.html.register()))
   }
 
-  def validateLoginPost(): Action[AnyContent] = Action { request =>
+  def validateLoginPost(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     val postVals = request.body.asFormUrlEncoded
     postVals.map { args =>
       val username = args("username").head
@@ -38,7 +38,7 @@ class AuthUserController @Inject()(cc: ControllerComponents) extends AbstractCon
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
 
-  def createUser(): Action[AnyContent] = Action { request =>
+  def createUser(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     val postVals = request.body.asFormUrlEncoded
     postVals.map { args =>
       val username = args("username").head

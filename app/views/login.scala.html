@@ -1,10 +1,12 @@
-@()
+@()(implicit request: RequestHeader)
 
 @outmain("Login") {
     @defining(play.core.PlayVersion.current) { version =>
         <div class="wrapper">
             <article>
                 <form method="post" action="@routes.AuthUserController.validateLoginPost()">
+                        <!-- Add in to our form a CSRF token -->
+                    @helper.CSRF.formField
                     <h3>LOGIN</h3>
                     Username: <input type="text" name="username">
                     Password: <input type="password" name="password">
