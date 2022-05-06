@@ -9,6 +9,7 @@ GET     /register                           controllers.AuthUserController.regis
 POST    /validatePost                       controllers.AuthUserController.validateLoginPost()
 + nocsrf
 POST    /createUser                         controllers.AuthUserController.createUser()
+GET     /logout                             controllers.AuthUserController.logout()
 GET     /home                               controllers.HomeController.home()
 GET     /tournaments                        controllers.HomeController.tournaments()
 GET     /teams                              controllers.HomeController.teams()
