@@ -3,7 +3,7 @@ import collection.mutable
 
 object InMemoryModel {
 
-  private val users = mutable.Map[String, String]("nazwa" -> "haslo")
+  private val users = mutable.Map[String, String]("login" -> "password")
 
   def validateUser(username: String, password: String): Boolean = {
     users.get(username).map( _ == password).getOrElse(false)

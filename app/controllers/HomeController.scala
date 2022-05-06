@@ -19,22 +19,37 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
    * a path of `/`.
    */
   def home(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.home())
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      Ok(views.html.home())
+    }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
   
   def tournaments(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.tournaments())
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      Ok(views.html.tournaments())
+    }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
   
   def teams(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.teams())
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      Ok(views.html.teams())
+    }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
 
   def players(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.players())
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      Ok(views.html.players())
+    }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
 
   def panel(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.panel())
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      Ok(views.html.panel())
+    }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
 }

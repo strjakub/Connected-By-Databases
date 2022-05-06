@@ -33,7 +33,7 @@ Seq[Any](format.raw/*1.4*/("""
                     <h3>REGISTER</h3>
                     Username: <input type="text" name="username">
                     Password: <input type="password" name="password">
-                    <input type="submit">
+                    <input type="submit" value="Submit">
                 </form>
                 <p class="auth-link"><a href=""""),_display_(/*13.48*/routes/*13.54*/.AuthUserController.login()),format.raw/*13.81*/("""">LOGIN</a></p>
             </article>
@@ -56,8 +56,8 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/register.scala.html
-                  HASH: 41a18305ebd62484bee63790032b7f50241daaa7
-                  MATRIX: 725->1|821->3|851->8|875->24|914->26|946->33|993->72|1043->85|1079->95|1196->186|1210->192|1262->224|1585->520|1600->526|1648->553|1740->615
+                  HASH: d242ccb67649a5475170457b82b6dba0f722daae
+                  MATRIX: 725->1|821->3|851->8|875->24|914->26|946->33|993->72|1043->85|1079->95|1196->186|1210->192|1262->224|1600->535|1615->541|1663->568|1755->630
                   LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|32->7|32->7|32->7|38->13|38->13|38->13|41->16
                   -- GENERATED --
               */

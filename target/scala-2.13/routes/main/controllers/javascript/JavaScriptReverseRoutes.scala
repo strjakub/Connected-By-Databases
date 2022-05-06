@@ -17,7 +17,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:15
+    // @LINE:16
     def players: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.players",
       """
@@ -27,7 +27,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:13
+    // @LINE:14
     def tournaments: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.tournaments",
       """
@@ -37,7 +37,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:16
+    // @LINE:17
     def panel: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.panel",
       """
@@ -61,7 +61,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:14
+    // @LINE:15
     def teams: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.teams",
       """
@@ -81,22 +81,22 @@ package controllers.javascript {
     }
 
   
-    // @LINE:6
-    def login: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.AuthUserController.login",
+    // @LINE:11
+    def createUser: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AuthUserController.createUser",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "createUser"})
         }
       """
     )
   
-    // @LINE:7
-    def register: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.AuthUserController.register",
+    // @LINE:12
+    def logout: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AuthUserController.logout",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "register"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "logout"})
         }
       """
     )
@@ -111,19 +111,29 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:11
-    def createUser: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.AuthUserController.createUser",
+    // @LINE:7
+    def register: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AuthUserController.register",
       """
         function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "createUser"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "register"})
+        }
+      """
+    )
+  
+    // @LINE:6
+    def login: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AuthUserController.login",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
         }
       """
     )
   
   }
 
-  // @LINE:19
+  // @LINE:20
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -131,7 +141,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:19
+    // @LINE:20
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
