@@ -2,7 +2,8 @@
 Aplikacja do organizacji turniejów piłkarskich
 ### Technologie:  
 - MongoDB
-- Scala.js
+- Scala Play Framework
+- Express Node.js
 ### Skład :
 - Skowron Mateusz
 - Strojewski Jakub
