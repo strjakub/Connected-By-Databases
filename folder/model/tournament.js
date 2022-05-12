@@ -4,22 +4,22 @@ const Schema = mongoose.Schema;
 
 const tournamentSchema = new Schema({
     teams:{
-        types: Array[mongoose.Types.ObjectId],
+        type: [Schema.Types.ObjectId],
         required: true,
         unique: false
     },
     games:{
-        types: Array[mongoose.Types.ObjectId],
+        type: [Schema.Types.ObjectId],
         required: true,
         unique: false
     },
     place:{
-        types: String,
+        type: String,
         required: true,
         unique: false
     },
     date:{
-        types: Date,
+        type: Date,
         required: true,
         unique: false
     }

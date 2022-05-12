@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const coachSchema = new Schema({
     teamID:{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
         unique: true
     },
