@@ -1,8 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(uit, None, None)[0m
-[0m[[0m[31merror[0m] [0m[0mNot a valid command: uit (similar: exit, about, plugin)[0m
-[0m[[0m[31merror[0m] [0m[0mNot a valid project ID: uit[0m
-[0m[[0m[31merror[0m] [0m[0mExpected ':'[0m
-[0m[[0m[31merror[0m] [0m[0mNot a valid key: uit (similar: dist, bgList, ivySbt)[0m
-[0m[[0m[31merror[0m] [0m[0muit[0m
-[0m[[0m[31merror[0m] [0m[0m   ^[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(idea-shell, None, None)[0m
