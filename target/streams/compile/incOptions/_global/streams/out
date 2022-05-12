@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 [0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /home/michal/DataBase-II-Project/target/scala-2.13/classes.bak[0m
 [0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /home/michal/DataBase-II-Project/target/scala-2.13/classes.bak[0m
+=======
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = C:\Users\HP\Desktop\ScalaPrrrooojeect\target\scala-2.13\classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: C:\Users\HP\Desktop\ScalaPrrrooojeect\target\scala-2.13\classes.bak[0m
+>>>>>>> 6f61ad1d991c520272a19f1c4c4ff1c6fdc2993d
