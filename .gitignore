@@ -1,3 +1,6 @@
+.idea
+.bsp
+.g8
 bin/
 /db
 .eclipse
