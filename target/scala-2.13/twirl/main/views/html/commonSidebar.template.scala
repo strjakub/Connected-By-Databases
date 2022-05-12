@@ -23,8 +23,7 @@ object commonSidebar extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.
       {
 
 
-Seq[Any](format.raw/*1.4*/("""
-"""),_display_(/*2.2*/defining(play.core.PlayVersion.current)/*2.41*/ { version =>_display_(Seq[Any](format.raw/*2.54*/("""
+Seq[Any](_display_(/*2.2*/defining(play.core.PlayVersion.current)/*2.41*/ { version =>_display_(Seq[Any](format.raw/*2.54*/("""
         """),format.raw/*3.9*/("""<div class="aside-content">
           <h3>Related Resources</h3>
           <ul>
@@ -52,9 +51,9 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/commonSidebar.scala.html
-                  HASH: 20f12996de4ecb5c5467e2943c23eff287b718d1
-                  MATRIX: 730->1|826->3|854->6|901->45|951->58|987->68
-                  LINES: 21->1|26->1|27->2|27->2|27->2|28->3
+                  HASH: 6c54230ff29cc0129dcf948b63318ea933f82eea
+                  MATRIX: 730->1|826->5|873->44|923->57|958->66
+                  LINES: 21->1|26->2|26->2|26->2|27->3
                   -- GENERATED --
               */
           

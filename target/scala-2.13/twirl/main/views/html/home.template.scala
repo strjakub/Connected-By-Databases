@@ -23,8 +23,7 @@ object home extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlF
       {
 
 
-Seq[Any](format.raw/*1.4*/("""
-
+Seq[Any](format.raw/*2.1*/("""
 """),_display_(/*3.2*/main("Home page")/*3.19*/ {_display_(Seq[Any](format.raw/*3.21*/("""
   """),_display_(/*4.4*/defining(play.core.PlayVersion.current)/*4.43*/ { version =>_display_(Seq[Any](format.raw/*4.56*/("""
     """),format.raw/*5.5*/("""<div class="wrapper doc">
@@ -52,9 +51,9 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/home.scala.html
-                  HASH: 3e0b997932330cdb997b901077ea89048af9a86e
-                  MATRIX: 721->1|817->3|847->8|872->25|911->27|941->32|988->71|1038->84|1070->90|1233->223
-                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|37->12
+                  HASH: 56bfb6d608aa6b0c7955c9fcc9234a3dc8deedcb
+                  MATRIX: 721->1|817->4|844->6|869->23|908->25|937->29|984->68|1034->81|1065->86|1221->212
+                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|29->5|36->12
                   -- GENERATED --
               */
           

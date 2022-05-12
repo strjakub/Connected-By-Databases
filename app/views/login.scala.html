@@ -8,9 +8,11 @@
                         <!-- Add in to our form a CSRF token -->
                     @helper.CSRF.formField
                     <h3>LOGIN</h3>
-                    Username: <input type="text" name="username">
-                    Password: <input type="password" name="password">
-                    <input type="submit" value="Submit">
+                    <h4>Username: </h4>
+                    <input type="text" name="username">
+                    <h4>Password:</h4>
+                    <input type="password" name="password">
+                    <input id="submitButton"  type="submit" value="Submit">
                 </form>
                 <p class="auth-link"><a href="@routes.AuthUserController.register()">REGISTER</a></p>
             </article>

@@ -23,8 +23,7 @@ object tournaments extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.ap
       {
 
 
-Seq[Any](format.raw/*1.4*/("""
-
+Seq[Any](format.raw/*2.1*/("""
 """),_display_(/*3.2*/main("Tournaments")/*3.21*/ {_display_(Seq[Any](format.raw/*3.23*/("""
   """),_display_(/*4.4*/defining(play.core.PlayVersion.current)/*4.43*/ { version =>_display_(Seq[Any](format.raw/*4.56*/("""
       """),format.raw/*5.7*/("""<div class="wrapper doc">
@@ -51,9 +50,9 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/tournaments.scala.html
-                  HASH: 014a5008d76da72eda1893cf1ac4f7673efc4532
-                  MATRIX: 728->1|824->3|854->8|881->27|920->29|950->34|997->73|1047->86|1081->94|1262->245
-                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|36->11
+                  HASH: c9bcb489ba32a5081ff120a56c78bf14fde78985
+                  MATRIX: 728->1|824->4|851->6|878->25|917->27|946->31|993->70|1043->83|1076->90|1251->235
+                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|29->5|35->11
                   -- GENERATED --
               */
           

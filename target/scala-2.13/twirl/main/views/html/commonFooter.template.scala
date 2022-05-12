@@ -23,8 +23,7 @@ object commonFooter extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.a
       {
 
 
-Seq[Any](format.raw/*1.4*/("""
-"""),_display_(/*2.2*/defining(play.core.PlayVersion.current)/*2.41*/ { version =>_display_(Seq[Any](format.raw/*2.54*/("""
+Seq[Any](_display_(/*2.2*/defining(play.core.PlayVersion.current)/*2.41*/ { version =>_display_(Seq[Any](format.raw/*2.54*/("""
     """),format.raw/*3.5*/("""<footer>
         <p>Footer here</p>
     </footer>
@@ -45,9 +44,9 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/commonFooter.scala.html
-                  HASH: b0659b6d57e450271bc07be85be2792f99c19c1e
-                  MATRIX: 729->1|825->3|853->6|900->45|950->58|982->64
-                  LINES: 21->1|26->1|27->2|27->2|27->2|28->3
+                  HASH: 75a661b11d2719e1de3fed2013cd63f209fa458d
+                  MATRIX: 729->1|825->5|872->44|922->57|953->62
+                  LINES: 21->1|26->2|26->2|26->2|27->3
                   -- GENERATED --
               */
           

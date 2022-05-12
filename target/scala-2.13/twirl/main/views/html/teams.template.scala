@@ -23,8 +23,7 @@ object teams extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Html
       {
 
 
-Seq[Any](format.raw/*1.4*/("""
-
+Seq[Any](format.raw/*2.1*/("""
 """),_display_(/*3.2*/main("Teams")/*3.15*/ {_display_(Seq[Any](format.raw/*3.17*/("""
     """),_display_(/*4.6*/defining(play.core.PlayVersion.current)/*4.45*/ { version =>_display_(Seq[Any](format.raw/*4.58*/("""
             """),format.raw/*5.13*/("""<div class="wrapper doc">
@@ -51,9 +50,9 @@ Seq[Any](format.raw/*1.4*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/teams.scala.html
-                  HASH: 34b617a8adecc025b5fc4412939e70ceb41110e1
-                  MATRIX: 722->1|818->3|848->8|869->21|908->23|940->30|987->69|1037->82|1078->96|1306->294
-                  LINES: 21->1|26->1|28->3|28->3|28->3|29->4|29->4|29->4|30->5|36->11
+                  HASH: f94eeb46b9aac0ce1b5dd1f011b72d871e67cecd
+                  MATRIX: 722->1|818->4|845->6|866->19|905->21|936->27|983->66|1033->79|1073->92|1295->284
+                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|29->5|35->11
                   -- GENERATED --
               */
           
