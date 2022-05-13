@@ -3,20 +3,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
-    tournament:{
-        type: Schema.Types.ObjectId,
-        required: true,
-        unique: true
-    },
     team1ID:{
         type: Schema.Types.ObjectId,
         required: true,
-        unique: true
+        unique: false
     },
     team2ID:{
         type: Schema.Types.ObjectId,
         required: true,
-        unique: true
+        unique: false
     },
     result:{
         type: String,

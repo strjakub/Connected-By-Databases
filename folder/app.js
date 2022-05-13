@@ -1,4 +1,5 @@
 const express = require("express");
+var crypto = require('crypto');
 const mongoose = require("mongoose");
 const Coach = require("./model/coach");
 const Game = require("./model/game");
@@ -7,6 +8,7 @@ const Referre = require("./model/referre");
 const Team = require("./model/team");
 const Test = require("./model/test");
 const Tournament = require("./model/tournament");
+const User = require("./model/user");
 require("dotenv").config();
 
 const app = express();
@@ -14,6 +16,8 @@ app.use(express.json());
 
 const port = 3001;
 const uri = process.env.MONGODB_CONNECTION_STRING;
+
+const salt = "d6f6fcf5de4ebc7459ae1c033c212f7b";
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -148,7 +152,6 @@ app.post("/game", async (req, res) => {
 
         console.log("req.body: ", req.body);
         const newGame = new Game({
-            tournament: mongoose.Types.ObjectId(req.body.tournament),
             team1ID: mongoose.Types.ObjectId(req.body.team1ID),
             team2ID: mongoose.Types.ObjectId(req.body.team2ID),
             result: req.body.result,
@@ -333,6 +336,39 @@ app.delete("/coach/:id", async (req, res) => {
     Coach.findOneAndDelete({_id : req.params.id}, (err, result) => {
         console.log("deleted");
         res.send("deleted");
+    })
+});
+
+app.post("/user", async (req, res) => {
+    const hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`);
+
+    try{
+        console.log("req.body: ", req.body);
+        const newUser = new User({
+            username: req.body.username,
+            password: hash,
+            roles: req.body.roles,
+            isBanned: req.body.isBanned,
+        });
+
+        await User.create(newUser);
+        res.send("user added");
+    } catch (err) {
+        console.log("error: ", err);
+    }
+});
+
+app.get("/user/:id", async (req, res) => {
+    User.findOne({}, (err, result) => {
+        console.log("output: ", result);
+        res.send(result);
+    })
+});
+
+app.patch("/user/:id", async (req, res) => {
+    User.findOneAndUpdate({_id : req.params.id}, req.body, (err, result) => {
+        console.log("updated");
+        res.send("updated");
     })
 });
 
