@@ -23,7 +23,7 @@ const gameSchema = new Schema({
         required: true,
         unique: false
     },
-    referreID:{
+    refereeID:{
         type: Schema.Types.ObjectId,
         required: true,
         unique: false

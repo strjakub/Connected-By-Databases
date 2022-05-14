@@ -1,4 +1,8 @@
 package models
-class Player (val name : String, val surname : String, val dateOfBrith : Date,
-              var goals : Int, var appearances : Int, var TeamId : String){
-}
+
+import java.util.Date
+
+
+case class Player (name : String, surname : String, dateOfBrith : Date,
+                   var goals : Int, var appearances : Int, var teamId : Option[String])
+

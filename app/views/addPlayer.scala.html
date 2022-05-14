@@ -1,5 +1,14 @@
-@()
-
+@import helper._
+@import play.mvc.Http.Request
+@(playerForm: Form[Player])(implicit messages: play.i18n.Messages)
 @players("players"){
-
+    <body>
+        @helper.form(action = routes.PlayerController.index()) {
+            @helper.inputText(playerForm("Name"))
+            @helper.inputText(playerForm("Surname"))
+            <div class="form-actions">
+                <button type="submit">Add player</button>
+            </div>
+        }
+    </body>
 }
