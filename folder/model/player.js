@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const playerSchema = new Schema({
     teamID:{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
-        unique: true
+        unique: false
     },
     name:{
         type: String,

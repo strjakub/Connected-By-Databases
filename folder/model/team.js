@@ -9,12 +9,12 @@ const teamSchema = new Schema({
         unique: false
     },
     coach:{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
         unique: false
     },
     players:{
-        type: [mongoose.Types.ObjectId],
+        type: [Schema.Types.ObjectId],
         require: true,
         unique: false
     }

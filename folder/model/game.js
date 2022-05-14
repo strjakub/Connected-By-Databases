@@ -3,20 +3,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
-    tournament:{
-        type: mongoose.Types.ObjectId,
-        required: true,
-        unique: true
-    },
     team1ID:{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
-        unique: true
+        unique: false
     },
     team2ID:{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
-        unique: true
+        unique: false
     },
     result:{
         type: String,
@@ -29,12 +24,12 @@ const gameSchema = new Schema({
         unique: false
     },
     referreID:{
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
         unique: false
     },
     scorers:{
-        type: Array[mongoose.Types.ObjectId],
+        type: [Schema.Types.ObjectId],
         required: true,
         unique: false
     }

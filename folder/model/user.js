@@ -2,29 +2,29 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const coachSchema = new Schema({
-    teamID:{
-        type: Schema.Types.ObjectId,
+const userSchema = new Schema({
+    username:{
+        type: String,
         required: true,
-        unique: false
+        unique: true
     },
-    name:{
+    password:{
         type: String,
         required: true,
         unique: false
     },
-    surname:{
-        type: String,
+    roles:{
+        type: [String],
         required: true,
         unique: false
     },
-    dateOfBirth:{
-        type: Date,
+    isBanned:{
+        type: Boolean,
         required: true,
         unique: false
     }
 })
 
-const Coach = mongoose.model("coach", coachSchema);
+const User = mongoose.model("user", userSchema);
 
-module.exports = Coach;
+module.exports = User;
