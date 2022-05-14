@@ -4,8 +4,39 @@
     @defining(play.core.PlayVersion.current) { version =>
 
             <div class="wrapper doc">
+                @addPlayer()
                 <article>
-                        <!-- CONTENT HERE -->
+                        <table>
+                            <tr>
+                                <td><label for="name">Imię</label></td>
+                                <td><input id="name" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="surname">Nazwisko</label></td>
+                                <td><input id="surname" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="date">Data urodzenia</label></td>
+                                <td><input id="date" type="date"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="team">Klub</label></td>
+                                <td> <select id="team" name="team">
+                                    // for team in service.teams :
+                                    // <option> team.name</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <td><label for="appearances">Występy</label></td>
+                                <td><input id="appearances" type="number"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="goals">Gole</label></td>
+                                <td><input id="goals" type="number"></td>
+                            </tr>
+                        </table>
+                        <h6>Uzupełnij imię, nazwisko, datę urodzenia oraz statystyki</h6>
+                        <button type="submit" id="submit">Dodaj nowego zawodnika</button>
                     <p>PLAYERS INFO HERE</p>
                 </article>
             </div>
