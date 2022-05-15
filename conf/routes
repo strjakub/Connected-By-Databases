@@ -13,7 +13,7 @@ GET     /tournaments                        controllers.HomeController.tournamen
 GET     /teams                              controllers.HomeController.teams()
 GET     /players                            controllers.HomeController.players()
 GET     /panel                              controllers.HomeController.panel()
-POST    /addPlayer                          controllers.PlayerController.index()
+GET    /addPlayer                           controllers.PlayerController.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

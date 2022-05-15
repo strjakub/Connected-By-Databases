@@ -1,7 +1,6 @@
 package controllers
 
 import javax.inject._
-import play.api._
 import play.api.mvc._
 
 /**
@@ -42,7 +41,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   def players(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     val usernameOption = request.session.get("username")
     usernameOption.map { username =>
-      Ok(views.html.players())
+      Ok(views.html.players)
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
 

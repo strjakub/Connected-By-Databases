@@ -1,14 +1,15 @@
-@import helper._
-@import play.mvc.Http.Request
-@(playerForm: Form[Player])(implicit messages: play.i18n.Messages)
-@players("players"){
-    <body>
-        @helper.form(action = routes.PlayerController.index()) {
-            @helper.inputText(playerForm("Name"))
-            @helper.inputText(playerForm("Surname"))
-            <div class="form-actions">
-                <button type="submit">Add player</button>
-            </div>
-        }
-    </body>
+@(playerForm: Form[Player])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@players {
+    @defining(play.core.PlayVersion.current) { version =>
+        <body>
+            @helper.form(action = routes.PlayerController.index()) {
+                @helper.CSRF.formField
+                @helper.inputText(playerForm("Name"))
+                @helper.inputText(playerForm("Surname"))
+                <div class="form-actions">
+                    <button type="submit">Add player</button>
+                </div>
+            }
+        </body>
+    }
 }

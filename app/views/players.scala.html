@@ -1,12 +1,8 @@
-@(title: String)(content: Html)
-
+@(content:Html)
 @main("Players") {
     @defining(play.core.PlayVersion.current) { version =>
-
-            <div class="wrapper doc">
-                @content
-                <article>
-                </article>
-            </div>
+        <div class="wrapper doc">
+            @content
+        </div>
     }
 }
