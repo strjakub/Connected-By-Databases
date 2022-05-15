@@ -1,5 +1,7 @@
 package controllers
 
+import models.{Player, Team, Tournament}
+
 import javax.inject._
 import play.api._
 import play.api.mvc._
@@ -28,6 +30,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   def tournaments(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     val usernameOption = request.session.get("username")
     usernameOption.map { username =>
+      val list: Seq[Tournament] = Http.HttpRequestHandler.getTournaments()
       Ok(views.html.tournaments())
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
@@ -35,6 +38,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   def teams(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     val usernameOption = request.session.get("username")
     usernameOption.map { username =>
+      val list: Seq[Team] = Http.HttpRequestHandler.getTeams()
       Ok(views.html.teams())
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
@@ -42,6 +46,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   def players(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     val usernameOption = request.session.get("username")
     usernameOption.map { username =>
+      val list: Seq[Player] = Http.HttpRequestHandler.getPlayers()
       Ok(views.html.players())
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
