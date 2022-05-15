@@ -1,5 +1,4 @@
 package models
 
-import akka.http.scaladsl.model.headers.Date
-
-case class Tournament (teams : Array[String], games : Array[String], place : String, date: Date)
+import java.util.Date
+case class Tournament (name : String, place : String, date: Date, teams : List[String], games : List[String])

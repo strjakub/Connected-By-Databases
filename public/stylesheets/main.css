@@ -151,26 +151,28 @@ footer p {
 }
 .wrapper{
  width: 100%;
-}
-.wrapper article{
- width: 100%;
- height:100%;
  display: flex;
- justify-content: center;
- align-items: center;
- flex-direction: column;
+ column-gap: 50px;
 }
-.wrapper article form{
- display: flex;
- flex-direction: column;
- justify-content: flex-start;
- align-items: flex-start;
- row-gap: 10px;
-}
-.wrapper article form h3{
- width: 100%;
- text-align: center;
-}
+/*.wrapper article{*/
+/* width: 100%;*/
+/* height:100%;*/
+/* display: flex;*/
+/* justify-content: center;*/
+/* align-items: center;*/
+/* flex-direction: row;*/
+/*}*/
+/*.wrapper article form{*/
+/* display: flex;*/
+/* flex-direction: row;*/
+/* justify-content: flex-start;*/
+/* align-items: flex-start;*/
+/* row-gap: 10px;*/
+/*}*/
+/*.wrapper article form h3{*/
+/* width: 100%;*/
+/* text-align: center;*/
+/*}*/
 #submitButton{
  width:100%;
  align-self: center;
@@ -182,4 +184,46 @@ footer p {
 .auth-link a{
  color: blue;
  font-weight: bold;
+}
+.playerStats{
+ width:100%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-direction: row;
+ column-gap: 10px;
+}
+.teamStats{
+ width:100%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-direction: row;
+ row-gap: 10px;
+}
+.statInput{
+ width: 100%
+}
+select{
+ align-self: flex-end;
+}
+.forms{
+ display: flex;
+ width: min-content;
+ flex-direction: column;
+ row-gap: 0;
+ justify-content: center;
+ align-items: center;
+}
+#dateTime{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ font-weight: bold;
+ margin:20px
+}
+#tournaments{
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
 }

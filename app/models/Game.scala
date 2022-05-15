@@ -1,6 +1,6 @@
 package models
 
-import akka.http.scaladsl.model.DateTime
+import java.time.LocalDateTime
 
 case class Game(team1Id : String, team2Id : String, result : String,
-                date : DateTime, refereeId  : String, scorers: Array[String])
+                date : LocalDateTime, refereeId  : String, scorers: List[String])

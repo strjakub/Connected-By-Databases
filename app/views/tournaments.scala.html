@@ -1,12 +1,10 @@
-@()
+@(title:String)(siema : Html, game:Html)
 
 @main("Tournaments") {
   @defining(play.core.PlayVersion.current) { version =>
-      <div class="wrapper doc">
-        <article>
-            <!-- CONTENT HERE -->
-          TOURNAMENTS INFO HERE
-        </article>
+      <div id="tournaments">
+        @siema
+        @game
       </div>
   }
 }

@@ -1,15 +1,19 @@
 @(playerForm: Form[Player])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
-@players {
-    @defining(play.core.PlayVersion.current) { version =>
-        <body>
-            @helper.form(action = routes.PlayerController.index()) {
-                @helper.CSRF.formField
-                @helper.inputText(playerForm("Name"))
-                @helper.inputText(playerForm("Surname"))
-                <div class="form-actions">
-                    <button type="submit">Add player</button>
-                </div>
-            }
-        </body>
-    }
+@defining(play.core.PlayVersion.current) { version =>
+    <body>
+        @helper.form(action = routes.PlayerController.addPlayer(),Symbol("class") -> "forms") {
+            @helper.CSRF.formField
+            @helper.inputText(playerForm("Name"))
+            @helper.inputText(playerForm("Surname"))
+            <div class="playerStats">
+                @helper.inputDate(playerForm("DateOfBirth"),Symbol("class") -> "statInput")
+                @helper.select(playerForm("Team"), options = Seq("FC Barcelona" -> "FC Barcelona", "real" -> "Real Madrt"))
+            </div>
+            <div class="playerStats">
+                @helper.inputText(playerForm("Goals"), Symbol("type") -> "number", Symbol("class") -> "statInput")
+                @helper.inputText(playerForm("Appearances"), Symbol("type") -> "number",Symbol("class") -> "statInput")
+            </div>
+            <button type="submit">Add player</button>
+        }
+    </body>
 }

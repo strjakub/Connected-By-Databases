@@ -1,8 +1,8 @@
-@(content:Html)
+@(title:String)(siema:Html)
 @main("Players") {
     @defining(play.core.PlayVersion.current) { version =>
         <div class="wrapper doc">
-            @content
+            @siema
         </div>
     }
 }

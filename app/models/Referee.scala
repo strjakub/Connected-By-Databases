@@ -1,6 +1,6 @@
 package models
 
-import akka.http.scaladsl.model.headers.Date
+import java.util.Date
 
 case class Referee(name:String, surname:String,
                    dateOfBirth:Date, nationality:String)
