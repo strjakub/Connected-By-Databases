@@ -9,7 +9,7 @@ import play.api.mvc._
 @Singleton
 class TeamController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport
 {
-    val teamForm = Form(mapping("name" -> text, "coach" -> text,
+    val teamForm = Form(mapping("_id" -> text, "name" -> text, "coach" -> text,
     "players" -> list(text), "tournaments" -> list(text))(Team.apply)(Team.unapply)
     )
     def teams(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>

@@ -9,11 +9,14 @@ import play.api.mvc._
 @Singleton
 class TournamentController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport
 {
-    val tournamentForm: Form[Tournament] = Form(mapping("name" -> text, "place" -> text,
-        "date" -> date, "teams" -> list(text), "games" -> list(text)
+    val tournamentForm: Form[Tournament] = Form(mapping(
+        "_id" -> text, "name" -> text,
+        "place" -> text, "date" -> date,
+        "teams" -> list(text), "games" -> list(text)
         )(Tournament.apply)(Tournament.unapply)
     )
     val gameForm: Form[Game] = Form(mapping(
+        "_id" -> text,
         "team1Id" -> text, "team2Id" -> text,
         "result" -> text, "date" -> localDateTime,
         "refereeId" -> text, "scorers" -> list(text)
