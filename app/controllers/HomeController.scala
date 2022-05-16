@@ -4,6 +4,8 @@ import play.api.data.Forms._
 import play.api.data.Form
 import play.api.data.Forms.{mapping, number, optional, text}
 
+import models.{Player, Team, Tournament}
+
 import javax.inject._
 import play.api.mvc._
 
