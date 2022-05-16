@@ -2,5 +2,5 @@ package models
 
 import java.time.LocalDateTime
 
-case class Game(_id:String, team1Id : String, team2Id : String, result : String,
-                date : LocalDateTime, refereeId  : String, scorers: Seq[String])
+case class Game(_id:String, tourID: String, team1ID : String, team2ID : String, result : String,
+                date : LocalDateTime, var refereeId  : String, var scorers: Seq[String])

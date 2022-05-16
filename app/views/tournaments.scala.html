@@ -1,9 +1,10 @@
-@(title:String)(siema : Html, game:Html)
+@(title:String)(siema : Html, game:Html)(tours:Seq[Tournament])
 
 @main("Tournaments") {
   @defining(play.core.PlayVersion.current) { version =>
       <div id="tournaments">
         @siema
+
         @game
       </div>
   }

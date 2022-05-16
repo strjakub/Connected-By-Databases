@@ -3,6 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
+    tourID:{
+        type: Schema.Types.ObjectId,
+        required: true,
+        unique: false
+    },
     team1ID:{
         type: Schema.Types.ObjectId,
         required: true,

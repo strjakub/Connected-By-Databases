@@ -1,13 +1,34 @@
-@(title:String)(siema:Html)(players:Seq[Player])
+@(title:String)(siema:Html)(players:Seq[Player])(teams:Seq[Team])
 @main("Players") {
     @defining(play.core.PlayVersion.current) { version =>
         <div class="wrapper doc">
-            @siema
-            <div class="view">
-                @for((player,i) <- players.zipWithIndex) {
-                    <h2>@player.name</h2>
-                }
+            <div class="form">
+                @siema
             </div>
+
+            <table class="view">
+                <thead class="singleton">
+                    <th>Imię i nazwisko</th>
+                    <th>Klub</th>
+                    <th>Data urodzenia</th>
+                    <th>Występy</th>
+                    <th>Gole</th>
+                </thead>
+                @for((player,i) <- players.zipWithIndex) {
+                    <tr class="singleton">
+                        <td>@player.name @player.surname </td>
+                        <td>@if(!teams.exists(el => el._id == player.teamId)){
+                            Brak klubu
+                        }else{
+                            @teams.find(el => el._id == player.teamId).get.name
+                        }</td>
+                        <td>@player.dateOfBirth.format("yyyy-mm-dd")</td>
+                        <td>@player.appearances</td>
+                        <td>@player.goals</td>
+
+                    </tr>
+                }
+            </table>
         </div>
     }
 }

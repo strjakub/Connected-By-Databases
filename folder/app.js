@@ -51,11 +51,11 @@ app.post("/player", async (req, res) => {
     try{
         console.log("req.body: ", req.body);
         const newPlayer = new Player({
-            teamID: mongoose.Types.ObjectId(req.body.teamID),
+            teamId: mongoose.Types.ObjectId(req.body.teamId),
             name: req.body.name,
             surname: req.body.surname,
             dateOfBirth: new Date(req.body.dateOfBirth),
-            apperances: req.body.apperances,
+            appearances: req.body.appearances,
             goals: req.body.goals,
         });
 
@@ -74,7 +74,7 @@ app.get("/player", async (req, res) => {
 });
 
 app.get("/player/:id", async (req, res) => {
-    Player.findOne({}, (err, result) => {
+    Player.findOne({_id:req.params.id}, (err, result) => {
         console.log("output: ", result);
         res.send(result);
     })
@@ -230,14 +230,14 @@ app.post("/tournament", async (req, res) => {
 
 app.get("/tournament", async (req, res) => {
     Tournament.find({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
 
 app.get("/tournament/:id", async (req, res) => {
     Tournament.findOne({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
@@ -275,14 +275,14 @@ app.post("/referre", async (req, res) => {
 
 app.get("/referre", async (req, res) => {
     Referre.find({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
 
 app.get("/referre/:id", async (req, res) => {
     Referre.findOne({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
@@ -320,14 +320,14 @@ app.post("/coach", async (req, res) => {
 
 app.get("/coach", async (req, res) => {
     Coach.find({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
 
 app.get("/coach/:id", async (req, res) => {
-    Coach.findOne({}, (err, result) => {
-        console.log("output: ", result);
+    Coach.findOne({_id : req.params.id}, (err, result) => {
+        // console.log("output: ", result);
         res.send(result);
     })
 });
@@ -367,7 +367,7 @@ app.post("/user", async (req, res) => {
 
 app.get("/user", async (req, res) => {
     User.find({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
@@ -454,6 +454,7 @@ app.post("/game/:id/update", async (req, res) => {
     });
 
     Game.findOneAndUpdate({_id : req.params.id}, {
+            tourID: mongoose.Types.ObjectId(req.body.tourID),
             team1ID: mongoose.Types.ObjectId(req.body.team1ID),
             team2ID: mongoose.Types.ObjectId(req.body.team2ID),
             result: req.body.result,

@@ -202,7 +202,7 @@ footer p {
  row-gap: 10px;
 }
 .statInput{
- width: 100%
+ width:50%;
 }
 select{
  align-self: flex-end;
@@ -225,5 +225,14 @@ select{
 #tournaments{
  width: 100%;
  display: flex;
- justify-content: space-between;
+}
+.formLabel{
+ display: flex;
+ flex-direction: column;
+}
+.view{
+ table-layout: fixed;
+}
+td ,th{
+ padding: 20px;
 }

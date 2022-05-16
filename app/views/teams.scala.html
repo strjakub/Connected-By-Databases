@@ -1,8 +1,29 @@
-@(title:String)(siema:Html)
+@(title:String)(siema:Html)(teams:Seq[Team])(coach:Seq[Coach])
 @main("Teams") {
     @defining(play.core.PlayVersion.current) { version =>
             <div class="wrapper doc">
-                @siema
+                <div class="form">
+                    @siema
+                </div>
+
+                <table class="view">
+                    <thead class="singleton">
+                        <th>Nazwa klubu</th>
+                        <th>Trener</th>
+                    </thead>
+                    @for((team,i) <- teams.zipWithIndex){
+                        <tr>
+                        <td>@team.name</td>
+                        <td>@if(!coach.exists(el => el._id == team.coach)){
+                            Brak trenera
+                        }else{
+                            @coach.find(el => el._id == team.coach).get.name
+                            @coach.find(el => el._id == team.coach).get.surname
+                        }</td>
+                        </tr>
+                    }
+                </table>
+
             </div>
     }
 }

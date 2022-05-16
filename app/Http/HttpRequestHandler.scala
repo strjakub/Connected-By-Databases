@@ -116,7 +116,7 @@ object HttpRequestHandler {
       (JsPath \ "dateOfBirth").read[Date] and
       (JsPath \ "goals").read[Int] and
       (JsPath \ "apperances").read[Int] and
-      (JsPath \ "teamID").readNullable[String]
+      (JsPath \ "teamID").read[String]
     )(Player.apply _)
 
   def insertPlayer(player: Player): Unit = {
@@ -146,7 +146,7 @@ object HttpRequestHandler {
       "name" -> coach.name,
       "surname" -> coach.surname,
       "dateOfBirth" -> coach.dateOfBirth,
-      "teamID" -> coach.teamId,
+      "teamID" -> coach.teamID,
     )
   }
 
@@ -185,6 +185,7 @@ object HttpRequestHandler {
       "name" -> team.name,
       "coach" -> team.coach,
       "players" -> team.players,
+      "tournaments" -> team.tournaments
     )
   }
 
@@ -261,8 +262,9 @@ object HttpRequestHandler {
   implicit val gameWrites: Writes[Game] = new Writes[Game] {
     override def writes(game: Game): JsValue = Json.obj(
       "_id" -> game._id,
-      "team1ID" -> game.team1Id,
-      "team2ID" -> game.team2Id,
+      "tourID" -> game.tourID,
+      "team1ID" -> game.team1ID,
+      "team2ID" -> game.team2ID,
       "result" -> game.result,
       "date" -> game.date,
       "referreID" -> game.refereeId,
@@ -272,6 +274,7 @@ object HttpRequestHandler {
 
   implicit val gameReads: Reads[Game] = (
     (JsPath \ "_id").read[String] and
+      (JsPath \ "tourID").read[String] and
       (JsPath \ "team1ID").read[String] and
       (JsPath \ "team2ID").read[String] and
       (JsPath \ "result").read[String] and
