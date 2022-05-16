@@ -81,13 +81,11 @@ object HttpRequestHandler {
   }
 
   def deleteReferee(referee: Referee): Unit = {
-    // send delete request s"http://localhost:3001/referre/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/referre/${referee._id}/delete")
   }
 
   def updateReferee(referee: Referee): Unit = {
-    // send patch request s"http://localhost:3001/referre/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(referee)), s"http://localhost:3001/referre/${referee._id}/update")
   }
 
   def getReferees(): Seq[Referee] = {
@@ -122,18 +120,15 @@ object HttpRequestHandler {
     )(Player.apply _)
 
   def insertPlayer(player: Player): Unit = {
-
     requestPOST(Json.stringify(Json.toJson(player)), "http://localhost:3001/player")
   }
 
   def deletePlayer(player: Player): Unit = {
-    // send delete request s"http://localhost:3001/referre/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/player/${player._id}/delete")
   }
 
   def updatePlayer(player: Player): Unit = {
-    // send patch request s"http://localhost:3001/referre/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(player)), s"http://localhost:3001/player/${player._id}/update")
   }
 
   def getPlayers(): Seq[Player] = {
@@ -168,13 +163,11 @@ object HttpRequestHandler {
   }
 
   def deleteCoach(coach: Coach): Unit = {
-    // send delete request s"http://localhost:3001/coach/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/coach/${coach._id}/delete")
   }
 
   def updateCoach(coach: Coach): Unit = {
-    // send patch request s"http://localhost:3001/coach/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(coach)), s"http://localhost:3001/coach/${coach._id}/update")
   }
 
   def getCoaches(): Seq[Coach] = {
@@ -207,13 +200,11 @@ object HttpRequestHandler {
   }
 
   def deleteTeam(team: Team): Unit = {
-    // send delete request s"http://localhost:3001/team/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/team/${team._id}/delete")
   }
 
   def updateTeam(team: Team): Unit = {
-    // send patch request s"http://localhost:3001/team/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(team)), s"http://localhost:3001/team/${team._id}/update")
   }
 
   def getTeams(): Seq[Team] = {
@@ -228,6 +219,7 @@ object HttpRequestHandler {
   implicit val tournamentWrites: Writes[Tournament] = new Writes[Tournament] {
     override def writes(tournament: Tournament): JsValue = Json.obj(
       "_id" -> tournament._id,
+      "name" -> tournament.name,
       "teams" -> tournament.teams,
       "games" -> tournament.games,
       "place" -> tournament.place,
@@ -236,7 +228,8 @@ object HttpRequestHandler {
   }
 
   implicit val tournamentReads: Reads[Tournament] = (
-    (JsPath \ "_id").read[String] and
+      (JsPath \ "_id").read[String] and
+      (JsPath \ "name").read[String] and
       (JsPath \ "teams").read[Seq[String]] and
       (JsPath \ "games").read[Seq[String]] and
       (JsPath \ "place").read[String] and
@@ -248,13 +241,11 @@ object HttpRequestHandler {
   }
 
   def deleteTournament(tournament: Tournament): Unit = {
-    // send delete request s"http://localhost:3001/tournament/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/tournament/${tournament._id}/delete")
   }
 
   def updateTournament(tournament: Tournament): Unit = {
-    // send patch request s"http://localhost:3001/tournament/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(tournament)), s"http://localhost:3001/tournament/${tournament._id}/update")
   }
 
   def getTournaments(): Seq[Tournament] = {
@@ -293,13 +284,11 @@ object HttpRequestHandler {
   }
 
   def deleteGame(game: Game): Unit = {
-    // send delete request s"http://localhost:3001/game/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/game/${game._id}/delete")
   }
 
   def updateGame(game: Game): Unit = {
-    // send patch request s"http://localhost:3001/game/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(game)), s"http://localhost:3001/game/${game._id}/update")
   }
 
   def getGames(): Seq[Game] = {
