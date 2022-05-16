@@ -9,7 +9,7 @@ import java.util.Date
 
 object HttpRequestHandler {
 
-  def requestPOST(postData: String, requestAddress: String): String = {
+  def requestPOST(postData: String, requestAddress: String): Boolean = {
     try {
       println("Parameters: "+ postData)
       val httpResponse: HttpResponse[String] = Http(requestAddress)
@@ -23,16 +23,16 @@ object HttpRequestHandler {
       val response = if (httpResponse.code == 200) httpResponse.body
       else{
         println("Bad HTTP response: code = "+httpResponse.code )
-        "ERROR"
+        false
       }
 
       println(" Send Http Post Request (End) ")
 
-      return response
+      true
 
     } catch {
       case e: Exception => println("Error in sending Post request: " + e.getMessage)
-        return "ERROR"
+        false
     }
   }
 
@@ -43,16 +43,16 @@ object HttpRequestHandler {
       val response = if (httpResponse.code == 200) httpResponse.body
       else {
         println("Bad HTTP response: code = " + httpResponse.code)
-        return "ERROR"
+        "ERROR"
       }
 
       println(" Send Http Get Request (End) ")
 
-      return response
+      response
 
     } catch {
       case e: Exception => println("Error in sending Get request: " + e.getMessage)
-        return "ERROR"
+        "ERROR"
     }
   }
 
@@ -89,11 +89,11 @@ object HttpRequestHandler {
   }
 
   def getReferees(): Seq[Referee] = {
-    return Json.parse(requestGET("http://localhost:3001/referre")).as[Seq[Referee]]
+    Json.parse(requestGET("http://localhost:3001/referre")).as[Seq[Referee]]
   }
 
   def getReferee(id: String): Referee = {
-    return Json.parse(requestGET(s"http://localhost:3001/referre/$id")).as[Referee]
+    Json.parse(requestGET(s"http://localhost:3001/referre/$id")).as[Referee]
   }
 
   /** Players **/
@@ -132,11 +132,11 @@ object HttpRequestHandler {
   }
 
   def getPlayers(): Seq[Player] = {
-    return Json.parse(requestGET("http://localhost:3001/player")).as[Seq[Player]]
+    Json.parse(requestGET("http://localhost:3001/player")).as[Seq[Player]]
   }
 
   def getPlayer(id: String): Player = {
-    return Json.parse(requestGET(s"http://localhost:3001/player/$id")).as[Player]
+    Json.parse(requestGET(s"http://localhost:3001/player/$id")).as[Player]
   }
 
   /** Coaches **/
@@ -171,11 +171,11 @@ object HttpRequestHandler {
   }
 
   def getCoaches(): Seq[Coach] = {
-    return Json.parse(requestGET("http://localhost:3001/coach")).as[Seq[Coach]]
+    Json.parse(requestGET("http://localhost:3001/coach")).as[Seq[Coach]]
   }
 
   def getCoach(id: String): Coach = {
-    return Json.parse(requestGET(s"http://localhost:3001/coach/$id")).as[Coach]
+    Json.parse(requestGET(s"http://localhost:3001/coach/$id")).as[Coach]
   }
 
   /** Teams **/
@@ -208,11 +208,11 @@ object HttpRequestHandler {
   }
 
   def getTeams(): Seq[Team] = {
-    return Json.parse(requestGET("http://localhost:3001/team")).as[Seq[Team]]
+    Json.parse(requestGET("http://localhost:3001/team")).as[Seq[Team]]
   }
 
   def getTeam(id: String): Team = {
-    return Json.parse(requestGET(s"http://localhost:3001/team/$id")).as[Team]
+    Json.parse(requestGET(s"http://localhost:3001/team/$id")).as[Team]
   }
 
   /** Tournamets **/
@@ -249,11 +249,11 @@ object HttpRequestHandler {
   }
 
   def getTournaments(): Seq[Tournament] = {
-    return Json.parse(requestGET("http://localhost:3001/tournament")).as[Seq[Tournament]]
+    Json.parse(requestGET("http://localhost:3001/tournament")).as[Seq[Tournament]]
   }
 
   def getTournament(id: String): Tournament = {
-    return Json.parse(requestGET(s"http://localhost:3001/tournament/$id")).as[Tournament]
+    Json.parse(requestGET(s"http://localhost:3001/tournament/$id")).as[Tournament]
   }
 
   /** Games **/
@@ -292,11 +292,11 @@ object HttpRequestHandler {
   }
 
   def getGames(): Seq[Game] = {
-    return Json.parse(requestGET("http://localhost:3001/game")).as[Seq[Game]]
+    Json.parse(requestGET("http://localhost:3001/game")).as[Seq[Game]]
   }
 
   def getGame(id: String): Game = {
-    return Json.parse(requestGET(s"http://localhost:3001/game/$id")).as[Game]
+    Json.parse(requestGET(s"http://localhost:3001/game/$id")).as[Game]
   }
 
   /** User **/
@@ -320,8 +320,9 @@ object HttpRequestHandler {
       (JsPath \ "isBanned").read[Boolean]
     )(User.apply _)
 
-  def insertUser(user: User): Unit = {
-    requestPOST(Json.stringify(Json.toJson(user)), "http://localhost:3001/user")
+  def insertUser(user: User): Boolean = {
+    if(requestPOST(Json.stringify(Json.toJson(user)), "http://localhost:3001/user")) true
+    else false
   }
 
   def deleteUser(user: User): Unit = {
@@ -333,10 +334,11 @@ object HttpRequestHandler {
   }
 
   def getUsers(): Seq[User] = {
-    return Json.parse(requestGET("http://localhost:3001/user")).as[Seq[User]]
+    Json.parse(requestGET("http://localhost:3001/user")).as[Seq[User]]
   }
 
-  def getUser(id: String): User = {
-    return Json.parse(requestGET(s"http://localhost:3001/user/$id")).as[User]
+  def getUser(username: String, password: String): Boolean = {
+    Json.parse(requestGET(s"http://localhost:3001/user/$username/$password")).as[Boolean]
   }
+
 }

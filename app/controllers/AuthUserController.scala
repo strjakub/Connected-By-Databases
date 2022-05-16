@@ -29,7 +29,8 @@ class AuthUserController @Inject()(cc: ControllerComponents) extends AbstractCon
     postVals.map { args =>
       val username = args("username").head
       val password = args("password").head
-      if(validateUser(username, password)) {
+
+      if(Http.HttpRequestHandler.getUser(username, password)){
         Redirect(routes.HomeController.home()).withSession("username" -> username)
       }
       else {
@@ -43,12 +44,21 @@ class AuthUserController @Inject()(cc: ControllerComponents) extends AbstractCon
     postVals.map { args =>
       val username = args("username").head
       val password = args("password").head
+
+      if(Http.HttpRequestHandler.insertUser(new User("",username, password, Seq("User"), false))) {
+        Redirect(routes.AuthUserController.login())
+        }
+      else {
+        Redirect(routes.AuthUserController.login()).flashing("error" -> "Error while creating user account!")
+      }
+      /*
       if(InMemoryModel.createUser(username, password)) {
         Redirect(routes.AuthUserController.login()).withSession("username" -> username)
       }
       else {
         Redirect(routes.AuthUserController.login()).flashing("error" -> "Error while creating user account!")
       }
+       */
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
 

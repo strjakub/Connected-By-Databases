@@ -6,7 +6,7 @@ const teamSchema = new Schema({
     name:{
         type: String,
         required: true,
-        unique: false
+        unique: true
     },
     coach:{
         type: Schema.Types.ObjectId,
