@@ -1,5 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/michal/DataBase-II-Project/conf/messages,/home/michal/DataBase-II-Project/target/scala-2.13/classes/messages)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/michal/DataBase-II-Project/conf/logback.xml,/home/michal/DataBase-II-Project/target/scala-2.13/classes/logback.xml)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/michal/DataBase-II-Project/conf/application.conf,/home/michal/DataBase-II-Project/target/scala-2.13/classes/application.conf)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/michal/DataBase-II-Project/conf/routes,/home/michal/DataBase-II-Project/target/scala-2.13/classes/routes)[0m
