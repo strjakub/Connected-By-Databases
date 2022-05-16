@@ -107,7 +107,7 @@ object HttpRequestHandler {
       "dateOfBirth" -> player.dateOfBirth,
       "goals" -> player.goals,
       "apperances" -> player.appearances,
-      "teamID" -> player.teamID,
+      "teamID" -> player.teamId,
     )
   }
 
@@ -151,7 +151,7 @@ object HttpRequestHandler {
       "name" -> coach.name,
       "surname" -> coach.surname,
       "dateOfBirth" -> coach.dateOfBirth,
-      "teamID" -> coach.teamID,
+      "teamID" -> coach.teamId,
     )
   }
 
@@ -190,7 +190,7 @@ object HttpRequestHandler {
     override def writes(team: Team): JsValue = Json.obj(
       "_id" -> team._id,
       "name" -> team.name,
-      "coach" -> team.coachID,
+      "coach" -> team.coach,
       "players" -> team.players,
     )
   }
@@ -269,11 +269,11 @@ object HttpRequestHandler {
   implicit val gameWrites: Writes[Game] = new Writes[Game] {
     override def writes(game: Game): JsValue = Json.obj(
       "_id" -> game._id,
-      "team1ID" -> game.team1ID,
-      "team2ID" -> game.team2ID,
+      "team1ID" -> game.team1Id,
+      "team2ID" -> game.team2Id,
       "result" -> game.result,
       "date" -> game.date,
-      "referreID" -> game.referreID,
+      "referreID" -> game.referreId,
       "scorers" -> game.scorers
     )
   }

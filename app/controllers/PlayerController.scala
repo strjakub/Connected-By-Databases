@@ -1,5 +1,4 @@
 package controllers
-import models.Player
 import play.api.Logger
 import play.api.data.Forms._
 import play.api.data.Form
@@ -33,7 +32,7 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
                 Redirect(routes.PlayerController.players())
             },
             data =>{
-                println("Success")
+                println(data)
                 Redirect(routes.PlayerController.players())
             }
         )

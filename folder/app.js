@@ -442,7 +442,7 @@ app.post("/coach/:id/update", async (req, res) => {
 });
 
 app.post("/game/:id/update", async (req, res) => {
-    const tab = new Array;
+    const tab = [];
     req.body.scorers.forEach(element => {
         tab.push(mongoose.Types.ObjectId(element));
     });
@@ -503,11 +503,11 @@ app.post("/team/:id/update", async (req, res) => {
 });
 
 app.post("/tournament/:id/update", async (req, res) => {
-    const tab1 = new Array;
+    const tab1 = [];
     req.body.teams.forEach(element => {
         tab1.push(mongoose.Types.ObjectId(element));
     });
-    const tab2 = new Array;
+    const tab2 = [];
     req.body.games.forEach(element => {
         tab2.push(mongoose.Types.ObjectId(element));
     });
