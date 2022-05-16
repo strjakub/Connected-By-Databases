@@ -301,7 +301,6 @@ object HttpRequestHandler {
   }
 
   /** User **/
-  //case class User(username: String, password: String, roles: Seq[String], isBanned: Boolean) {}
 
   implicit val userWrites: Writes[User] = new Writes[User] {
     override def writes(user: User): JsValue = Json.obj(
@@ -338,8 +337,17 @@ object HttpRequestHandler {
     Json.parse(requestGET("http://localhost:3001/user")).as[Seq[User]]
   }
 
+  var loggedUser: Option[User] = None
+
   def getUser(username: String, password: String): Boolean = {
-    Json.parse(requestGET(s"http://localhost:3001/user/$username/$password")).as[Boolean]
+    val user: User = Json.parse(requestGET(s"http://localhost:3001/user/$username/$password")).as[User]
+    if(user._id == "000000000000000000000000"){
+      false
+    }
+    else {
+      loggedUser = Some(user)
+      true
+    }
   }
 
 }

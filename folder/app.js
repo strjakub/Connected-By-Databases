@@ -535,12 +535,17 @@ app.post("/tournament/:id/update", async (req, res) => {
 app.get("/user/:username/:password", async (req, res) => {
     User.findOne({username : req.params.username}, (err, result) => {
         if(result == null)
-            res.send(false);
+            res.send(new User({_id:"000000000000000000000000", username:"",password:"", roles:[], isBanned: false}));
         else{
             console.log("input: ", req.params.password);
             console.log("hash: ", crypto.pbkdf2Sync(req.params.password, salt, 1000, 64, `sha512`).toString(`hex`))
             console.log("expected: ", result.password);
-            res.send(result.password === crypto.pbkdf2Sync(req.params.password, salt, 1000, 64, `sha512`).toString(`hex`));
+            if(result.password === crypto.pbkdf2Sync(req.params.password, salt, 1000, 64, `sha512`).toString(`hex`)){
+                res.send(result);
+            }
+            else {
+                res.send(new User({_id:"000000000000000000000000", username:"",password:"", roles:[], isBanned: false}));
+            }
         }
 
     })
