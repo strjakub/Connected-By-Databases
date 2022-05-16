@@ -1,8 +1,13 @@
-@(title:String)(siema:Html)
+@(title:String)(siema:Html)(players:Seq[Player])
 @main("Players") {
     @defining(play.core.PlayVersion.current) { version =>
         <div class="wrapper doc">
             @siema
+            <div class="view">
+                @for((player,i) <- players.zipWithIndex) {
+                    <h2>@player.name</h2>
+                }
+            </div>
         </div>
     }
 }

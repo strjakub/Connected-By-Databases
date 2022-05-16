@@ -1,4 +1,5 @@
 package controllers
+import models.Player
 import play.api.Logger
 import play.api.data.Forms._
 import play.api.data.Form
@@ -22,7 +23,8 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
     def players(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
         val usernameOption = request.session.get("username")
         usernameOption.map { username =>
-        Ok(views.html.players("addPlayer")(views.html.addPlayer(playerForm)))
+          val temp : Seq[Player] = Http.HttpRequestHandler.getPlayers()
+        Ok(views.html.players("addPlayer")(views.html.addPlayer(playerForm))(temp))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
     }
     def addPlayer(): Action[AnyContent] = Action { implicit request =>
@@ -32,7 +34,8 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
                 Redirect(routes.PlayerController.players())
             },
             data =>{
-                println(data)
+                Http.HttpRequestHandler.insertPlayer(new Player("",data.name,data.surname,
+                    dateOfBirth = data.dateOfBirth, goals = data.goals, appearances = data.appearances, teamId = Option("Twojastaraza")))
                 Redirect(routes.PlayerController.players())
             }
         )

@@ -1,7 +1,5 @@
 package controllers
 
-import models.InMemoryModel._
-
 import javax.inject._
 import models._
 import play.api.mvc._

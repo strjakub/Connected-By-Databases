@@ -5,13 +5,13 @@ import play.api.data.Forms._
 import javax.inject._
 import play.api.mvc._
 
-case class teamData(name:String, coach:String, players:List[String],tournaments:List[String])
+case class teamData(name:String, coach:String, players:Seq[String],tournaments:Seq[String])
 
 @Singleton
 class TeamController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport
 {
     val teamForm: Form[teamData] = Form(mapping("name" -> text, "coach" -> text,
-    "players" -> list(text), "tournaments" -> list(text))(teamData.apply)(teamData.unapply)
+    "players" -> seq(text), "tournaments" -> seq(text))(teamData.apply)(teamData.unapply)
     )
     def teams(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
         val usernameOption = request.session.get("username")

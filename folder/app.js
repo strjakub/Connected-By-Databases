@@ -9,6 +9,7 @@ const Team = require("./model/team");
 const Test = require("./model/test");
 const Tournament = require("./model/tournament");
 const User = require("./model/user");
+const {mongo} = require("mongoose");
 require("dotenv").config();
 
 const app = express();
@@ -95,16 +96,21 @@ app.delete("/player/:id", async (req, res) => {
 
 app.post("/team", async (req, res) => {
     try{
-        const tab = new Array;
+        const tab = [];
         req.body.players.forEach(element => {
             tab.push(mongoose.Types.ObjectId(element));
         });
+        const tour = [];
+        req.body.tournaments.forEach(element =>{
+            tour.push(mongoose.Types.ObjectId(element))
+        })
 
         console.log("req.body: ", req.body);
         const newTeam = new Team({
             name: req.body.name,
             coach: mongoose.Types.ObjectId(req.body.coach),
             players: tab,
+            tournaments: tour
         });
 
         await Team.create(newTeam);

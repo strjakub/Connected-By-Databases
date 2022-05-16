@@ -4,7 +4,7 @@ import models.{Coach, Game, Player, Referee, Team, Tournament, User}
 import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, JsValue, Json, Reads, Writes}
 import scalaj.http.{Http, HttpResponse}
-
+import java.time.LocalDateTime
 import java.util.Date
 
 object HttpRequestHandler {
@@ -192,7 +192,8 @@ object HttpRequestHandler {
     (JsPath \ "_id").read[String] and
       (JsPath \ "name").read[String] and
       (JsPath \ "coach").read[String] and
-      (JsPath \ "players").read[Seq[String]]
+      (JsPath \ "players").read[Seq[String]] and
+      (JsPath \ "tournaments").read[Seq[String]]
     )(Team.apply _)
 
   def insertTeam(team: Team): Unit = {
@@ -230,10 +231,10 @@ object HttpRequestHandler {
   implicit val tournamentReads: Reads[Tournament] = (
       (JsPath \ "_id").read[String] and
       (JsPath \ "name").read[String] and
-      (JsPath \ "teams").read[Seq[String]] and
-      (JsPath \ "games").read[Seq[String]] and
       (JsPath \ "place").read[String] and
-      (JsPath \ "date").read[Date]
+      (JsPath \ "date").read[Date] and
+      (JsPath \ "teams").read[Seq[String]] and
+      (JsPath \ "games").read[Seq[String]]
     )(Tournament.apply _)
 
   def insertTournament(tournament: Tournament): Unit = {
@@ -264,7 +265,7 @@ object HttpRequestHandler {
       "team2ID" -> game.team2Id,
       "result" -> game.result,
       "date" -> game.date,
-      "referreID" -> game.referreId,
+      "referreID" -> game.refereeId,
       "scorers" -> game.scorers
     )
   }
@@ -274,7 +275,7 @@ object HttpRequestHandler {
       (JsPath \ "team1ID").read[String] and
       (JsPath \ "team2ID").read[String] and
       (JsPath \ "result").read[String] and
-      (JsPath \ "date").read[Date] and
+      (JsPath \ "date").read[LocalDateTime] and
       (JsPath \ "referreID").read[String] and
       (JsPath \ "scorers").read[Seq[String]]
     )(Game.apply _)

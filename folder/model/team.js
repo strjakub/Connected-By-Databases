@@ -17,6 +17,11 @@ const teamSchema = new Schema({
         type: [Schema.Types.ObjectId],
         require: true,
         unique: false
+    },
+    tournaments:{
+        type: [Schema.Types.ObjectId],
+        require : true,
+        unique: false
     }
 })
 
