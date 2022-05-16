@@ -360,7 +360,7 @@ app.post("/user", async (req, res) => {
 });
 
 app.get("/user", async (req, res) => {
-    User.findOne({}, (err, result) => {
+    User.find({}, (err, result) => {
         console.log("output: ", result);
         res.send(result);
     })
@@ -419,71 +419,71 @@ app.get("/tournament/:id/delete", async (req, res) => {
 
 app.post("/user/:id/update", async (req, res) => {
     User.findOneAndUpdate({_id : req.params.id}, {
-        username: req.body.username,
-        password: crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`),
-        roles: req.body.roles,
-        isBanned: req.body.isBanned}, 
-    (err, result) => {
-        console.log("updated");
-        res.send("updated");
-    })
+            username: req.body.username,
+            password: crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, `sha512`).toString(`hex`),
+            roles: req.body.roles,
+            isBanned: req.body.isBanned},
+        (err, result) => {
+            console.log("updated");
+            res.send("updated");
+        })
 });
 
 app.post("/coach/:id/update", async (req, res) => {
     Coach.findOneAndUpdate({_id : req.params.id}, {
-        teamID: mongoose.Types.ObjectId(req.body.teamID),
-        name: req.body.name,
-        surname: req.body.surname,
-        dateOfBirth: new Date(req.body.dateOfBirth)}, 
-    (err, result) => {
-        console.log("updated");
-        res.send("updated");
-    })
+            teamID: mongoose.Types.ObjectId(req.body.teamID),
+            name: req.body.name,
+            surname: req.body.surname,
+            dateOfBirth: new Date(req.body.dateOfBirth)},
+        (err, result) => {
+            console.log("updated");
+            res.send("updated");
+        })
 });
 
 app.post("/game/:id/update", async (req, res) => {
-    const tab = [];
+    const tab = new Array;
     req.body.scorers.forEach(element => {
         tab.push(mongoose.Types.ObjectId(element));
     });
-    
+
     Game.findOneAndUpdate({_id : req.params.id}, {
-        team1ID: mongoose.Types.ObjectId(req.body.team1ID),
-        team2ID: mongoose.Types.ObjectId(req.body.team2ID),
-        result: req.body.result,
-        date: new Date(req.body.date),
-        referreID: mongoose.Types.ObjectId(req.body.referreID),
-        scorers: tab}, 
-    (err, result) => {
-        console.log("updated");
-        res.send("updated");
-    })
+            team1ID: mongoose.Types.ObjectId(req.body.team1ID),
+            team2ID: mongoose.Types.ObjectId(req.body.team2ID),
+            result: req.body.result,
+            date: new Date(req.body.date),
+            referreID: mongoose.Types.ObjectId(req.body.referreID),
+            scorers: tab},
+        (err, result) => {
+            console.log("updated");
+            res.send("updated");
+        })
 });
 
 app.post("/player/:id/update", async (req, res) => {
     Player.findOneAndUpdate({_id : req.params.id}, {
-        teamID: mongoose.Types.ObjectId(req.body.teamID),
-        name: req.body.name,
-        surname: req.body.surname,
-        dateOfBirth: new Date(req.body.dateOfBirth),
-        apperances: req.body.apperances,
-        goals: req.body.goals}, 
-    (err, result) => {
-        console.log("updated");
-        res.send("updated");
-    })
+            teamID: mongoose.Types.ObjectId(req.body.teamID),
+            name: req.body.name,
+            surname: req.body.surname,
+            dateOfBirth: new Date(req.body.dateOfBirth),
+            apperances: req.body.apperances,
+            goals: req.body.goals},
+        (err, result) => {
+            console.log("updated");
+            res.send("updated");
+        })
 });
 
 app.post("/referre/:id/update", async (req, res) => {
     Referre.findOneAndUpdate({_id : req.params.id}, {
-        name: req.body.name,
-        surname: req.body.surname,
-        dateOfBirth: new Date(req.body.dateOfBirth),
-        nationality: req.body.nationality}, 
-    (err, result) => {
-        console.log("updated");
-        res.send("updated");
-    })
+            name: req.body.name,
+            surname: req.body.surname,
+            dateOfBirth: new Date(req.body.dateOfBirth),
+            nationality: req.body.nationality},
+        (err, result) => {
+            console.log("updated");
+            res.send("updated");
+        })
 });
 
 app.post("/team/:id/update", async (req, res) => {
@@ -491,36 +491,52 @@ app.post("/team/:id/update", async (req, res) => {
     req.body.players.forEach(element => {
         tab.push(mongoose.Types.ObjectId(element));
     });
-    
+
     Team.findOneAndUpdate({_id : req.params.id}, {
-        name: req.body.name,
-        coach: mongoose.Types.ObjectId(req.body.coach),
-        players: tab}, 
-    (err, result) => {
-        console.log("updated");
-        res.send("updated");
-    })
+            name: req.body.name,
+            coach: mongoose.Types.ObjectId(req.body.coach),
+            players: tab},
+        (err, result) => {
+            console.log("updated");
+            res.send("updated");
+        })
 });
 
 app.post("/tournament/:id/update", async (req, res) => {
-    const tab1 = [];
+    const tab1 = new Array;
     req.body.teams.forEach(element => {
         tab1.push(mongoose.Types.ObjectId(element));
     });
-    const tab2 = [];
+    const tab2 = new Array;
     req.body.games.forEach(element => {
         tab2.push(mongoose.Types.ObjectId(element));
     });
-    
+
     Tournament.findOneAndUpdate({_id : req.params.id}, {
-        name: req.body.name,
-        teams: tab1,
-        games: tab2,
-        place: req.body.place,
-        date: new Date(re1.body.date)}, 
-    (err, result) => {
-        console.log("updated");
-        res.send("updated");
+            name: req.body.name,
+            teams: tab1,
+            games: tab2,
+            place: req.body.place,
+            date: new Date(re1.body.date)},
+        (err, result) => {
+            console.log("updated");
+            res.send("updated");
+        })
+});
+
+//===================================================================
+
+app.get("/user/:username/:password", async (req, res) => {
+    User.findOne({username : req.params.username}, (err, result) => {
+        if(result == null)
+            res.send(false);
+        else{
+            console.log("input: ", req.params.password);
+            console.log("hash: ", crypto.pbkdf2Sync(req.params.password, salt, 1000, 64, `sha512`).toString(`hex`))
+            console.log("expected: ", result.password);
+            res.send(result.password === crypto.pbkdf2Sync(req.params.password, salt, 1000, 64, `sha512`).toString(`hex`));
+        }
+
     })
 });
 

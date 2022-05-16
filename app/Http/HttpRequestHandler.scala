@@ -1,6 +1,6 @@
 package Http
 
-import models.{Coach, Game, Player, Referee, Team, Tournament}
+import models.{Coach, Game, Player, Referee, Team, Tournament, User}
 import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, JsValue, Json, Reads, Writes}
 import scalaj.http.{Http, HttpResponse}
@@ -9,7 +9,7 @@ import java.util.Date
 
 object HttpRequestHandler {
 
-  def requestPOST(postData: String, requestAddress: String): String = {
+  def requestPOST(postData: String, requestAddress: String): Boolean = {
     try {
       println("Parameters: "+ postData)
       val httpResponse: HttpResponse[String] = Http(requestAddress)
@@ -23,16 +23,16 @@ object HttpRequestHandler {
       val response = if (httpResponse.code == 200) httpResponse.body
       else{
         println("Bad HTTP response: code = "+httpResponse.code )
-        "ERROR"
+        false
       }
 
       println(" Send Http Post Request (End) ")
 
-      return response
+      true
 
     } catch {
       case e: Exception => println("Error in sending Post request: " + e.getMessage)
-        return "ERROR"
+        false
     }
   }
 
@@ -43,16 +43,16 @@ object HttpRequestHandler {
       val response = if (httpResponse.code == 200) httpResponse.body
       else {
         println("Bad HTTP response: code = " + httpResponse.code)
-        return "ERROR"
+        "ERROR"
       }
 
       println(" Send Http Get Request (End) ")
 
-      return response
+      response
 
     } catch {
       case e: Exception => println("Error in sending Get request: " + e.getMessage)
-        return "ERROR"
+        "ERROR"
     }
   }
 
@@ -81,21 +81,19 @@ object HttpRequestHandler {
   }
 
   def deleteReferee(referee: Referee): Unit = {
-    // send delete request s"http://localhost:3001/referre/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/referre/${referee._id}/delete")
   }
 
   def updateReferee(referee: Referee): Unit = {
-    // send patch request s"http://localhost:3001/referre/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(referee)), s"http://localhost:3001/referre/${referee._id}/update")
   }
 
   def getReferees(): Seq[Referee] = {
-    return Json.parse(requestGET("http://localhost:3001/referre")).as[Seq[Referee]]
+    Json.parse(requestGET("http://localhost:3001/referre")).as[Seq[Referee]]
   }
 
   def getReferee(id: String): Referee = {
-    return Json.parse(requestGET(s"http://localhost:3001/referre/$id")).as[Referee]
+    Json.parse(requestGET(s"http://localhost:3001/referre/$id")).as[Referee]
   }
 
   /** Players **/
@@ -122,26 +120,23 @@ object HttpRequestHandler {
     )(Player.apply _)
 
   def insertPlayer(player: Player): Unit = {
-
     requestPOST(Json.stringify(Json.toJson(player)), "http://localhost:3001/player")
   }
 
   def deletePlayer(player: Player): Unit = {
-    // send delete request s"http://localhost:3001/referre/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/player/${player._id}/delete")
   }
 
   def updatePlayer(player: Player): Unit = {
-    // send patch request s"http://localhost:3001/referre/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(player)), s"http://localhost:3001/player/${player._id}/update")
   }
 
   def getPlayers(): Seq[Player] = {
-    return Json.parse(requestGET("http://localhost:3001/player")).as[Seq[Player]]
+    Json.parse(requestGET("http://localhost:3001/player")).as[Seq[Player]]
   }
 
   def getPlayer(id: String): Player = {
-    return Json.parse(requestGET(s"http://localhost:3001/player/$id")).as[Player]
+    Json.parse(requestGET(s"http://localhost:3001/player/$id")).as[Player]
   }
 
   /** Coaches **/
@@ -168,21 +163,19 @@ object HttpRequestHandler {
   }
 
   def deleteCoach(coach: Coach): Unit = {
-    // send delete request s"http://localhost:3001/coach/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/coach/${coach._id}/delete")
   }
 
   def updateCoach(coach: Coach): Unit = {
-    // send patch request s"http://localhost:3001/coach/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(coach)), s"http://localhost:3001/coach/${coach._id}/update")
   }
 
   def getCoaches(): Seq[Coach] = {
-    return Json.parse(requestGET("http://localhost:3001/coach")).as[Seq[Coach]]
+    Json.parse(requestGET("http://localhost:3001/coach")).as[Seq[Coach]]
   }
 
   def getCoach(id: String): Coach = {
-    return Json.parse(requestGET(s"http://localhost:3001/coach/$id")).as[Coach]
+    Json.parse(requestGET(s"http://localhost:3001/coach/$id")).as[Coach]
   }
 
   /** Teams **/
@@ -207,27 +200,26 @@ object HttpRequestHandler {
   }
 
   def deleteTeam(team: Team): Unit = {
-    // send delete request s"http://localhost:3001/team/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/team/${team._id}/delete")
   }
 
   def updateTeam(team: Team): Unit = {
-    // send patch request s"http://localhost:3001/team/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(team)), s"http://localhost:3001/team/${team._id}/update")
   }
 
   def getTeams(): Seq[Team] = {
-    return Json.parse(requestGET("http://localhost:3001/team")).as[Seq[Team]]
+    Json.parse(requestGET("http://localhost:3001/team")).as[Seq[Team]]
   }
 
   def getTeam(id: String): Team = {
-    return Json.parse(requestGET(s"http://localhost:3001/team/$id")).as[Team]
+    Json.parse(requestGET(s"http://localhost:3001/team/$id")).as[Team]
   }
 
   /** Tournamets **/
   implicit val tournamentWrites: Writes[Tournament] = new Writes[Tournament] {
     override def writes(tournament: Tournament): JsValue = Json.obj(
       "_id" -> tournament._id,
+      "name" -> tournament.name,
       "teams" -> tournament.teams,
       "games" -> tournament.games,
       "place" -> tournament.place,
@@ -236,7 +228,8 @@ object HttpRequestHandler {
   }
 
   implicit val tournamentReads: Reads[Tournament] = (
-    (JsPath \ "_id").read[String] and
+      (JsPath \ "_id").read[String] and
+      (JsPath \ "name").read[String] and
       (JsPath \ "teams").read[Seq[String]] and
       (JsPath \ "games").read[Seq[String]] and
       (JsPath \ "place").read[String] and
@@ -248,21 +241,19 @@ object HttpRequestHandler {
   }
 
   def deleteTournament(tournament: Tournament): Unit = {
-    // send delete request s"http://localhost:3001/tournament/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/tournament/${tournament._id}/delete")
   }
 
   def updateTournament(tournament: Tournament): Unit = {
-    // send patch request s"http://localhost:3001/tournament/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(tournament)), s"http://localhost:3001/tournament/${tournament._id}/update")
   }
 
   def getTournaments(): Seq[Tournament] = {
-    return Json.parse(requestGET("http://localhost:3001/tournament")).as[Seq[Tournament]]
+    Json.parse(requestGET("http://localhost:3001/tournament")).as[Seq[Tournament]]
   }
 
   def getTournament(id: String): Tournament = {
-    return Json.parse(requestGET(s"http://localhost:3001/tournament/$id")).as[Tournament]
+    Json.parse(requestGET(s"http://localhost:3001/tournament/$id")).as[Tournament]
   }
 
   /** Games **/
@@ -293,20 +284,61 @@ object HttpRequestHandler {
   }
 
   def deleteGame(game: Game): Unit = {
-    // send delete request s"http://localhost:3001/game/$id/delete"
-    // TODO
+    requestGET(s"http://localhost:3001/game/${game._id}/delete")
   }
 
   def updateGame(game: Game): Unit = {
-    // send patch request s"http://localhost:3001/game/$id/update"
-    // TODO
+    requestPOST(Json.stringify(Json.toJson(game)), s"http://localhost:3001/game/${game._id}/update")
   }
 
   def getGames(): Seq[Game] = {
-    return Json.parse(requestGET("http://localhost:3001/game")).as[Seq[Game]]
+    Json.parse(requestGET("http://localhost:3001/game")).as[Seq[Game]]
   }
 
   def getGame(id: String): Game = {
-    return Json.parse(requestGET(s"http://localhost:3001/game/$id")).as[Game]
+    Json.parse(requestGET(s"http://localhost:3001/game/$id")).as[Game]
   }
+
+  /** User **/
+  //case class User(username: String, password: String, roles: Seq[String], isBanned: Boolean) {}
+
+  implicit val userWrites: Writes[User] = new Writes[User] {
+    override def writes(user: User): JsValue = Json.obj(
+      "_id" -> user._id,
+      "username" -> user.username,
+      "password" -> user.password,
+      "roles" -> user.roles,
+      "isBanned" -> user.isBanned,
+    )
+  }
+
+  implicit val userReads: Reads[User] = (
+      (JsPath \ "_id").read[String] and
+      (JsPath \ "username").read[String] and
+      (JsPath \ "password").read[String] and
+      (JsPath \ "roles").read[Seq[String]] and
+      (JsPath \ "isBanned").read[Boolean]
+    )(User.apply _)
+
+  def insertUser(user: User): Boolean = {
+    if(requestPOST(Json.stringify(Json.toJson(user)), "http://localhost:3001/user")) true
+    else false
+  }
+
+  def deleteUser(user: User): Unit = {
+    requestGET(s"http://localhost:3001/user/${user._id}/delete")
+  }
+
+  def updateUser(user: User): Unit = {
+    requestPOST(Json.stringify(Json.toJson(user)), s"http://localhost:3001/user/${user._id}/update")
+  }
+
+  def getUsers(): Seq[User] = {
+    Json.parse(requestGET("http://localhost:3001/user")).as[Seq[User]]
+  }
+
+  def getUser(username: String, password: String): Boolean = {
+    Json.parse(requestGET(s"http://localhost:3001/user/$username/$password")).as[Boolean]
+  }
+
 }
