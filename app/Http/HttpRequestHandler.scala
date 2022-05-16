@@ -1,6 +1,6 @@
 package Http
 
-import models.{Coach, Game, Player, Referee, Team, Tournament}
+import models.{Coach, Game, Player, Referee, Team, Tournament, User}
 import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, JsValue, Json, Reads, Writes}
 import scalaj.http.{Http, HttpResponse}
@@ -297,5 +297,46 @@ object HttpRequestHandler {
 
   def getGame(id: String): Game = {
     return Json.parse(requestGET(s"http://localhost:3001/game/$id")).as[Game]
+  }
+
+  /** User **/
+  //case class User(username: String, password: String, roles: Seq[String], isBanned: Boolean) {}
+
+  implicit val userWrites: Writes[User] = new Writes[User] {
+    override def writes(user: User): JsValue = Json.obj(
+      "_id" -> user._id,
+      "username" -> user.username,
+      "password" -> user.password,
+      "roles" -> user.roles,
+      "isBanned" -> user.isBanned,
+    )
+  }
+
+  implicit val userReads: Reads[User] = (
+      (JsPath \ "_id").read[String] and
+      (JsPath \ "username").read[String] and
+      (JsPath \ "password").read[String] and
+      (JsPath \ "roles").read[Seq[String]] and
+      (JsPath \ "isBanned").read[Boolean]
+    )(User.apply _)
+
+  def insertUser(user: User): Unit = {
+    requestPOST(Json.stringify(Json.toJson(user)), "http://localhost:3001/user")
+  }
+
+  def deleteUser(user: User): Unit = {
+    requestGET(s"http://localhost:3001/user/${user._id}/delete")
+  }
+
+  def updateUser(user: User): Unit = {
+    requestPOST(Json.stringify(Json.toJson(user)), s"http://localhost:3001/user/${user._id}/update")
+  }
+
+  def getUsers(): Seq[User] = {
+    return Json.parse(requestGET("http://localhost:3001/user")).as[Seq[User]]
+  }
+
+  def getUser(id: String): User = {
+    return Json.parse(requestGET(s"http://localhost:3001/user/$id")).as[User]
   }
 }
