@@ -1,12 +1,12 @@
 const express = require("express");
-const crypto = require('crypto');
+var crypto = require('crypto');
 const mongoose = require("mongoose");
 const Coach = require("./model/coach");
 const Game = require("./model/game");
 const Player = require("./model/player");
 const Referee = require("./model/referee");
 const Team = require("./model/team");
-// const Test = require("./model/test");
+const Test = require("./model/test");
 const Tournament = require("./model/tournament");
 const User = require("./model/user");
 const {mongo} = require("mongoose");

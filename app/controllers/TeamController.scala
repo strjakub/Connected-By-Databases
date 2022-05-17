@@ -32,7 +32,7 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
             },
             data =>{
                 Http.HttpRequestHandler.insertTeam(Team("", data.name, data.coach, data.players, Seq.empty))
-                val team = Http.HttpRequestHandler.getTeams.findLast(el => el._id.nonEmpty).get
+                val team = Http.HttpRequestHandler.getTeams.last
                 val hello = Http.HttpRequestHandler.getCoach(data.coach)
                 hello.teamID = team._id
                 Http.HttpRequestHandler.updateCoach(hello)
@@ -41,7 +41,6 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
                     player.teamId = team._id
                     Http.HttpRequestHandler.updatePlayer(player)
                 }
-
                 Redirect(routes.TeamController.teams())
             }
         )
