@@ -33,9 +33,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             val refs = Http.HttpRequestHandler.getReferees
             val games = Http.HttpRequestHandler.getGames
             val players = Http.HttpRequestHandler.getPlayers
-            Ok(views.html.tournaments("addTournament")
-            (views.html.addTournament(tournamentForm)(teams),
-                views.html.addGame(gameForm)(tournaments.last)(games)(teams)(refs)(players))(tournaments))
+            Ok(views.html.tournaments("addTournament")(views.html.addTournament(tournamentForm)(teams))(tournaments)(teams)(games))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
     }
     def addTournament(): Action[AnyContent] = Action { implicit request =>
@@ -58,7 +56,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
                      (y, idxY) <- data.teams.zipWithIndex
                      if idxX < idxY
                      } {
-                    Http.HttpRequestHandler.insertGame(Game("",tour._id,x,y,"",localDateTime,"000000000000000000000000",Seq.empty))
+                    Http.HttpRequestHandler.insertGame(Game("",tour._id,x,y,"---",localDateTime,"000000000000000000000000",Seq.empty))
                     tour.games = tour.games :+ Http.HttpRequestHandler.getGames.last._id
                 }
                 Http.HttpRequestHandler.updateTournament(tour)

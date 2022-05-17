@@ -1,4 +1,4 @@
-@(title:String)(siema : Html, game:Html)(tours:Seq[Tournament])(teams:Seq[Team])(games:Seq[Game])
+@(title:String)(siema : Html)(tours:Seq[Tournament])(teams:Seq[Team])(games:Seq[Game])(implicit request : RequestHeader)
 
 @main("Tournaments") {
   @defining(play.core.PlayVersion.current) { version =>
@@ -19,30 +19,22 @@
                       <td>@tour.date</td>
                       <td>
                           <form method="post" action="@routes.TournamentController.showTournamentPage()">
-                              @helper.CSRF.formField 
+                              @helper.CSRF.formField
                               <input type="hidden" name="index" value="@tour._id">
                               <input type="submit" value="show">
                           </form>
                       </td>
                   </tr>
-<<<<<<< HEAD
                   @for(game <- tour.games){
                       <tr>
                           @teams.find(el => games.find(el => el._id == game).get.team1ID == el._id).get.name
                           @games.find(el => el._id == game).get.result
                           @teams.find(el => games.find(el => el._id == game).get.team2ID == el._id).get.name
-=======
-                  <!-- @for(game <- tour.games){ -->
-                      <!-- <tr>
-                          @teams.find(el => el._id == game).get.name
-                          @games.find()
->>>>>>> fe2343a7412078b2c6662cd938991e2a97f9c26c
                       </tr>
-                  } -->
+                  }
               }
               </table>
           <div class="form">
-            @game
           </div>
       </div>
   }

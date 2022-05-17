@@ -498,11 +498,16 @@ app.post("/team/:id/update", async (req, res) => {
     req.body.players.forEach(element => {
         tab.push(mongoose.Types.ObjectId(element));
     });
+    const tours = [];
+    req.body.tournaments.forEach(element => {
+        tours.push(mongoose.Types.ObjectId(element));
+    });
 
     Team.findOneAndUpdate({_id : req.params.id}, {
             name: req.body.name,
             coach: mongoose.Types.ObjectId(req.body.coach),
-            players: tab},
+            players: tab,
+            tournaments:tours},
         (err, result) => {
             console.log("updated");
             res.send("updated");
