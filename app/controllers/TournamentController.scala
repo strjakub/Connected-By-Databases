@@ -65,7 +65,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             }
         )
     }
-    def addGame(): Action[AnyContent] = Action { implicit request =>
+    def fillGame(): Action[AnyContent] = Action { implicit request =>
         gameForm.bindFromRequest().fold(
             formWithErrors => {
                 println(formWithErrors.errors)
@@ -74,6 +74,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             data =>{
                 val game = Http.HttpRequestHandler.getGame(data._id)
                 game.result = data.result
+                game.date = data.date
                 game.refereeID = data.refereeID
                 game.scorers = game.scorers
                 Http.HttpRequestHandler.updateGame(game)
