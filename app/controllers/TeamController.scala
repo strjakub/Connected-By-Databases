@@ -33,9 +33,9 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
             data =>{
                 Http.HttpRequestHandler.insertTeam(Team("", data.name, data.coach, data.players, Seq.empty))
                 val team = Http.HttpRequestHandler.getTeams.last
-                val hello = Http.HttpRequestHandler.getCoach(data.coach)
-                hello.teamID = team._id
-                Http.HttpRequestHandler.updateCoach(hello)
+                val coach = Http.HttpRequestHandler.getCoach(data.coach)
+                coach.teamID = team._id
+                Http.HttpRequestHandler.updateCoach(coach)
                 for(id <- data.players){
                     val player = Http.HttpRequestHandler.getPlayer(id)
                     player.teamId = team._id
@@ -44,5 +44,42 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
                 Redirect(routes.TeamController.teams())
             }
         )
+    }
+
+    def deleteTeam() : Action[AnyContent] = Action { implicit request =>
+        val usernameOption = request.session.get("username")
+        usernameOption.map { username =>
+            val postVals = request.body.asFormUrlEncoded
+            postVals.map { args =>
+                val index = args("index").head
+                val team = Http.HttpRequestHandler.getTeam(index)
+                val tournaments = Http.HttpRequestHandler.getTournaments.filter(el => el.teams.contains(index))
+                val players = Http.HttpRequestHandler.getPlayers.filter(el => el.teamId == index)
+                for(tour <- tournaments){
+                    var gamesToRemove:Seq[String] = Seq.empty
+                    for(gameID <- tour.games){
+                        val game = Http.HttpRequestHandler.getGame(gameID)
+                        if(game.team1ID == index ||game.team2ID == index){
+                            Http.HttpRequestHandler.deleteGame(game)
+                            gamesToRemove = gamesToRemove :+ gameID
+                        }
+                    }
+                    tour.games = tour.games.diff(gamesToRemove)
+                    Http.HttpRequestHandler.updateTournament(tour)
+                }
+                for(player <- players){
+                    player.teamId = "000000000000000000000000"
+                    Http.HttpRequestHandler.updatePlayer(player)
+                }
+                val coaches = Http.HttpRequestHandler.getCoaches.filter(el => el.teamID == index)
+                for(coach <- coaches){
+                    coach.teamID = "000000000000000000000000"
+                    Http.HttpRequestHandler.updateCoach(coach)
+                }
+                Http.HttpRequestHandler.deleteTeam(team)
+                Redirect(routes.TeamController.teams())
+            }.getOrElse(Redirect(routes.TeamController.teams()))
+        }.getOrElse(Redirect(routes.AuthUserController.login()))
+
     }
 }

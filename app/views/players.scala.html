@@ -1,4 +1,4 @@
-@(title:String)(siema:Html)(players:Seq[Player])(teams:Seq[Team])
+@(title:String)(siema:Html)(players:Seq[Player])(teams:Seq[Team])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @main("Players") {
     @defining(play.core.PlayVersion.current) { version =>
         <div class="wrapper doc">
@@ -25,6 +25,13 @@
                         <td>@player.dateOfBirth.format("yyyy-mm-dd")</td>
                         <td>@player.appearances</td>
                         <td>@player.goals</td>
+                        <td>
+                            <form method="post" action="@routes.PlayerController.deletePlayer()">
+                                @helper.CSRF.formField
+                            <input type="hidden" name="index" value="@player._id">
+                            <input type="submit" value="Delete">
+                            </form>
+                        </td>
 
                     </tr>
                 }

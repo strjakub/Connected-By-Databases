@@ -18,6 +18,8 @@ GET    /addTeam                             controllers.TeamController.addTeam()
 GET    /addTournament                       controllers.TournamentController.addTournament()
 GET    /addGame                             controllers.TournamentController.fillGame()
 POST    /showTournamentPage                 controllers.TournamentController.showTournamentPage()
+POST    /deleteTeam                         controllers.TeamController.deleteTeam()
+POST    /deletePlayer                       controllers.PlayerController.deletePlayer()
 GET   /tournament/:id                       controllers.TournamentController.show(id: String)
 
 # Map static resources from the /public folder to the /assets URL path

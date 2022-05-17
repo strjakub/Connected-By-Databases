@@ -5,14 +5,12 @@
             @helper.CSRF.formField
             <label class="formLabel">Name<input type="text" name="name"></label>
             <label class="formLabel">Surname<input type="text" name="surname"></label>
-            <div class="playerStats">
-                <label class="formLabel">Date of birth<input type="date" name="dateOfBirth"></label>
-                <label class="formLabel">Team<select name="teamId">
-                    @for((team,i) <- teams.zipWithIndex){
-                        <option value="@team._id">@team.name</option>
-                    }
-                </select> </label>
-            </div>
+            <label class="formLabel">Date of birth<input type="date" name="dateOfBirth"></label>
+            <label class="formLabel">Team<select name="teamId">
+                @for((team,i) <- teams.zipWithIndex){
+                    <option value="@team._id">@team.name</option>
+                }
+            </select> </label>
             <div class="playerStats">
                 <label class="statInput">Goals<input type="number" name="goals" size="3"></label>
                 <label class="statInput">Appearances<input type="number" name="appearances" size="3"></label>

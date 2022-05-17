@@ -3,19 +3,21 @@
     <body>
         @helper.form(action = routes.TeamController.addTeam(),Symbol("class") -> "forms") {
             @helper.CSRF.formField
-            <label class="for">Name<input type="text" name="name"></label>
-            <div class="teamStats">
-                <label>Coach<select name="coach">
-                    @for((coach,i) <- coaches.zipWithIndex){
-                        <option value="@coach._id">@coach.name @coach.surname</option>
-                    }
-                </select></label>
-                <label>Players<select name="players[]" multiple>
+            <label class="formLabel">Name<input type="text" name="name"></label>
+            <label class="formLabel">
+                Coach<select name="coach">
+                @for((coach,i) <- coaches.zipWithIndex){
+                    <option value="@coach._id">@coach.name @coach.surname</option>
+                }
+                </select>
+            </label>
+            <label class="formLabel">
+                Players<select name="players[]" multiple>
                 @for((player,i) <- players.zipWithIndex){
                     <option value="@player._id">@player.name @player.surname</option>
                 }
-                </select></label>
-            </div>
+                </select>
+            </label>
             <button type="submit">Add team</button>
         }
     </body>

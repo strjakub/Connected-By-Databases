@@ -41,4 +41,26 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
             }
         )
     }
+    def deletePlayer(): Action[AnyContent] = Action { implicit request =>
+        val usernameOption = request.session.get("username")
+        usernameOption.map { username =>
+            val postVals = request.body.asFormUrlEncoded
+            postVals.map { args =>
+                val index = args("index").head
+                val player = Http.HttpRequestHandler.getPlayer(index)
+                if(player.teamId != "000000000000000000000000") {
+                    val games = Http.HttpRequestHandler.getGames.filter(el => el.scorers.contains(index))
+                    val team = Http.HttpRequestHandler.getTeam(player.teamId)
+                    for (game <- games) {
+                        game.scorers = game.scorers diff Seq(index)
+                        Http.HttpRequestHandler.updateGame(game)
+                    }
+                    team.players = team.players diff Seq(index)
+                    Http.HttpRequestHandler.updateTeam(team)
+                }
+                Http.HttpRequestHandler.deletePlayer(player)
+                Redirect(routes.PlayerController.players())
+            }.getOrElse(Redirect(routes.PlayerController.players()))
+        }.getOrElse(Redirect(routes.AuthUserController.login()))
+    }
 }

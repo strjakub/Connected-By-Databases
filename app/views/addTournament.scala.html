@@ -12,11 +12,13 @@
             <label class="formLabel">
                 Data <input name="date" type="date">
             </label>
-            <label>Teams<select name="teams[]" multiple>
-            @for((team,i) <- teams.zipWithIndex){
-                <option value="@team._id">@team.name</option>
-            }
-            </select></label>
+            <label class="formLabel">
+                Teams<select name="teams[]" multiple>
+                    @for((team,i) <- teams.zipWithIndex){
+                        <option value="@team._id">@team.name</option>
+                    }
+                </select>
+            </label>
             <button type="submit">Add tournament</button>
         }
     </body>

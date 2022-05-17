@@ -1,16 +1,64 @@
-@(tournament: Tournament)(games: Seq[Game])
+@(gameForm : Form[gameData])(tour: Tournament)(games: Seq[Game])(teams : Seq[Team])(players:Seq[Player])(refs:Seq[Referee])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @main("Teams") {
     @defining(play.core.PlayVersion.current) { version =>
-            <div>
-                @tournament.name
-            </div>
-            <div>
-                @for((game,i) <- games.zipWithIndex){
-                    <tr>
-                        <td>@game.team1ID</td>
-                        <td>@game.team2ID</td>
-                    </tr>
+    <div class="wrapper doc">
+        <div class="form">
+            @helper.form(action = routes.TournamentController.fillGame(),Symbol("class") -> "forms") {
+                <h1>@tour.name</h1>
+                <label class="formLabel">
+                    Game<select name="_id" >
+                @for((game,i) <- games.filter(el => el.tourID == tour._id).zipWithIndex){
+                    <option value="@game._id">
+                        @teams.find(el => el._id == game.team1ID).get.name
+                        @game.result
+                        @teams.find(el => el._id == game.team2ID ).get.name
+                    </option>
                 }
-            </div>
+                </select>
+                </label>
+                <label class="formLabel">
+                    Result <input type="text" name="result">
+                </label>
+                <label class="formLabel">
+                    Date <input name="date" type="date">
+                </label>
+                <label class="formLabel">
+                    Referee <select name="refereeID">
+                @for(ref <- refs){
+                    <option value="@ref._id">@ref.name @ref.surname</option>
+                }
+                </select>
+                </label>
+                <label class="formLabel">
+                    Scorers <select name="scorers[]" multiple>
+                @for(player <- players.filter(el => tour.teams.contains(el.teamId)).sortBy(el => el.surname)){
+                    <option>@player.name @player.surname</option>
+                }
+                </select>
+                </label>
+                <button type="submit">Update game info</button>
+            }
+        </div>
+        <table class="view">
+            <thead class="singleton">
+                <th>Team nr.1</th>
+                <th>Result</th>
+                <th>Team nr.2</th>
+                <th>Referee</th>
+                <th>Date of game</th>
+                <th>Scorers of goals</th>
+            </thead>
+            @for(game <- games){
+                <tr>
+                    <td>@teams.find(el => el._id == game.team1ID).get.name</td>
+                    <td>@game.result</td>
+                    <td>@teams.find(el => el._id == game.team2ID).get.name</td>
+                    <td>Sędzia chuj</td>
+                    <td>@game.date</td>
+                    <td>Wait plis</td>
+                </tr>
+            }
+        </table>
+    </div>
     }
 }

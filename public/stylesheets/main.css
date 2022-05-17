@@ -211,7 +211,7 @@ select{
  display: flex;
  width: min-content;
  flex-direction: column;
- row-gap: 0;
+ row-gap: 10px;
  justify-content: center;
  align-items: center;
 }

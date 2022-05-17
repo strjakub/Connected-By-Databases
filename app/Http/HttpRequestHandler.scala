@@ -4,7 +4,6 @@ import models.{Coach, Game, Player, Referee, Team, Tournament, User}
 import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, Json, Reads, Writes}
 import scalaj.http.{Http, HttpResponse}
-import java.time.LocalDateTime
 import java.util.Date
 
 object HttpRequestHandler {
@@ -262,7 +261,7 @@ object HttpRequestHandler {
       (JsPath \ "team1ID").read[String] and
       (JsPath \ "team2ID").read[String] and
       (JsPath \ "result").read[String] and
-      (JsPath \ "date").read[LocalDateTime] and
+      (JsPath \ "date").read[Date] and
       (JsPath \ "refereeID").read[String] and
       (JsPath \ "scorers").read[Seq[String]]
     )(Game.apply _)

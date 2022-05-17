@@ -1,4 +1,4 @@
-@(title:String)(siema:Html)(teams:Seq[Team])(coach:Seq[Coach])
+@(title:String)(siema:Html)(teams:Seq[Team])(coach:Seq[Coach])(implicit request: RequestHeader, messages: MessagesProvider)
 @main("Teams") {
     @defining(play.core.PlayVersion.current) { version =>
             <div class="wrapper doc">
@@ -12,13 +12,20 @@
                     </thead>
                     @for((team,i) <- teams.zipWithIndex){
                         <tr>
-                        <td>@team.name</td>
-                        <td>@if(!coach.exists(el => el._id == team.coach)){
-                            Brak trenera
-                        }else{
-                            @coach.find(el => el._id == team.coach).get.name
-                            @coach.find(el => el._id == team.coach).get.surname
-                        }</td>
+                            <td>@team.name</td>
+                            <td>@if(!coach.exists(el => el._id == team.coach)){
+                                Brak trenera
+                            }else{
+                                @coach.find(el => el._id == team.coach).get.name
+                                @coach.find(el => el._id == team.coach).get.surname
+                            }</td>
+                            <td>
+                                <form method="post" action="@routes.TeamController.deleteTeam()">
+                                    @helper.CSRF.formField
+                                <input type="hidden" name="index" value="@team._id">
+                                <input type="submit" value="Delete">
+                                </form>
+                            </td>
                         </tr>
                     }
                 </table>

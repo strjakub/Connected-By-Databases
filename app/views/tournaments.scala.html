@@ -16,7 +16,7 @@
                   <tr>
                       <td>@tour.name</td>
                       <td>@tour.place</td>
-                      <td>@tour.date</td>
+                      <td>@tour.date.format("yyyy-MM-dd")</td>
                       <td>
                           <form method="post" action="@routes.TournamentController.showTournamentPage()">
                               @helper.CSRF.formField
@@ -25,17 +25,8 @@
                           </form>
                       </td>
                   </tr>
-                  @for(game <- tour.games){
-                      <tr>
-                          @teams.find(el => games.find(el => el._id == game).get.team1ID == el._id).get.name
-                          @games.find(el => el._id == game).get.result
-                          @teams.find(el => games.find(el => el._id == game).get.team2ID == el._id).get.name
-                      </tr>
-                  }
               }
               </table>
-          <div class="form">
-          </div>
       </div>
   }
 }
