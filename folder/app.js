@@ -157,11 +157,12 @@ app.post("/game", async (req, res) => {
 
         console.log("req.body: ", req.body);
         const newGame = new Game({
+            tourID: mongoose.Types.ObjectId(req.body.tourID),
             team1ID: mongoose.Types.ObjectId(req.body.team1ID),
             team2ID: mongoose.Types.ObjectId(req.body.team2ID),
             result: req.body.result,
             date: new Date(req.body.date),
-            refereeID: mongoose.Types.ObjectId("00000000000000000000"),
+            refereeID: mongoose.Types.ObjectId(req.body.refereeID),
             scorers: tab,
         });
 

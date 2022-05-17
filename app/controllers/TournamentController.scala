@@ -58,7 +58,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
                      if idxX < idxY
                      } {
                     Http.HttpRequestHandler.insertGame(Game("",tour._id,x,y,"",localDateTime,"000000000000000000000000",Seq.empty))
-//                    tour.games = tour.games :+ Http.HttpRequestHandler.getGames().findLast(el => el._id.nonEmpty).get._id
+                    tour.games = tour.games :+ Http.HttpRequestHandler.getGames.findLast(el => el._id.nonEmpty).get._id
                 }
                 Http.HttpRequestHandler.updateTournament(tour)
                 Redirect(routes.TournamentController.tournaments())
