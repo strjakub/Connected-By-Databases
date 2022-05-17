@@ -236,7 +236,7 @@ app.get("/tournament", async (req, res) => {
 });
 
 app.get("/tournament/:id", async (req, res) => {
-    Tournament.findOne({}, (err, result) => {
+    Tournament.findOne({_id : req.params.id}, (err, result) => {
         // console.log("output: ", result);
         res.send(result);
     })

@@ -57,8 +57,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
                      (y, idxY) <- data.teams.zipWithIndex
                      if idxX < idxY
                      } {
-                    Http.HttpRequestHandler.insertGame(Game("",tour._id,x,y,"",localDateTime,"000000000000000000000000",Seq.empty))
-//                    tour.games = tour.games :+ Http.HttpRequestHandler.getGames().findLast(el => el._id.nonEmpty).get._id
+                    Http.HttpRequestHandler.insertGame(Game("",tour._id,x,y,"---",localDateTime,"000000000000000000000000",Seq.empty))
                 }
                 Http.HttpRequestHandler.updateTournament(tour)
                 Redirect(routes.TournamentController.tournaments())
@@ -80,5 +79,25 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
                 Redirect(routes.TournamentController.tournaments())
             }
         )
+    }
+
+    def showTournamentPage = Action { implicit request =>
+        val usernameOption = request.session.get("username")
+        usernameOption.map { username =>
+            val postVals = request.body.asFormUrlEncoded
+            postVals.map { args => 
+                val index = args("index").head.toString 
+                Redirect(routes.TournamentController.show(index))
+            }.getOrElse(Redirect(routes.TournamentController.tournaments()))
+        }.getOrElse(Redirect(routes.AuthUserController.login()))
+    }
+
+    def show(tournamentID: String) = Action {
+        val tournament: Tournament = Http.HttpRequestHandler.getTournament(tournamentID)
+        val games: Seq[Game] = Http.HttpRequestHandler.getGames.filter( el =>
+            el.tourID ==  tournamentID
+             )
+
+        Ok(views.html.tournamentInfo(tournament)(games))
     }
 }

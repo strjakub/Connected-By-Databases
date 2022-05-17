@@ -15,7 +15,7 @@
                     <option value="@game._id">
                         @teams.find(el => el._id == game.team1ID).get.name
                         @game.result
-                        @teams.find(el => el._id == game.team2ID).get.name
+                        @teams.find(el => el._id == game.team2ID ).get.name
                     </option>
                 }
             </select>

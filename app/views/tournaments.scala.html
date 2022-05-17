@@ -1,4 +1,4 @@
-@(title:String)(siema : Html, game:Html)(tours:Seq[Tournament])
+@(title:String)(siema : Html, game:Html)(tours:Seq[Tournament])(implicit request : RequestHeader, flash: Flash)
 
 @main("Tournaments") {
   @defining(play.core.PlayVersion.current) { version =>
@@ -17,6 +17,13 @@
                       <td>@tour.name</td>
                       <td>@tour.place</td>
                       <td>@tour.date</td>
+                      <td>
+                          <form method="post" action="@routes.TournamentController.showTournamentPage()">
+                              @helper.CSRF.formField 
+                              <input type="hidden" name="index" value="@tour._id">
+                              <input type="submit" value="show">
+                          </form>
+                      </td>
                   </tr>
               }
               </table>
