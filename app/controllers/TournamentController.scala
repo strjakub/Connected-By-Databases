@@ -83,4 +83,24 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             }
         )
     }
+
+    def showTournamentPage = Action { implicit request =>
+        val usernameOption = request.session.get("username")
+        usernameOption.map { username =>
+            val postVals = request.body.asFormUrlEncoded
+            postVals.map { args => 
+                val index = args("index").head.toString 
+                Redirect(routes.TournamentController.show(index))
+            }.getOrElse(Redirect(routes.TournamentController.tournaments()))
+        }.getOrElse(Redirect(routes.AuthUserController.login()))
+    }
+
+    def show(tournamentID: String) = Action {
+        val tournament: Tournament = Http.HttpRequestHandler.getTournament(tournamentID)
+        val games: Seq[Game] = Http.HttpRequestHandler.getGames.filter( el =>
+            el.tourID ==  tournamentID
+             )
+
+        Ok(views.html.tournamentInfo(tournament)(games))
+    }
 }

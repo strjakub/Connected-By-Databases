@@ -16,7 +16,9 @@ GET     /panel                              controllers.HomeController.panel()
 GET    /addPlayer                           controllers.PlayerController.addPlayer()
 GET    /addTeam                             controllers.TeamController.addTeam()
 GET    /addTournament                       controllers.TournamentController.addTournament()
-GET    /addGame                             controllers.TournamentController.fillGame()
+GET    /addGame                             controllers.TournamentController.addGame()
+POST    /showTournamentPage                 controllers.TournamentController.showTournamentPage()
+GET   /tournament/:id                       controllers.TournamentController.show(id: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

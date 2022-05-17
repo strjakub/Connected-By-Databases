@@ -1,0 +1,16 @@
+@(tournament: Tournament)(games: Seq[Game])
+@main("Teams") {
+    @defining(play.core.PlayVersion.current) { version =>
+            <div>
+                @tournament.name
+            </div>
+            <div>
+                @for((game,i) <- games.zipWithIndex){
+                    <tr>
+                        <td>@game.team1ID</td>
+                        <td>@game.team2ID</td>
+                    </tr>
+                }
+            </div>
+    }
+}
