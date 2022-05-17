@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Coach = require("./model/coach");
 const Game = require("./model/game");
 const Player = require("./model/player");
-const Referre = require("./model/referre");
+const Referee = require("./model/referee");
 const Team = require("./model/team");
 const Test = require("./model/test");
 const Tournament = require("./model/tournament");
@@ -31,25 +31,25 @@ connection.once("open", () => {
 });
 
 //============================================================
-app.post("/test", async (req, res) => {
-    try{
-        console.log("req.body: ", req.body);
-        const newTest = new Test({
-            info: req.body.info,
-            number: req.body.number,
-        });
-
-        await Test.insertOne(newTest);
-        res.send("test added");
-    } catch (err) {
-        console.log("error: ", err);
-    }
-});
+// app.post("/test", async (req, res) => {
+//     try{
+//         console.log("req.body: ", req.body);
+//         const newTest = new Test({
+//             info: req.body.info,
+//             number: req.body.number,
+//         });
+//
+//         await Test.insertOne(newTest);
+//         res.send("test added");
+//     } catch (err) {
+//         console.log("error: ", err);
+//     }
+// });
 //============================================================
 
 app.post("/player", async (req, res) => {
     try{
-        console.log("req.body: ", req.body);
+        // console.log("req.body: ", req.body);
         const newPlayer = new Player({
             teamId: mongoose.Types.ObjectId(req.body.teamId),
             name: req.body.name,
@@ -68,14 +68,14 @@ app.post("/player", async (req, res) => {
 
 app.get("/player", async (req, res) => {
     Player.find({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
 
 app.get("/player/:id", async (req, res) => {
     Player.findOne({_id:req.params.id}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
@@ -105,7 +105,7 @@ app.post("/team", async (req, res) => {
             tour.push(mongoose.Types.ObjectId(element))
         })
 
-        console.log("req.body: ", req.body);
+        // console.log("req.body: ", req.body);
         const newTeam = new Team({
             name: req.body.name,
             coach: mongoose.Types.ObjectId(req.body.coach),
@@ -122,14 +122,14 @@ app.post("/team", async (req, res) => {
 
 app.get("/team", async (req, res) => {
     Team.find({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
 
 app.get("/team/:id", async (req, res) => {
     Team.findOne({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
@@ -156,13 +156,13 @@ app.post("/game", async (req, res) => {
             tab.push(mongoose.Types.ObjectId(element));
         });
 
-        console.log("req.body: ", req.body);
+        // console.log("req.body: ", req.body);
         const newGame = new Game({
             team1ID: mongoose.Types.ObjectId(req.body.team1ID),
             team2ID: mongoose.Types.ObjectId(req.body.team2ID),
             result: req.body.result,
             date: new Date(req.body.date),
-            referreID: mongoose.Types.ObjectId(req.body.referreID),
+            refereeID: mongoose.Types.ObjectId(req.body.refereeID),
             scorers: tab,
         });
 
@@ -175,14 +175,14 @@ app.post("/game", async (req, res) => {
 
 app.get("/game", async (req, res) => {
     Game.find({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
 
 app.get("/game/:id", async (req, res) => {
     Game.findOne({}, (err, result) => {
-        console.log("output: ", result);
+        // console.log("output: ", result);
         res.send(result);
     })
 });
@@ -203,16 +203,16 @@ app.delete("/game/:id", async (req, res) => {
 
 app.post("/tournament", async (req, res) => {
     try{
-        const tab1 = new Array;
+        const tab1 = [];
         req.body.teams.forEach(element1 => {
-            tab.push(mongoose.Types.ObjectId(element1));
+            tab1.push(mongoose.Types.ObjectId(element1));
         });
-        const tab2 = new Array;
+        const tab2 = [];
         req.body.games.forEach(element2 => {
-            tab.push(mongoose.Types.ObjectId(element2));
+            tab2.push(mongoose.Types.ObjectId(element2));
         });
 
-        console.log("req.body: ", req.body);
+        // console.log("req.body: ", req.body);
         const newTournament = new Tournament({
             name: req.body.name,
             teams: tab1,
@@ -256,46 +256,46 @@ app.delete("/tournament/:id", async (req, res) => {
     })
 });
 
-app.post("/referre", async (req, res) => {
+app.post("/referee", async (req, res) => {
     try{
-        console.log("req.body: ", req.body);
-        const newReferre = new Referre({
+        // console.log("req.body: ", req.body);
+        const newReferee = new Referee({
             name: req.body.name,
             surname: req.body.surname,
             dateOfBirth: new Date(req.body.dateOfBirth),
             nationality: req.body.nationality,
         });
 
-        await Referre.create(newReferre);
-        res.send("referre added");
+        await Referee.create(newReferee);
+        res.send("referee added");
     } catch (err) {
         console.log("error: ", err);
     }
 });
 
-app.get("/referre", async (req, res) => {
-    Referre.find({}, (err, result) => {
+app.get("/referee", async (req, res) => {
+    Referee.find({}, (err, result) => {
         // console.log("output: ", result);
         res.send(result);
     })
 });
 
-app.get("/referre/:id", async (req, res) => {
-    Referre.findOne({}, (err, result) => {
+app.get("/referee/:id", async (req, res) => {
+    Referee.findOne({}, (err, result) => {
         // console.log("output: ", result);
         res.send(result);
     })
 });
 
-app.patch("/referre/:id", async (req, res) => {
-    Referre.findOneAndUpdate({_id : req.params.id}, req.body, (err, result) => {
+app.patch("/referee/:id", async (req, res) => {
+    Referee.findOneAndUpdate({_id : req.params.id}, req.body, (err, result) => {
         console.log("updated");
         res.send("updated");
     })
 });
 
-app.delete("/referre/:id", async (req, res) => {
-    Referre.findOneAndDelete({_id : req.params.id}, (err, result) => {
+app.delete("/referee/:id", async (req, res) => {
+    Referee.findOneAndDelete({_id : req.params.id}, (err, result) => {
         console.log("deleted");
         res.send("deleted");
     })
@@ -303,7 +303,7 @@ app.delete("/referre/:id", async (req, res) => {
 
 app.post("/coach", async (req, res) => {
     try{
-        console.log("req.body: ", req.body);
+        // console.log("req.body: ", req.body);
         const newCoach = new Coach({
             teamID: mongoose.Types.ObjectId(req.body.teamID),
             name: req.body.name,
@@ -402,8 +402,8 @@ app.get("/player/:id/delete", async (req, res) => {
     })
 });
 
-app.get("/referre/:id/delete", async (req, res) => {
-    Referre.findOneAndDelete({_id : req.params.id}, (err, result) => {
+app.get("/referee/:id/delete", async (req, res) => {
+    Referee.findOneAndDelete({_id : req.params.id}, (err, result) => {
         console.log("deleted");
         res.send("deleted");
     })
@@ -459,7 +459,7 @@ app.post("/game/:id/update", async (req, res) => {
             team2ID: mongoose.Types.ObjectId(req.body.team2ID),
             result: req.body.result,
             date: new Date(req.body.date),
-            referreID: mongoose.Types.ObjectId(req.body.referreID),
+            refereeID: mongoose.Types.ObjectId(req.body.refereeID),
             scorers: tab},
         (err, result) => {
             console.log("updated");
@@ -481,8 +481,8 @@ app.post("/player/:id/update", async (req, res) => {
         })
 });
 
-app.post("/referre/:id/update", async (req, res) => {
-    Referre.findOneAndUpdate({_id : req.params.id}, {
+app.post("/referee/:id/update", async (req, res) => {
+    Referee.findOneAndUpdate({_id : req.params.id}, {
             name: req.body.name,
             surname: req.body.surname,
             dateOfBirth: new Date(req.body.dateOfBirth),
@@ -524,7 +524,7 @@ app.post("/tournament/:id/update", async (req, res) => {
             teams: tab1,
             games: tab2,
             place: req.body.place,
-            date: new Date(re1.body.date)},
+            date: new Date(req.body.date)},
         (err, result) => {
             console.log("updated");
             res.send("updated");

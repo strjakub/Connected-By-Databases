@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const referreSchema = new Schema({
+const refereeSchema = new Schema({
     name:{
         type: String,
         required: true,
@@ -25,6 +25,6 @@ const referreSchema = new Schema({
     }
 })
 
-const Referre = mongoose.model("referre", referreSchema);
+const Referee = mongoose.model("referee", refereeSchema);
 
-module.exports = Referre;
+module.exports = Referee;

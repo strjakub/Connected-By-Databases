@@ -77,23 +77,23 @@ object HttpRequestHandler {
     )(Referee.apply _)
 
   def insertReferee(referee: Referee): Unit = {
-    requestPOST(Json.stringify(Json.toJson(referee)), "http://localhost:3001/referre")
+    requestPOST(Json.stringify(Json.toJson(referee)), "http://localhost:3001/referee")
   }
 
   def deleteReferee(referee: Referee): Unit = {
-    requestGET(s"http://localhost:3001/referre/${referee._id}/delete")
+    requestGET(s"http://localhost:3001/referee/${referee._id}/delete")
   }
 
   def updateReferee(referee: Referee): Unit = {
-    requestPOST(Json.stringify(Json.toJson(referee)), s"http://localhost:3001/referre/${referee._id}/update")
+    requestPOST(Json.stringify(Json.toJson(referee)), s"http://localhost:3001/referee/${referee._id}/update")
   }
 
   def getReferees(): Seq[Referee] = {
-    Json.parse(requestGET("http://localhost:3001/referre")).as[Seq[Referee]]
+    Json.parse(requestGET("http://localhost:3001/referee")).as[Seq[Referee]]
   }
 
   def getReferee(id: String): Referee = {
-    Json.parse(requestGET(s"http://localhost:3001/referre/$id")).as[Referee]
+    Json.parse(requestGET(s"http://localhost:3001/referee/$id")).as[Referee]
   }
 
   /** Players **/
@@ -267,7 +267,7 @@ object HttpRequestHandler {
       "team2ID" -> game.team2ID,
       "result" -> game.result,
       "date" -> game.date,
-      "referreID" -> game.refereeId,
+      "refereeID" -> game.refereeID,
       "scorers" -> game.scorers
     )
   }
@@ -279,7 +279,7 @@ object HttpRequestHandler {
       (JsPath \ "team2ID").read[String] and
       (JsPath \ "result").read[String] and
       (JsPath \ "date").read[LocalDateTime] and
-      (JsPath \ "referreID").read[String] and
+      (JsPath \ "refereeID").read[String] and
       (JsPath \ "scorers").read[Seq[String]]
     )(Game.apply _)
 

@@ -3,9 +3,26 @@
 @main("Tournaments") {
   @defining(play.core.PlayVersion.current) { version =>
       <div id="tournaments">
-        @siema
-
-        @game
+          <div class="form">
+              @siema
+          </div>
+          <table class="view">
+              <thead class="singleton">
+                  <th>Nazwa turnieju</th>
+                  <th>Miejsce</th>
+                  <th>Data</th>
+              </thead>
+              @for((tour,i) <- tours.zipWithIndex){
+                  <tr>
+                      <td>@tour.name</td>
+                      <td>@tour.place</td>
+                      <td>@tour.date</td>
+                  </tr>
+              }
+              </table>
+          <div class="form">
+            @game
+          </div>
       </div>
   }
 }

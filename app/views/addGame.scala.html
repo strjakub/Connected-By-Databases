@@ -1,21 +1,40 @@
-@(gameForm: Form[gameData])(tours:Seq[Tournament])(teams:Seq[Team])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@(gameForm: Form[gameData])(tours:Seq[Tournament])(games:Seq[Game])(teams:Seq[Team])(refs:Seq[Referee])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @defining(play.core.PlayVersion.current) { version =>
     <body>
         @helper.form(action = routes.TournamentController.addGame(),Symbol("class") -> "forms") {
             @helper.CSRF.formField
-            <div class="playerStats">
-                @helper.select(gameForm("Team1"), options = Seq("FC Barcelona" -> "FC Barcelona", "real" -> "Real Madrt"))
-                @helper.select(gameForm("Team2"), options = Seq("FC Barcelona" -> "FC Barcelona", "real" -> "Real Madrt"))
-            </div>
-            <label id="dateTime">
-                Date and Time
-                <input type="datetime-local">
+            <label>
+                Tournament<select name="tourID">
+                @for((tour,i) <- tours.zipWithIndex){
+                    <option value="@tour._id">@tour.name</option>
+                }
+                </select>
+            </label>
+            <label>Game<select name="_id">
+                @for((game,i) <- games.zipWithIndex){
+                    <option value="@game._id">
+                        @teams.find(el => el._id == game.team1ID).get.name
+                        @game.result
+                        @teams.find(el => el._id == game.team2ID).get.name
+                    </option>
+                }
+            </select>
+            </label>
+            <label>
+                Date and Time of Game
+                <input name="date" type="datetime-local">
             </label>
             <div class="playerStats">
-                @helper.select(gameForm("Results"), options = Seq("haha" -> "2-1", "git" -> "3-0"),Symbol("multiple") -> "Yes",Symbol("class") -> "statInput")
-                @helper.select(gameForm("Scorers"), options = Seq("poteżnny" -> "Robert Lewandowski", "słaby" -> "Leo Messi"),Symbol("multiple") -> "Yes",Symbol("class") -> "statInput")
+                <label>
+                    Referee <select name="refereeID">
+                        @for((ref,i) <- refs.zipWithIndex){
+                            <option value="@ref._id">
+                                @ref.name @ref.surname
+                            </option>
+                        }
+                    </select>
+                </label>
             </div>
-
             <button type="submit">Add game</button>
         }
     </body>
