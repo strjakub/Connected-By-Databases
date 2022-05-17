@@ -127,7 +127,7 @@ app.get("/team", async (req, res) => {
 });
 
 app.get("/team/:id", async (req, res) => {
-    Team.findOne({}, (err, result) => {
+    Team.findOne({_id : req.params.id}, (err, result) => {
         // console.log("output: ", result);
         res.send(result);
     })
@@ -181,7 +181,7 @@ app.get("/game", async (req, res) => {
 });
 
 app.get("/game/:id", async (req, res) => {
-    Game.findOne({}, (err, result) => {
+    Game.findOne({_id : req.params.id}, (err, result) => {
         // console.log("output: ", result);
         res.send(result);
     })
@@ -236,7 +236,7 @@ app.get("/tournament", async (req, res) => {
 });
 
 app.get("/tournament/:id", async (req, res) => {
-    Tournament.findOne({}, (err, result) => {
+    Tournament.findOne({_id : req.params.id}, (err, result) => {
         // console.log("output: ", result);
         res.send(result);
     })
@@ -281,7 +281,7 @@ app.get("/referee", async (req, res) => {
 });
 
 app.get("/referee/:id", async (req, res) => {
-    Referee.findOne({}, (err, result) => {
+    Referee.findOne({_id : req.params.id}, (err, result) => {
         // console.log("output: ", result);
         res.send(result);
     })
