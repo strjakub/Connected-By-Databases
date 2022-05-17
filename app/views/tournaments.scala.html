@@ -20,8 +20,9 @@
                   </tr>
                   @for(game <- tour.games){
                       <tr>
-                          @teams.find(el => el._id == game).get.name
-                          @games.find()
+                          @teams.find(el => games.find(el => el._id == game).get.team1ID == el._id).get.name
+                          @games.find(el => el._id == game).get.result
+                          @teams.find(el => games.find(el => el._id == game).get.team2ID == el._id).get.name
                       </tr>
                   }
               }
