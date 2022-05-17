@@ -2,7 +2,7 @@ package Http
 
 import models.{Coach, Game, Player, Referee, Team, Tournament, User}
 import play.api.libs.functional.syntax._
-import play.api.libs.json.{JsPath, JsValue, Json, Reads, Writes}
+import play.api.libs.json.{JsPath, Json, Reads, Writes}
 import scalaj.http.{Http, HttpResponse}
 import java.time.LocalDateTime
 import java.util.Date
@@ -39,17 +39,13 @@ object HttpRequestHandler {
   def requestGET(requestAddress: String): String = {
     try {
       val httpResponse: HttpResponse[String] = Http(requestAddress).asString
-
       val response = if (httpResponse.code == 200) httpResponse.body
       else {
         println("Bad HTTP response: code = " + httpResponse.code)
         "ERROR"
       }
-
       println(" Send Http Get Request (End) ")
-
       response
-
     } catch {
       case e: Exception => println("Error in sending Get request: " + e.getMessage)
         "ERROR"
@@ -58,15 +54,13 @@ object HttpRequestHandler {
 
 
   /** Referees **/
-  implicit val refereeWrites: Writes[Referee] = new Writes[Referee] {
-    override def writes(referee: Referee): JsValue = Json.obj(
-      "_id" -> referee._id,
-      "name" -> referee.name,
-      "surname" -> referee.surname,
-      "nationality" -> referee.nationality,
-      "dateOfBirth" -> referee.dateOfBirth
-    )
-  }
+  implicit val refereeWrites: Writes[Referee] = (referee: Referee) => Json.obj(
+    "_id" -> referee._id,
+    "name" -> referee.name,
+    "surname" -> referee.surname,
+    "nationality" -> referee.nationality,
+    "dateOfBirth" -> referee.dateOfBirth
+  )
 
   implicit val refereeReads: Reads[Referee] = (
     (JsPath \ "_id").read[String] and
@@ -88,7 +82,7 @@ object HttpRequestHandler {
     requestPOST(Json.stringify(Json.toJson(referee)), s"http://localhost:3001/referee/${referee._id}/update")
   }
 
-  def getReferees(): Seq[Referee] = {
+  def getReferees: Seq[Referee] = {
     Json.parse(requestGET("http://localhost:3001/referee")).as[Seq[Referee]]
   }
 
@@ -97,17 +91,15 @@ object HttpRequestHandler {
   }
 
   /** Players **/
-  implicit val playerWrites: Writes[Player] = new Writes[Player] {
-    override def writes(player: Player): JsValue = Json.obj(
-      "_id" -> player._id,
-      "name" -> player.name,
-      "surname" -> player.surname,
-      "dateOfBirth" -> player.dateOfBirth,
-      "goals" -> player.goals,
-      "apperances" -> player.appearances,
-      "teamID" -> player.teamId,
-    )
-  }
+  implicit val playerWrites: Writes[Player] = (player: Player) => Json.obj(
+    "_id" -> player._id,
+    "name" -> player.name,
+    "surname" -> player.surname,
+    "dateOfBirth" -> player.dateOfBirth,
+    "goals" -> player.goals,
+    "appearances" -> player.appearances,
+    "teamID" -> player.teamId,
+  )
 
   implicit val playerReads: Reads[Player] = (
     (JsPath \ "_id").read[String] and
@@ -115,7 +107,7 @@ object HttpRequestHandler {
       (JsPath \ "surname").read[String] and
       (JsPath \ "dateOfBirth").read[Date] and
       (JsPath \ "goals").read[Int] and
-      (JsPath \ "apperances").read[Int] and
+      (JsPath \ "appearances").read[Int] and
       (JsPath \ "teamID").read[String]
     )(Player.apply _)
 
@@ -131,7 +123,7 @@ object HttpRequestHandler {
     requestPOST(Json.stringify(Json.toJson(player)), s"http://localhost:3001/player/${player._id}/update")
   }
 
-  def getPlayers(): Seq[Player] = {
+  def getPlayers: Seq[Player] = {
     Json.parse(requestGET("http://localhost:3001/player")).as[Seq[Player]]
   }
 
@@ -140,15 +132,13 @@ object HttpRequestHandler {
   }
 
   /** Coaches **/
-  implicit val coachWrites: Writes[Coach] = new Writes[Coach] {
-    override def writes(coach: Coach): JsValue = Json.obj(
-      "_id" -> coach._id,
-      "name" -> coach.name,
-      "surname" -> coach.surname,
-      "dateOfBirth" -> coach.dateOfBirth,
-      "teamID" -> coach.teamID,
-    )
-  }
+  implicit val coachWrites: Writes[Coach] = (coach: Coach) => Json.obj(
+    "_id" -> coach._id,
+    "name" -> coach.name,
+    "surname" -> coach.surname,
+    "dateOfBirth" -> coach.dateOfBirth,
+    "teamID" -> coach.teamID,
+  )
 
   implicit val coachReads: Reads[Coach] = (
     (JsPath \ "_id").read[String] and
@@ -170,7 +160,7 @@ object HttpRequestHandler {
     requestPOST(Json.stringify(Json.toJson(coach)), s"http://localhost:3001/coach/${coach._id}/update")
   }
 
-  def getCoaches(): Seq[Coach] = {
+  def getCoaches: Seq[Coach] = {
     Json.parse(requestGET("http://localhost:3001/coach")).as[Seq[Coach]]
   }
 
@@ -179,15 +169,13 @@ object HttpRequestHandler {
   }
 
   /** Teams **/
-  implicit val teamWrites: Writes[Team] = new Writes[Team] {
-    override def writes(team: Team): JsValue = Json.obj(
-      "_id" -> team._id,
-      "name" -> team.name,
-      "coach" -> team.coach,
-      "players" -> team.players,
-      "tournaments" -> team.tournaments
-    )
-  }
+  implicit val teamWrites: Writes[Team] = (team: Team) => Json.obj(
+    "_id" -> team._id,
+    "name" -> team.name,
+    "coach" -> team.coach,
+    "players" -> team.players,
+    "tournaments" -> team.tournaments
+  )
 
   implicit val teamReads: Reads[Team] = (
     (JsPath \ "_id").read[String] and
@@ -209,7 +197,7 @@ object HttpRequestHandler {
     requestPOST(Json.stringify(Json.toJson(team)), s"http://localhost:3001/team/${team._id}/update")
   }
 
-  def getTeams(): Seq[Team] = {
+  def getTeams: Seq[Team] = {
     Json.parse(requestGET("http://localhost:3001/team")).as[Seq[Team]]
   }
 
@@ -218,16 +206,14 @@ object HttpRequestHandler {
   }
 
   /** Tournamets **/
-  implicit val tournamentWrites: Writes[Tournament] = new Writes[Tournament] {
-    override def writes(tournament: Tournament): JsValue = Json.obj(
-      "_id" -> tournament._id,
-      "name" -> tournament.name,
-      "teams" -> tournament.teams,
-      "games" -> tournament.games,
-      "place" -> tournament.place,
-      "date" -> tournament.date
-    )
-  }
+  implicit val tournamentWrites: Writes[Tournament] = (tournament: Tournament) => Json.obj(
+    "_id" -> tournament._id,
+    "name" -> tournament.name,
+    "teams" -> tournament.teams,
+    "games" -> tournament.games,
+    "place" -> tournament.place,
+    "date" -> tournament.date
+  )
 
   implicit val tournamentReads: Reads[Tournament] = (
       (JsPath \ "_id").read[String] and
@@ -250,7 +236,7 @@ object HttpRequestHandler {
     requestPOST(Json.stringify(Json.toJson(tournament)), s"http://localhost:3001/tournament/${tournament._id}/update")
   }
 
-  def getTournaments(): Seq[Tournament] = {
+  def getTournaments: Seq[Tournament] = {
     Json.parse(requestGET("http://localhost:3001/tournament")).as[Seq[Tournament]]
   }
 
@@ -259,18 +245,16 @@ object HttpRequestHandler {
   }
 
   /** Games **/
-  implicit val gameWrites: Writes[Game] = new Writes[Game] {
-    override def writes(game: Game): JsValue = Json.obj(
-      "_id" -> game._id,
-      "tourID" -> game.tourID,
-      "team1ID" -> game.team1ID,
-      "team2ID" -> game.team2ID,
-      "result" -> game.result,
-      "date" -> game.date,
-      "refereeID" -> game.refereeID,
-      "scorers" -> game.scorers
-    )
-  }
+  implicit val gameWrites: Writes[Game] = (game: Game) => Json.obj(
+    "_id" -> game._id,
+    "tourID" -> game.tourID,
+    "team1ID" -> game.team1ID,
+    "team2ID" -> game.team2ID,
+    "result" -> game.result,
+    "date" -> game.date,
+    "refereeID" -> game.refereeID,
+    "scorers" -> game.scorers
+  )
 
   implicit val gameReads: Reads[Game] = (
     (JsPath \ "_id").read[String] and
@@ -295,7 +279,7 @@ object HttpRequestHandler {
     requestPOST(Json.stringify(Json.toJson(game)), s"http://localhost:3001/game/${game._id}/update")
   }
 
-  def getGames(): Seq[Game] = {
+  def getGames: Seq[Game] = {
     Json.parse(requestGET("http://localhost:3001/game")).as[Seq[Game]]
   }
 
@@ -305,15 +289,13 @@ object HttpRequestHandler {
 
   /** User **/
 
-  implicit val userWrites: Writes[User] = new Writes[User] {
-    override def writes(user: User): JsValue = Json.obj(
-      "_id" -> user._id,
-      "username" -> user.username,
-      "password" -> user.password,
-      "roles" -> user.roles,
-      "isBanned" -> user.isBanned,
-    )
-  }
+  implicit val userWrites: Writes[User] = (user: User) => Json.obj(
+    "_id" -> user._id,
+    "username" -> user.username,
+    "password" -> user.password,
+    "roles" -> user.roles,
+    "isBanned" -> user.isBanned,
+  )
 
   implicit val userReads: Reads[User] = (
       (JsPath \ "_id").read[String] and
@@ -336,7 +318,7 @@ object HttpRequestHandler {
     requestPOST(Json.stringify(Json.toJson(user)), s"http://localhost:3001/user/${user._id}/update")
   }
 
-  def getUsers(): Seq[User] = {
+  def getUsers: Seq[User] = {
     Json.parse(requestGET("http://localhost:3001/user")).as[Seq[User]]
   }
 

@@ -17,10 +17,10 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
     def teams(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
         val usernameOption = request.session.get("username")
         usernameOption.map { username =>
-            val teams = Http.HttpRequestHandler.getTeams()
-            val availableCoaches = Http.HttpRequestHandler.getCoaches().filter(el => !teams.exists(t => t._id == el.teamID))
-            val players = Http.HttpRequestHandler.getPlayers().filter(el => !teams.exists(t => t._id == el.teamId))
-            val coaches = Http.HttpRequestHandler.getCoaches()
+            val teams = Http.HttpRequestHandler.getTeams
+            val availableCoaches = Http.HttpRequestHandler.getCoaches.filter(el => !teams.exists(t => t._id == el.teamID))
+            val players = Http.HttpRequestHandler.getPlayers.filter(el => !teams.exists(t => t._id == el.teamId))
+            val coaches = Http.HttpRequestHandler.getCoaches
             Ok(views.html.teams("addTeam")(views.html.addTeam(teamForm)(players)(availableCoaches))(teams)(coaches))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
     }
@@ -32,7 +32,7 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
             },
             data =>{
                 Http.HttpRequestHandler.insertTeam(Team("", data.name, data.coach, data.players, Seq.empty))
-                val team = Http.HttpRequestHandler.getTeams().findLast(el => el._id.nonEmpty).get
+                val team = Http.HttpRequestHandler.getTeams.findLast(el => el._id.nonEmpty).get
                 val hello = Http.HttpRequestHandler.getCoach(data.coach)
                 hello.teamID = team._id
                 Http.HttpRequestHandler.updateCoach(hello)

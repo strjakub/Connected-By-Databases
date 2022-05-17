@@ -1,12 +1,12 @@
 const express = require("express");
-var crypto = require('crypto');
+const crypto = require('crypto');
 const mongoose = require("mongoose");
 const Coach = require("./model/coach");
 const Game = require("./model/game");
 const Player = require("./model/player");
 const Referee = require("./model/referee");
 const Team = require("./model/team");
-const Test = require("./model/test");
+// const Test = require("./model/test");
 const Tournament = require("./model/tournament");
 const User = require("./model/user");
 const {mongo} = require("mongoose");
@@ -25,8 +25,7 @@ mongoose.connect(uri, {
     useUnifiedTopology: true,
 });
 
-const connection = mongoose.connection;
-connection.once("open", () => {
+mongoose.connection.once("open", () => {
     console.log("Mongo Database in Atlas Cluster connected succesfully.");
 });
 
@@ -151,18 +150,18 @@ app.delete("/team/:id", async (req, res) => {
 
 app.post("/game", async (req, res) => {
     try{
-        const tab = new Array;
+        const tab = [];
         req.body.scorers.forEach(element => {
             tab.push(mongoose.Types.ObjectId(element));
         });
 
-        // console.log("req.body: ", req.body);
+        console.log("req.body: ", req.body);
         const newGame = new Game({
             team1ID: mongoose.Types.ObjectId(req.body.team1ID),
             team2ID: mongoose.Types.ObjectId(req.body.team2ID),
             result: req.body.result,
             date: new Date(req.body.date),
-            refereeID: mongoose.Types.ObjectId(req.body.refereeID),
+            refereeID: mongoose.Types.ObjectId("00000000000000000000"),
             scorers: tab,
         });
 
@@ -448,7 +447,7 @@ app.post("/coach/:id/update", async (req, res) => {
 });
 
 app.post("/game/:id/update", async (req, res) => {
-    const tab = new Array;
+    const tab = [];
     req.body.scorers.forEach(element => {
         tab.push(mongoose.Types.ObjectId(element));
     });
@@ -473,7 +472,7 @@ app.post("/player/:id/update", async (req, res) => {
             name: req.body.name,
             surname: req.body.surname,
             dateOfBirth: new Date(req.body.dateOfBirth),
-            apperances: req.body.apperances,
+            appearances: req.body.appearances,
             goals: req.body.goals},
         (err, result) => {
             console.log("updated");
@@ -494,7 +493,7 @@ app.post("/referee/:id/update", async (req, res) => {
 });
 
 app.post("/team/:id/update", async (req, res) => {
-    const tab = new Array;
+    const tab = [];
     req.body.players.forEach(element => {
         tab.push(mongoose.Types.ObjectId(element));
     });
@@ -510,11 +509,11 @@ app.post("/team/:id/update", async (req, res) => {
 });
 
 app.post("/tournament/:id/update", async (req, res) => {
-    const tab1 = new Array;
+    const tab1 = [];
     req.body.teams.forEach(element => {
         tab1.push(mongoose.Types.ObjectId(element));
     });
-    const tab2 = new Array;
+    const tab2 = [];
     req.body.games.forEach(element => {
         tab2.push(mongoose.Types.ObjectId(element));
     });

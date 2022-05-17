@@ -23,7 +23,7 @@ const playerSchema = new Schema({
         required: true,
         unique: false
     },
-    apperances:{
+    appearances:{
         type: Number,
         required: true,
         unique: false

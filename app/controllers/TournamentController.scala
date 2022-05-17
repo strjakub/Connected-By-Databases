@@ -19,7 +19,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
         "teams" -> seq(text))(tourData.apply)(tourData.unapply)
     )
     val gameForm: Form[gameData] = Form(mapping(
-            "tourID" -> text,
+        "tourID" -> text,
         "_id" -> text,
         "result" -> text, "date" -> localDateTime,
         "refereeID" -> text, "scorers" -> seq(text)
@@ -28,10 +28,10 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
     def tournaments(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
         val usernameOption = request.session.get("username")
         usernameOption.map { username =>
-            val tournaments = Http.HttpRequestHandler.getTournaments()
-            val teams = Http.HttpRequestHandler.getTeams()
-            val refs = Http.HttpRequestHandler.getReferees()
-            val games = Http.HttpRequestHandler.getGames()
+            val tournaments = Http.HttpRequestHandler.getTournaments
+            val teams = Http.HttpRequestHandler.getTeams
+            val refs = Http.HttpRequestHandler.getReferees
+            val games = Http.HttpRequestHandler.getGames
             Ok(views.html.tournaments("addTournament")
             (views.html.addTournament(tournamentForm)(teams),
                 views.html.addGame(gameForm)(tournaments)(games)(teams)(refs))(tournaments))
@@ -45,11 +45,12 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             },
             data =>{
                 Http.HttpRequestHandler.insertTournament(Tournament("", data.name,data.place, data.date, data.teams,Seq.empty))
-                val tour = Http.HttpRequestHandler.getTournaments().findLast(el => el._id.nonEmpty).get
-                val localDateTime = LocalDateTime.ofInstant(data.date.toInstant(), ZoneId.systemDefault())
+                val tour = Http.HttpRequestHandler.getTournaments.findLast(el => el._id.nonEmpty).get
+                val localDateTime = LocalDateTime.ofInstant(data.date.toInstant, ZoneId.systemDefault())
                 for(id <- data.teams){
                     val team = Http.HttpRequestHandler.getTeam(id)
                     team.tournaments = team.tournaments :+ tour._id
+                    println(team.tournaments)
                     Http.HttpRequestHandler.updateTeam(team)
                 }
                 for {(x, idxX) <- data.teams.zipWithIndex
