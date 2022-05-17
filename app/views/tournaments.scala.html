@@ -1,4 +1,4 @@
-@(title:String)(siema : Html, game:Html)(tours:Seq[Tournament])(implicit request : RequestHeader, flash: Flash)
+@(title:String)(siema : Html, game:Html)(tours:Seq[Tournament])(teams:Seq[Team])(games:Seq[Game])
 
 @main("Tournaments") {
   @defining(play.core.PlayVersion.current) { version =>
@@ -12,7 +12,7 @@
                   <th>Miejsce</th>
                   <th>Data</th>
               </thead>
-              @for((tour,i) <- tours.zipWithIndex){
+              @for(tour <- tours){
                   <tr>
                       <td>@tour.name</td>
                       <td>@tour.place</td>
@@ -25,6 +25,12 @@
                           </form>
                       </td>
                   </tr>
+                  <!-- @for(game <- tour.games){ -->
+                      <!-- <tr>
+                          @teams.find(el => el._id == game).get.name
+                          @games.find()
+                      </tr>
+                  } -->
               }
               </table>
           <div class="form">

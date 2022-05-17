@@ -32,9 +32,10 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             val teams = Http.HttpRequestHandler.getTeams
             val refs = Http.HttpRequestHandler.getReferees
             val games = Http.HttpRequestHandler.getGames
+            val players = Http.HttpRequestHandler.getPlayers
             Ok(views.html.tournaments("addTournament")
             (views.html.addTournament(tournamentForm)(teams),
-                views.html.addGame(gameForm)(tournaments)(games)(teams)(refs))(tournaments))
+                views.html.addGame(gameForm)(tournaments.last)(games)(teams)(refs)(players))(tournaments))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
     }
     def addTournament(): Action[AnyContent] = Action { implicit request =>
@@ -45,7 +46,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             },
             data =>{
                 Http.HttpRequestHandler.insertTournament(Tournament("", data.name,data.place, data.date, data.teams,Seq.empty))
-                val tour = Http.HttpRequestHandler.getTournaments.findLast(el => el._id.nonEmpty).get
+                val tour = Http.HttpRequestHandler.getTournaments.last
                 val localDateTime = LocalDateTime.ofInstant(data.date.toInstant, ZoneId.systemDefault())
                 for(id <- data.teams){
                     val team = Http.HttpRequestHandler.getTeam(id)
@@ -57,14 +58,15 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
                      (y, idxY) <- data.teams.zipWithIndex
                      if idxX < idxY
                      } {
-                    Http.HttpRequestHandler.insertGame(Game("",tour._id,x,y,"---",localDateTime,"000000000000000000000000",Seq.empty))
+                    Http.HttpRequestHandler.insertGame(Game("",tour._id,x,y,"",localDateTime,"000000000000000000000000",Seq.empty))
+                    tour.games = tour.games :+ Http.HttpRequestHandler.getGames.last._id
                 }
                 Http.HttpRequestHandler.updateTournament(tour)
                 Redirect(routes.TournamentController.tournaments())
             }
         )
     }
-    def addGame(): Action[AnyContent] = Action { implicit request =>
+    def fillGame(): Action[AnyContent] = Action { implicit request =>
         gameForm.bindFromRequest().fold(
             formWithErrors => {
                 println(formWithErrors.errors)
@@ -73,6 +75,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             data =>{
                 val game = Http.HttpRequestHandler.getGame(data._id)
                 game.result = data.result
+                game.date = data.date
                 game.refereeID = data.refereeID
                 game.scorers = game.scorers
                 Http.HttpRequestHandler.updateGame(game)

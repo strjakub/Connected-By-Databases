@@ -23,7 +23,7 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
     def players(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
         val usernameOption = request.session.get("username")
         usernameOption.map { username =>
-          val temp : Seq[Player] = Http.HttpRequestHandler.getPlayers
+            val temp : Seq[Player] = Http.HttpRequestHandler.getPlayers
             val team : Seq[Team] = Http.HttpRequestHandler.getTeams
         Ok(views.html.players("addPlayer")(views.html.addPlayer(playerForm)(team))(temp)(team))
         }.getOrElse(Redirect(routes.AuthUserController.login()))

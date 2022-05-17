@@ -1,29 +1,28 @@
-@(gameForm: Form[gameData])(tours:Seq[Tournament])(games:Seq[Game])(teams:Seq[Team])(refs:Seq[Referee])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@(gameForm: Form[gameData])(tour:Tournament)(games:Seq[Game])(teams:Seq[Team])(refs:Seq[Referee])(players:Seq[Player])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @defining(play.core.PlayVersion.current) { version =>
     <body>
-        @helper.form(action = routes.TournamentController.addGame(),Symbol("class") -> "forms") {
+        @helper.form(action = routes.TournamentController.fillGame(),Symbol("class") -> "forms") {
             @helper.CSRF.formField
             <label>
-                Tournament<select name="tourID">
-                @for((tour,i) <- tours.zipWithIndex){
-                    <option value="@tour._id">@tour.name</option>
-                }
-                </select>
-            </label>
-            <label>Game<select name="_id">
-                @for((game,i) <- games.zipWithIndex){
+                Game<select name="_id" >
+                @for((game,i) <- games.filter(el => el.tourID == tour._id).zipWithIndex){
                     <option value="@game._id">
                         @teams.find(el => el._id == game.team1ID).get.name
                         @game.result
                         @teams.find(el => el._id == game.team2ID ).get.name
                     </option>
                 }
-            </select>
+                </select>
             </label>
-            <label>
-                Date and Time of Game
-                <input name="date" type="datetime-local">
-            </label>
+            <div class="playerStats">
+                <label>
+                    Date and Time of Game
+                    <input name="date" type="datetime-local">
+                </label>
+                <label>
+                    Wynik<input type="text" name="result">
+                </label>
+            </div>
             <div class="playerStats">
                 <label>
                     Referee <select name="refereeID">
@@ -32,6 +31,15 @@
                                 @ref.name @ref.surname
                             </option>
                         }
+                    </select>
+                </label>
+                <label>
+                    Scorers <select name="scorers[]" multiple>
+                    @for((player,i) <- players.filter(el => tour.teams.contains(el.teamId)).zipWithIndex){
+                        <option value="@player._id">
+                            @player.name @player.surname
+                        </option>
+                    }
                     </select>
                 </label>
             </div>
