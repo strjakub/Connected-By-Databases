@@ -13,7 +13,7 @@
                 Data <input name="date" type="date">
             </label>
             <label class="formLabel">
-                Teams<select name="teams[]" multiple>
+                Teams<select name="teams[]" multiple size="8">
                     @for((team,i) <- teams.zipWithIndex){
                         <option value="@team._id">@team.name</option>
                     }

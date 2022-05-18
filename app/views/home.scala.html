@@ -1,13 +1,38 @@
-@()
+@()(players:Seq[Player])(teams:Seq[Team])(games:Seq[Game])
 
 @main("Home page") {
   @defining(play.core.PlayVersion.current) { version =>
     <div class="wrapper doc">
-      <article>
-        <p>
-          HOME CONTENT HERE
-        </p>
-      </article>
+      <section id="bestScorers">
+        <h1>Top 5 najlepszych strzelców</h1>
+        <table>
+          @for(player <- players){
+            <tr>
+              <td>@player.getData()</td>
+              <td>
+                @if(player.teamID == "000000000000000000000000"){
+                  Wolny zawodnik
+                }else{
+                  @teams.find(el => el._id == player.teamID).get.name
+                }
+              </td>
+              <td>@player.goals</td>
+            </tr>
+            }
+        </table>
+      </section>
+      <section id="latestTours">
+        <h1>Najbliższe mecze</h1>
+        <table>
+        @for(game <- games){
+          <tr>
+            <td>@teams.find(el => el._id == game.team1ID).get.name</td>
+            <td>@teams.find(el => el._id == game.team2ID).get.name</td>
+            <td>@game.date.format("yyyy-MM-dd HH:mm")</td>
+          </tr>
+        }
+        </table>
+      </section>
     </div>
   }
 }

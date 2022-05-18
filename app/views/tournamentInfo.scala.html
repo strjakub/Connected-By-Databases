@@ -33,7 +33,7 @@
                 </label>
                 <label class="formLabel">
                     Scorers <select name="scorers[]" multiple>
-                @for(player <- players.filter(el => tour.teams.contains(el.teamId)).sortBy(el => el.surname)){
+                @for(player <- players.filter(el => tour.teams.contains(el.teamID)).sortBy(el => el.surname)){
                     <option value="@player._id">@player.name @player.surname</option>
                 }
                 </select>
@@ -64,7 +64,7 @@
                     <td>@game.date.format("yyyy-MM-dd HH:mm")</td>
                     <td>
                         @for((scorer, i) <- game.scorers.zipWithIndex){
-                            <li> @(i + 1). @players.find(el => el._id == scorer).get.getData() </li>
+                            <li> @(i + 1) @players.find(el => el._id == scorer).get.getData() </li>
                         }
                     </td>
                 </tr>

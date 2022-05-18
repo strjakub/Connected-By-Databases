@@ -19,7 +19,7 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
         usernameOption.map { username =>
             val teams = Http.HttpRequestHandler.getTeams
             val availableCoaches = Http.HttpRequestHandler.getCoaches.filter(el => !teams.exists(t => t._id == el.teamID))
-            val players = Http.HttpRequestHandler.getPlayers.filter(el => !teams.exists(t => t._id == el.teamId))
+            val players = Http.HttpRequestHandler.getPlayers.filter(el => !teams.exists(t => t._id == el.teamID))
             val coaches = Http.HttpRequestHandler.getCoaches
             Ok(views.html.teams("addTeam")(views.html.addTeam(teamForm)(players)(availableCoaches))(teams)(coaches))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
@@ -38,7 +38,7 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
                 Http.HttpRequestHandler.updateCoach(coach)
                 for(id <- data.players){
                     val player = Http.HttpRequestHandler.getPlayer(id)
-                    player.teamId = team._id
+                    player.teamID = team._id
                     Http.HttpRequestHandler.updatePlayer(player)
                 }
                 Redirect(routes.TeamController.teams())
@@ -54,7 +54,7 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
                 val index = args("index").head
                 val team = Http.HttpRequestHandler.getTeam(index)
                 val tournaments = Http.HttpRequestHandler.getTournaments.filter(el => el.teams.contains(index))
-                val players = Http.HttpRequestHandler.getPlayers.filter(el => el.teamId == index)
+                val players = Http.HttpRequestHandler.getPlayers.filter(el => el.teamID == index)
                 for(tour <- tournaments){
                     var gamesToRemove:Seq[String] = Seq.empty
                     for(gameID <- tour.games){
@@ -68,7 +68,7 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
                     Http.HttpRequestHandler.updateTournament(tour)
                 }
                 for(player <- players){
-                    player.teamId = "000000000000000000000000"
+                    player.teamID = "000000000000000000000000"
                     Http.HttpRequestHandler.updatePlayer(player)
                 }
                 val coaches = Http.HttpRequestHandler.getCoaches.filter(el => el.teamID == index)

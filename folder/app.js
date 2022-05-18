@@ -52,7 +52,7 @@ app.post("/player", async (req, res) => {
     try{
         // console.log("req.body: ", req.body);
         const newPlayer = new Player({
-            teamId: mongoose.Types.ObjectId(req.body.teamId),
+            teamID: mongoose.Types.ObjectId(req.body.teamID),
             name: req.body.name,
             surname: req.body.surname,
             dateOfBirth: new Date(req.body.dateOfBirth),

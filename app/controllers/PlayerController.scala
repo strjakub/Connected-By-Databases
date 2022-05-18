@@ -10,14 +10,14 @@ import play.api.mvc._
 
 import java.util.Date
 
-case class playerData (name:String, surname:String, dateOfBirth:Date, goals:Int, appearances:Int,teamId:String )
+case class playerData (name:String, surname:String, dateOfBirth:Date, goals:Int, appearances:Int,teamID:String )
 
 @Singleton
 class PlayerController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport
 {
     val playerForm: Form[playerData] = Form(mapping( "name" -> text, "surname"  -> text,
             "dateOfBirth" -> date, "goals" -> number(0), "appearances" -> number(0),
-    "teamId" -> text)(playerData.apply)(playerData.unapply)
+    "teamID" -> text)(playerData.apply)(playerData.unapply)
     )
     val logger : Logger = Logger(this.getClass)
     def players(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
@@ -36,7 +36,7 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
             },
             data =>{
                 Http.HttpRequestHandler.insertPlayer(Player("", data.name, data.surname,
-                    dateOfBirth = data.dateOfBirth, goals = data.goals, appearances = data.appearances, teamId = data.teamId))
+                    dateOfBirth = data.dateOfBirth, goals = data.goals, appearances = data.appearances, teamID = data.teamID))
                 Redirect(routes.PlayerController.players())
             }
         )
@@ -48,9 +48,9 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
             postVals.map { args =>
                 val index = args("index").head
                 val player = Http.HttpRequestHandler.getPlayer(index)
-                if(player.teamId != "000000000000000000000000") {
+                if(player.teamID != "000000000000000000000000") {
                     val games = Http.HttpRequestHandler.getGames.filter(el => el.scorers.contains(index))
-                    val team = Http.HttpRequestHandler.getTeam(player.teamId)
+                    val team = Http.HttpRequestHandler.getTeam(player.teamID)
                     for (game <- games) {
                         game.scorers = game.scorers diff Seq(index)
                         Http.HttpRequestHandler.updateGame(game)

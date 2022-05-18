@@ -8,7 +8,6 @@ import play.api.mvc._
 
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.time.LocalDateTime
 case class tourData(name:String, place:String,date:Date,teams:Seq[String])
 
 @Singleton
@@ -23,9 +22,7 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
         usernameOption.map { username =>
             val tournaments = Http.HttpRequestHandler.getTournaments
             val teams = Http.HttpRequestHandler.getTeams
-            val refs = Http.HttpRequestHandler.getReferees
             val games = Http.HttpRequestHandler.getGames
-            val players = Http.HttpRequestHandler.getPlayers
             Ok(views.html.tournaments("addTournament")(views.html.addTournament(tournamentForm)(teams))(tournaments)(teams)(games))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
     }

@@ -17,10 +17,10 @@
                 @for((player,i) <- players.zipWithIndex) {
                     <tr class="singleton">
                         <td>@player.name @player.surname </td>
-                        <td>@if(!teams.exists(el => el._id == player.teamId)){
+                        <td>@if(!teams.exists(el => el._id == player.teamID)){
                             Brak klubu
                         }else{
-                            @teams.find(el => el._id == player.teamId).get.name
+                            @teams.find(el => el._id == player.teamID).get.name
                         }</td>
                         <td>@player.dateOfBirth.format("yyyy-MM-dd")</td>
                         <td>@player.appearances</td>

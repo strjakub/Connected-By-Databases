@@ -12,7 +12,7 @@
                 </select>
             </label>
             <label class="formLabel">
-                Players<select name="players[]" multiple>
+                Players<select name="players[]" multiple size="8">
                 @for((player,i) <- players.zipWithIndex){
                     <option value="@player._id">@player.name @player.surname</option>
                 }

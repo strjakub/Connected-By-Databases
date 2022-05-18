@@ -98,7 +98,7 @@ object HttpRequestHandler {
     "dateOfBirth" -> player.dateOfBirth,
     "goals" -> player.goals,
     "appearances" -> player.appearances,
-    "teamID" -> player.teamId,
+    "teamID" -> player.teamID,
   )
 
   implicit val playerReads: Reads[Player] = (
