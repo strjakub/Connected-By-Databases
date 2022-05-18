@@ -6,9 +6,10 @@ import play.api.data.Forms._
 import javax.inject._
 import play.api.mvc._
 
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.time.LocalDateTime
 case class tourData(name:String, place:String,date:Date,teams:Seq[String])
-case class gameData(_id:String, result:String,date:Date,refereeID:String, scorers:Seq[String])
 
 @Singleton
 class TournamentController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport
@@ -16,12 +17,6 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
     val tournamentForm: Form[tourData] = Form(mapping("name" -> text,
         "place" -> text, "date" -> date,
         "teams" -> seq(text))(tourData.apply)(tourData.unapply)
-    )
-    val gameForm: Form[gameData] = Form(mapping(
-        "_id" -> text,
-        "result" -> text, "date" -> date,
-        "refereeID" -> text, "scorers" -> seq(text)
-        )(gameData.apply)(gameData.unapply)
     )
     def tournaments(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
         val usernameOption = request.session.get("username")
@@ -61,22 +56,34 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
             }
         )
     }
-    def fillGame(): Action[AnyContent] = Action { implicit request =>
-        gameForm.bindFromRequest().fold(
-            formWithErrors => {
-                Redirect(routes.TournamentController.tournaments())
-            },
-            content =>{
-                val game = Http.HttpRequestHandler.getGame(content._id)
-                val tour = Http.HttpRequestHandler.getTournaments.find(el => el.games.contains(content._id))
-                game.result = content.result
-                game.date = content.date
-                game.refereeID = content.refereeID
-                game.scorers = game.scorers
-                Http.HttpRequestHandler.updateGame(game)
-                Redirect(routes.TournamentController.tournaments())
+
+    def fillGame():Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+        val postVals = request.body.asFormUrlEncoded 
+        postVals.map { args =>
+            val game = Http.HttpRequestHandler.getGame(args("_id").head)
+            val tour = Http.HttpRequestHandler.getTournaments.find(el => el.games.contains(args("_id").head))
+
+            val game_id: String = args("_id").head 
+            val game_result: String = args("result").head 
+            val game_Date: String = args("date").head 
+            val game_refereeID: String = args("refereeID").head 
+
+            val game_scorers: Seq[String] = Seq() 
+            if(args.contains("scorers[]")){
+                game_scorers :++ args("scorers[]")
             }
-        )
+            val dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
+            val d: Date = dateFormat.parse(game_Date)
+
+            game.result = game_result
+            game.date = d 
+            game.refereeID = game_refereeID
+            game.scorers = game_scorers
+            
+            Http.HttpRequestHandler.updateGame(game)
+
+            Redirect(routes.TournamentController.show(args("tournamentID").head))
+        }.getOrElse(Redirect(routes.AuthUserController.login()))
     }
 
     def showTournamentPage: Action[AnyContent] = Action { implicit request =>
@@ -96,6 +103,6 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
         val teams = Http.HttpRequestHandler.getTeams
         val players = Http.HttpRequestHandler.getPlayers
         val refs = Http.HttpRequestHandler.getReferees
-        Ok(views.html.tournamentInfo(gameForm)(tournament)(games)(teams)(players)(refs))
+        Ok(views.html.tournamentInfo(tournament)(games)(teams)(players)(refs))
     }
 }

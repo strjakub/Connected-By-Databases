@@ -12,6 +12,8 @@ const User = require("./model/user");
 const {mongo} = require("mongoose");
 require("dotenv").config();
 
+const timeZone = 2;
+
 const app = express();
 app.use(express.json());
 
@@ -155,13 +157,16 @@ app.post("/game", async (req, res) => {
             tab.push(mongoose.Types.ObjectId(element));
         });
 
+        var d = new Date(req.body.date);
+        d.setHours(d.getHours() + timeZone);
+
         console.log("req.body: ", req.body);
         const newGame = new Game({
             tourID: mongoose.Types.ObjectId(req.body.tourID),
             team1ID: mongoose.Types.ObjectId(req.body.team1ID),
             team2ID: mongoose.Types.ObjectId(req.body.team2ID),
             result: req.body.result,
-            date: new Date(req.body.date),
+            date: d,
             refereeID: mongoose.Types.ObjectId(req.body.refereeID),
             scorers: tab,
         });
@@ -175,7 +180,7 @@ app.post("/game", async (req, res) => {
 
 app.get("/game", async (req, res) => {
     Game.find({}, (err, result) => {
-        // console.log("output: ", result);
+        console.log("output: ", result);
         res.send(result);
     })
 });
@@ -453,12 +458,15 @@ app.post("/game/:id/update", async (req, res) => {
         tab.push(mongoose.Types.ObjectId(element));
     });
 
+    var d = new Date(req.body.date);
+    d.setHours(d.getHours() + timeZone);
+
     Game.findOneAndUpdate({_id : req.params.id}, {
             tourID: mongoose.Types.ObjectId(req.body.tourID),
             team1ID: mongoose.Types.ObjectId(req.body.team1ID),
             team2ID: mongoose.Types.ObjectId(req.body.team2ID),
             result: req.body.result,
-            date: new Date(req.body.date),
+            date: d,
             refereeID: mongoose.Types.ObjectId(req.body.refereeID),
             scorers: tab},
         (err, result) => {

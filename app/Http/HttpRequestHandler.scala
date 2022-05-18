@@ -5,6 +5,7 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, Json, Reads, Writes}
 import scalaj.http.{Http, HttpResponse}
 import java.util.Date
+import java.text.SimpleDateFormat
 
 object HttpRequestHandler {
 
@@ -277,13 +278,43 @@ object HttpRequestHandler {
   def updateGame(game: Game): Unit = {
     requestPOST(Json.stringify(Json.toJson(game)), s"http://localhost:3001/game/${game._id}/update")
   }
+  
+  case class GameTest(_id:String, 
+  tourID: String, 
+  team1ID : String, 
+  team2ID : String, 
+  var result : String,
+  var date : String, 
+  var refereeID  : String, 
+  var scorers: Seq[String])
+
+    implicit val gameTestReads: Reads[GameTest] = (
+      (JsPath \ "_id").read[String] and
+        (JsPath \ "tourID").read[String] and
+        (JsPath \ "team1ID").read[String] and
+        (JsPath \ "team2ID").read[String] and
+        (JsPath \ "result").read[String] and
+        (JsPath \ "date").read[String] and
+        (JsPath \ "refereeID").read[String] and
+        (JsPath \ "scorers").read[Seq[String]]
+      )(GameTest.apply _)
 
   def getGames: Seq[Game] = {
-    Json.parse(requestGET("http://localhost:3001/game")).as[Seq[Game]]
+    val gamesWithStringDate: Seq[GameTest] = Json.parse(requestGET("http://localhost:3001/game")).as[Seq[GameTest]]
+    val gamesWithDateDate: Seq[Game] = Json.parse(requestGET("http://localhost:3001/game")).as[Seq[Game]]
+
+    val pattern: String = "yyyy-MM-dd'T'HH:mm"
+    val simpleDateFormat: SimpleDateFormat = new SimpleDateFormat(pattern);
+
+    for(i <- 0 until gamesWithStringDate.length) {
+      gamesWithDateDate(i).date = simpleDateFormat.parse(gamesWithStringDate(i).date)
+    }
+    gamesWithDateDate
   }
 
   def getGame(id: String): Game = {
     Json.parse(requestGET(s"http://localhost:3001/game/$id")).as[Game]
+    
   }
 
   /** User **/
