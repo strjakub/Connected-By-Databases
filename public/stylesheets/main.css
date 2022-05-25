@@ -22,6 +22,7 @@ li {
 }
 /* NAVBAR STYLING STARTS */
 .navbar {
+ width:100%;
  display: flex;
  align-items: center;
  justify-content: space-between;
@@ -88,6 +89,7 @@ input[type=checkbox]{
  }
 }
 header {
+ width:100%;
  position: -webkit-sticky; /* Safari */
  position: sticky;
  top:0;
@@ -235,4 +237,8 @@ select{
 }
 td ,th{
  padding: 20px;
+}
+#formsPlayers{
+ display: flex;
+ flex-direction: column;
 }

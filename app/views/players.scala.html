@@ -2,10 +2,14 @@
 @main("Players") {
     @defining(play.core.PlayVersion.current) { version =>
         <div class="wrapper doc">
-            <div class="form">
-                @siema
+            <div class="formsPlayers">
+                <div class="form">
+                    @siema
+                </div>
+                <div class = "form">
+                    @elo
+                </div>
             </div>
-
             <table class="view">
                 <thead class="singleton">
                     <th>Imię i nazwisko</th>
@@ -42,9 +46,6 @@
                     </tr>
                 }
             </table>
-            <div class = "form">
-                @elo
-            </div>
         </div>
     }
 }

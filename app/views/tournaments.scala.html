@@ -1,10 +1,13 @@
-@(title:String)(siema : Html)(tours:Seq[Tournament])(teams:Seq[Team])(games:Seq[Game])(implicit request : RequestHeader)
+@(title:String)(siema : Html)(elo: Html)(tours:Seq[Tournament])(teams:Seq[Team])(games:Seq[Game])(implicit request : RequestHeader)
 
 @main("Tournaments") {
   @defining(play.core.PlayVersion.current) { version =>
       <div class="wrapper doc">
           <div class="form">
               @siema
+          </div>
+          <div class="form">
+            @elo
           </div>
           <table class="view">
               <thead class="singleton">
@@ -22,6 +25,13 @@
                               @helper.CSRF.formField
                               <input type="hidden" name="index" value="@tour._id">
                               <input type="submit" value="show">
+                          </form>
+                      </td>
+                      <td>
+                          <form method="post" action="@routes.TournamentController.editTournament()">
+                              @helper.CSRF.formField
+                              <input type="hidden" name="index" value="@tour._id">
+                              <input type="submit" value="Edit">
                           </form>
                       </td>
                   </tr>

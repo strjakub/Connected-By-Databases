@@ -16,12 +16,14 @@ GET     /panel                              controllers.UserPanelController.pane
 GET    /addPlayer                           controllers.PlayerController.addPlayer()
 GET    /addTeam                             controllers.TeamController.addTeam()
 GET    /addTournament                       controllers.TournamentController.addTournament()
+POST    /editTournament                     controllers.TournamentController.editTournament()
+POST    /editT                              controllers.TournamentController.edit()
 POST    /addGame                            controllers.TournamentController.fillGame()
 POST    /showTournamentPage                 controllers.TournamentController.showTournamentPage()
 POST    /deleteTeam                         controllers.TeamController.deleteTeam()
 POST    /deletePlayer                       controllers.PlayerController.deletePlayer()
 POST    /editPlayer                         controllers.PlayerController.editPlayer()
-POST    /edit                               controllers.PlayerController.edit()
+POST    /editP                              controllers.PlayerController.edit()
 GET   /tournament/:id                       controllers.TournamentController.show(id: String)
 
 # Map static resources from the /public folder to the /assets URL path

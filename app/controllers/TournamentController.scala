@@ -8,22 +8,33 @@ import play.api.mvc._
 
 import java.text.SimpleDateFormat
 import java.util.Date
+
 case class tourData(name:String, place:String,date:Date,teams:Seq[String])
+case class tourToEditData(_id: String, name:String, place:String, date: Option[Date])
 
 @Singleton
 class TournamentController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport
 {
     val tournamentForm: Form[tourData] = Form(mapping("name" -> text,
         "place" -> text, "date" -> date,
-        "teams" -> seq(text))(tourData.apply)(tourData.unapply)
-    )
+        "teams" -> seq(text))
+        (tourData.apply)(tourData.unapply))
+
+    val tournamentEditForm: Form[tourToEditData] = Form(mapping("_id" -> text, "name" -> text,
+        "place" -> text, "date" -> optional(date))
+        (tourToEditData.apply)(tourToEditData.unapply))
+
+    var wantToEdit: Boolean = false;
+    var tournamentToEdit: Option[Tournament] = None
+
     def tournaments(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
         val usernameOption = request.session.get("username")
         usernameOption.map { username =>
             val tournaments = Http.HttpRequestHandler.getTournaments
             val teams = Http.HttpRequestHandler.getTeams
             val games = Http.HttpRequestHandler.getGames
-            Ok(views.html.tournaments("addTournament")(views.html.addTournament(tournamentForm)(teams))(tournaments)(teams)(games))
+            wantToEdit = false
+            Ok(views.html.tournaments("addTournament")(views.html.addTournament(tournamentForm)(teams))(views.html.empty())(tournaments)(teams)(games))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
     }
     def addTournament(): Action[AnyContent] = Action { implicit request =>
@@ -38,7 +49,6 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
                 for(id <- data.teams){
                     val team = Http.HttpRequestHandler.getTeam(id)
                     team.tournaments = team.tournaments :+ tour._id
-                    println(team.tournaments)
                     Http.HttpRequestHandler.updateTeam(team)
                 }
                 for {(x, idxX) <- data.teams.zipWithIndex
@@ -101,5 +111,43 @@ class TournamentController @Inject()(cc: ControllerComponents) extends AbstractC
         val players = Http.HttpRequestHandler.getPlayers
         val refs = Http.HttpRequestHandler.getReferees
         Ok(views.html.tournamentInfo(tournament)(games)(teams)(players)(refs))
+    }
+
+
+    def editTournament(): Action[AnyContent] = Action { implicit request =>
+        val usernameOption = request.session.get("username")
+        usernameOption.map { username =>
+            val postVals = request.body.asFormUrlEncoded
+            postVals.map { args =>
+                val index = args("index").head
+                val tournament = Http.HttpRequestHandler.getTournament(index)
+                tournamentToEdit = Some(tournament)
+                wantToEdit = true;
+                val tournaments = Http.HttpRequestHandler.getTournaments
+                val teams = Http.HttpRequestHandler.getTeams
+                val games = Http.HttpRequestHandler.getGames
+                Ok(views.html.tournaments("addTournament")(views.html.addTournament(tournamentForm)(teams))(views.html.editTournament(tournamentEditForm)(tournamentToEdit)(wantToEdit))(tournaments)(teams)(games))
+            }.getOrElse(Redirect(routes.TournamentController.tournaments()))
+        }.getOrElse(Redirect(routes.AuthUserController.login()))
+    }
+
+    def edit(): Action[AnyContent] = Action { implicit request =>
+        tournamentEditForm.bindFromRequest().fold(
+            formWithErrors => {
+                println(formWithErrors.errors)
+                Redirect(routes.TournamentController.tournaments())
+            },
+            data =>{
+                val tournamentToUpdate: Tournament = Http.HttpRequestHandler.getTournament(data._id)
+                tournamentToUpdate.name = data.name
+                tournamentToUpdate.place = data.place
+                data.date match {
+                    case Some(d) => tournamentToUpdate.date = d
+                    case None =>
+                }
+                Http.HttpRequestHandler.updateTournament(tournamentToUpdate)
+                Redirect(routes.TournamentController.tournaments())
+            }
+        )
     }
 }

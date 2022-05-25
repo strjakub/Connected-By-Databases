@@ -532,12 +532,15 @@ app.post("/tournament/:id/update", async (req, res) => {
         tab2.push(mongoose.Types.ObjectId(element));
     });
 
+    var d = new Date(req.body.date);
+    d.setHours(d.getHours() + timeZone);
+
     Tournament.findOneAndUpdate({_id : req.params.id}, {
             name: req.body.name,
             teams: tab1,
             games: tab2,
             place: req.body.place,
-            date: new Date(req.body.date)},
+            date: d},
         (err, result) => {
             console.log("updated");
             res.send("updated");
