@@ -17,11 +17,4 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
       Ok(views.html.home()(players)(teams)(games))
     }.getOrElse(Redirect(routes.AuthUserController.login()))
   }
-
-  def panel(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
-    val usernameOption = request.session.get("username")
-    usernameOption.map { username =>
-      Ok(views.html.panel())
-    }.getOrElse(Redirect(routes.AuthUserController.login()))
-  }
 }

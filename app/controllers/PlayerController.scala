@@ -11,6 +11,7 @@ import play.api.mvc._
 import java.util.Date
 
 case class playerData (name:String, surname:String, dateOfBirth:Date, goals:Int, appearances:Int,teamID:String )
+case class playerToEditData (_id: String, name:String, surname:String, goals:Int, appearances:Int,teamID:String )
 
 @Singleton
 class PlayerController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport
@@ -19,15 +20,28 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
             "dateOfBirth" -> date, "goals" -> number(0), "appearances" -> number(0),
     "teamID" -> text)(playerData.apply)(playerData.unapply)
     )
+
+    val playerToEditForm: Form[playerToEditData] = Form(mapping( "_id" -> text ,"name" -> text, "surname"  -> text,
+         "goals" -> number(0), "appearances" -> number(0),
+        "teamID" -> text)(playerToEditData.apply)(playerToEditData.unapply)
+    )
+
+    var playerToEdit: Option[Player] = None
+
     val logger : Logger = Logger(this.getClass)
+
+    var wantToEdit: Boolean = false;
+
     def players(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
         val usernameOption = request.session.get("username")
         usernameOption.map { username =>
             val temp : Seq[Player] = Http.HttpRequestHandler.getPlayers
             val team : Seq[Team] = Http.HttpRequestHandler.getTeams
-        Ok(views.html.players("addPlayer")(views.html.addPlayer(playerForm)(team))(temp)(team))
+            wantToEdit = false;
+            Ok(views.html.players("addPlayer")(views.html.addPlayer(playerForm)(team))(views.html.empty())(temp)(team))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
     }
+
     def addPlayer(): Action[AnyContent] = Action { implicit request =>
         playerForm.bindFromRequest().fold(
             formWithErrors => {
@@ -41,6 +55,7 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
             }
         )
     }
+
     def deletePlayer(): Action[AnyContent] = Action { implicit request =>
         val usernameOption = request.session.get("username")
         usernameOption.map { username =>
@@ -62,5 +77,40 @@ class PlayerController @Inject()(cc: ControllerComponents) extends AbstractContr
                 Redirect(routes.PlayerController.players())
             }.getOrElse(Redirect(routes.PlayerController.players()))
         }.getOrElse(Redirect(routes.AuthUserController.login()))
+    }
+
+    def editPlayer(): Action[AnyContent] = Action { implicit request =>
+        val usernameOption = request.session.get("username")
+        usernameOption.map { username =>
+            val postVals = request.body.asFormUrlEncoded
+            postVals.map { args =>
+                val index = args("index").head
+                val player = Http.HttpRequestHandler.getPlayer(index)
+                playerToEdit = Some(player)
+                wantToEdit = true;
+                val temp : Seq[Player] = Http.HttpRequestHandler.getPlayers
+                val team : Seq[Team] = Http.HttpRequestHandler.getTeams
+                Ok(views.html.players("addPlayer")(views.html.addPlayer(playerForm)(team))(views.html.editPlayer(playerToEditForm)(playerToEdit)(wantToEdit)(team))(temp)(team))
+            }.getOrElse(Redirect(routes.PlayerController.players()))
+        }.getOrElse(Redirect(routes.AuthUserController.login()))
+    }
+
+    def edit(): Action[AnyContent] = Action { implicit request =>
+        playerToEditForm.bindFromRequest().fold(
+            formWithErrors => {
+                println(formWithErrors.errors)
+                Redirect(routes.PlayerController.players())
+            },
+            data =>{
+                val playerToUpdate: Player = Http.HttpRequestHandler.getPlayer(data._id)
+                playerToUpdate.name = data.name
+                playerToUpdate.surname = data.surname
+                playerToUpdate.teamID = data.teamID
+                playerToUpdate.goals = data.goals
+                playerToUpdate.appearances = data.appearances
+                Http.HttpRequestHandler.updatePlayer(playerToUpdate)
+                Redirect(routes.PlayerController.players())
+            }
+        )
     }
 }

@@ -354,6 +354,10 @@ object HttpRequestHandler {
 
   var loggedUser: Option[User] = None
 
+  def getLoggedUser: Option[User] = {
+    loggedUser
+  }
+
   def getUser(username: String, password: String): Boolean = {
     val user: User = Json.parse(requestGET(s"http://localhost:3001/user/$username/$password")).as[User]
     if(user._id == "000000000000000000000000"){

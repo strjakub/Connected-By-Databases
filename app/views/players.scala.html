@@ -1,4 +1,4 @@
-@(title:String)(siema:Html)(players:Seq[Player])(teams:Seq[Team])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@(title:String)(siema: Html)(elo: Html)(players:Seq[Player])(teams:Seq[Team])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @main("Players") {
     @defining(play.core.PlayVersion.current) { version =>
         <div class="wrapper doc">
@@ -32,10 +32,19 @@
                             <input type="submit" value="Delete">
                             </form>
                         </td>
-
+                        <td>
+                            <form method="post" action="@routes.PlayerController.editPlayer()">
+                                @helper.CSRF.formField
+                            <input type="hidden" name="index" value="@player._id">
+                            <input type="submit" value="Edit">
+                            </form>
+                        </td>
                     </tr>
                 }
             </table>
+            <div class = "form">
+                @elo
+            </div>
         </div>
     }
 }
