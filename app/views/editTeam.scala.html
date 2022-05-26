@@ -1,0 +1,42 @@
+@(teamEditForm: Form[teamEditData])(teamToEdit: Option[Team])(playersToRemove: Seq[Player])(playersToAdd: Seq[Player])(coaches: Seq[Coach])(wantToEdit: Boolean)(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@defining(play.core.PlayVersion.current) { version =>
+    <body>
+        @if(wantToEdit){
+            @helper.form(action = routes.TeamController.edit(),Symbol("class") -> "forms") {
+                @helper.CSRF.formField
+                <label class="formLabel"><input type="hidden" name="_id" value="@teamToEdit.get._id"></label>
+                <label class="formLabel">New Name<input type="text" name="name" value="@teamToEdit.get.name"></label>
+                <label class="formLabel">
+                    New coach
+                    <select name="coach">
+                    @for((coach,i) <- coaches.zipWithIndex){
+                        @if(coach._id == teamToEdit.get.coach){
+                            <option value="@coach._id" selected = "selected">@coach.name @coach.surname</option>
+                        } else {
+                            <option value="@coach._id">@coach.name @coach.surname</option>
+                        }
+                    }
+                    </select>
+                </label>
+                <label class="formLabel">
+                    Players to remove
+                    <select name="playersToDelete[]" multiple>
+                        @for((player,i) <- playersToRemove.zipWithIndex){
+                            <option value="@player._id">@player.name @player.surname</option>
+                        }
+                    </select>
+                </label>
+
+                <label class="formLabel">
+                    Players to add
+                    <select name="playersToAdd[]" multiple>
+                        @for((player,i) <- playersToAdd.zipWithIndex){
+                            <option value="@player._id">@player.name @player.surname</option>
+                        }
+                    </select>
+                </label>
+                <button type="submit">Update</button>
+            }
+        }
+    </body>
+}
