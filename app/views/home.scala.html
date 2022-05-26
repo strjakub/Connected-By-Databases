@@ -1,10 +1,15 @@
-@()(players:Seq[Player])(teams:Seq[Team])(games:Seq[Game])
+@(sortScorersForm: Form[sortScorersData])(sortedScorersDefault: Int)(players:Seq[Player])(teams:Seq[Team])(games:Seq[Game])(tournaments: Seq[Tournament])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 
 @main("Home page") {
   @defining(play.core.PlayVersion.current) { version =>
     <div class="wrapper doc">
       <section id="bestScorers">
-        <h1>Top 5 najlepszych strzelców</h1>
+        <h1>Top najlepszych strzelców</h1>
+        @helper.form(action = routes.HomeController.sortScorers(),Symbol("class") -> "forms") {
+          @helper.CSRF.formField
+          <label class="formLabel"> Min number of goals <input type="number" name="value" value="@sortedScorersDefault"></label>
+          <button type="submit">Show</button>
+        }
         <table>
           @for(player <- players){
             <tr>
@@ -21,7 +26,7 @@
             }
         </table>
       </section>
-      <section id="latestTours">
+      <section id="latestGames">
         <h1>Najbliższe mecze</h1>
         <table>
         @for(game <- games){
@@ -29,6 +34,17 @@
             <td>@teams.find(el => el._id == game.team1ID).get.name</td>
             <td>@teams.find(el => el._id == game.team2ID).get.name</td>
             <td>@game.date.format("yyyy-MM-dd HH:mm")</td>
+          </tr>
+        }
+        </table>
+        <hr>
+        <h1>Najbliższe turnieje</h1>
+        <table>
+        @for(tournament <- tournaments){
+          <tr>
+            <td>@tournament.name</td>
+            <td>@tournament.date.format("yyyy-MM-dd")</td>
+            <td>@tournament.place</td>
           </tr>
         }
         </table>

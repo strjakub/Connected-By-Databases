@@ -4,8 +4,9 @@ import models.{Coach, Game, Player, Referee, Team, Tournament, User}
 import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, Json, Reads, Writes}
 import scalaj.http.{Http, HttpResponse}
+
 import java.util.Date
-import java.text.SimpleDateFormat
+import java.text.{DateFormat, SimpleDateFormat}
 
 object HttpRequestHandler {
 
@@ -304,7 +305,7 @@ object HttpRequestHandler {
     val gamesWithDateDate: Seq[Game] = Json.parse(requestGET("http://localhost:3001/game")).as[Seq[Game]]
 
     val pattern: String = "yyyy-MM-dd'T'HH:mm"
-    val simpleDateFormat: SimpleDateFormat = new SimpleDateFormat(pattern);
+    val simpleDateFormat: SimpleDateFormat = new SimpleDateFormat(pattern)
 
     for(i <- 0 until gamesWithStringDate.length) {
       gamesWithDateDate(i).date = simpleDateFormat.parse(gamesWithStringDate(i).date)
@@ -367,6 +368,36 @@ object HttpRequestHandler {
       loggedUser = Some(user)
       true
     }
+  }
+
+  def getPlayersSortedByGoals(minValue: Int): Seq[Player]= {
+    Json.parse(requestGET(s"http://localhost:3001/players/bygoals/$minValue")).as[Seq[Player]]
+  }
+
+  def getIncomingGames(fromDate: Date, toDate: Date): Seq[Game] = {
+    val dateFormat: DateFormat = new SimpleDateFormat("MM-dd-yyyy");
+    val fromDateString: String = dateFormat.format(fromDate);
+    val toDateString: String = dateFormat.format(toDate);
+
+    val gamesWithStringDate: Seq[GameTest] = Json.parse(requestGET(s"http://localhost:3001/games/bydate/$fromDateString/$toDateString")).as[Seq[GameTest]]
+    val gamesWithDateDate: Seq[Game] = Json.parse(requestGET(s"http://localhost:3001/games/bydate/$fromDateString/$toDateString")).as[Seq[Game]]
+
+    val pattern: String = "yyyy-MM-dd'T'HH:mm"
+    val simpleDateFormat: SimpleDateFormat = new SimpleDateFormat(pattern)
+
+    for(i <- 0 until gamesWithStringDate.length) {
+      gamesWithDateDate(i).date = simpleDateFormat.parse(gamesWithStringDate(i).date)
+    }
+    gamesWithDateDate
+  }
+
+
+  def getIncomingTournaments(fromDate: Date, toDate: Date): Seq[Tournament] = {
+    val dateFormat: DateFormat = new SimpleDateFormat("MM-dd-yyyy");
+    val fromDateString: String = dateFormat.format(fromDate);
+    val toDateString: String = dateFormat.format(toDate);
+
+    Json.parse(requestGET(s"http://localhost:3001/tournaments/bydate/$fromDateString/$toDateString")).as[Seq[Tournament]]
   }
 
 }

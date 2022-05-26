@@ -9,6 +9,7 @@ POST    /validatePost                       controllers.AuthUserController.valid
 POST    /createUser                         controllers.AuthUserController.createUser()
 GET     /logout                             controllers.AuthUserController.logout()
 GET     /home                               controllers.HomeController.home()
+POST    /sort                               controllers.HomeController.sortScorers()
 GET     /tournaments                        controllers.TournamentController.tournaments()
 GET     /teams                              controllers.TeamController.teams()
 GET     /players                            controllers.PlayerController.players()
