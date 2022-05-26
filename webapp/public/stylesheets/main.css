@@ -1,0 +1,276 @@
+/* UTILITIES */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+html, body {
+ height: 100%;
+ width: 100%;
+ padding: 0;
+ margin: 0;
+}
+body {
+ display: flex;
+ flex-direction: column;
+}
+a {
+ text-decoration: none;
+}
+li {
+ list-style: none;
+}
+/* NAVBAR STYLING STARTS */
+.navbar {
+ width:100%;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 20px;
+ background-color: darkred;
+ color: #fff;
+}
+.nav-links a {
+ color: #fff;
+}
+/* LOGO */
+.logo {
+ font-size: 32px;
+}
+/* NAVBAR MENU */
+.menu {
+ display: flex;
+ gap: 1em;
+ font-size: 18px;
+}
+.menu li:hover {
+ background-color: #b91414;
+ border-radius: 5px;
+ transition: 0.3s ease;
+}
+.menu li {
+ padding: 5px 14px;
+}
+
+/* CHECKBOX HACK */
+input[type=checkbox]{
+ display: none;
+}
+/*HAMBURGER MENU*/
+.hamburger {
+ display: none;
+ font-size: 24px;
+ user-select: none;
+}
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 900px) {
+ .menu {
+  display:none;
+  position: absolute;
+  background-color: darkred;
+  right: 0;
+  left: 0;
+  text-align: center;
+  padding: 16px 0;
+ }
+ .menu li:hover {
+  display: inline-block;
+  background-color:#b91414;
+  transition: 0.3s ease;
+ }
+ .menu li + li {
+  margin-top: 12px;
+ }
+ input[type=checkbox]:checked ~ .menu{
+  display: block;
+ }
+ .hamburger {
+  display: block;
+ }
+}
+header {
+ width:100%;
+ position: -webkit-sticky; /* Safari */
+ position: sticky;
+ top:0;
+ flex:1;
+}
+article {
+ display: flex;
+ flex-direction: row;
+ gap:10px;
+ flex:10;
+}
+.flash-message{
+ height: 50px;
+ display: flex;
+ align-items: end;
+ justify-content: center;
+ font-size: 15px;
+ font-weight: bold;
+ color: red;
+}
+article section {
+ border-right: none;
+ padding: 20px;
+ flex:10;
+}
+article aside {
+ border-left: 1px solid black;
+ flex:1;
+}
+footer {
+ background-color: darkred;
+ color:white;
+ flex:1;
+
+}
+footer p {
+ padding: 20px;
+}
+.aside-content{
+ height: 100%;
+ padding: 10px;
+ color:white;
+ background-color: #e72929;
+ position: -webkit-sticky; /* Safari */
+ position: sticky;
+}
+.aside-content ul{
+ display: flex;
+ flex-direction: column;
+ row-gap: 10px;
+}
+.aside-content ul li a {
+ padding: 2px;
+ text-decoration: none;
+ color: white;
+}
+.aside-content ul li:hover {
+ display: inline-block;
+ background-color: #b91414;
+ transition: 0.3s ease;
+}
+.wrapper{
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ padding: 0;
+ margin: 0;
+ flex-direction: column;
+ column-gap: 50px;
+}
+#submitButton{
+ width:100%;
+ align-self: center;
+ padding: 3px;
+ background-color: #b91414;
+ border: 1px solid red;
+ color:white;
+}
+.auth-link a{
+ color: blue;
+ font-weight: bold;
+}
+.playerStats{
+ width:100%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-direction: row;
+ column-gap: 10px;
+}
+.teamStats{
+ width:100%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-direction: row;
+ row-gap: 10px;
+}
+.statInput{
+ width:50%;
+}
+select{
+ align-self: flex-end;
+}
+.forms{
+ display: flex;
+ width: min-content;
+ flex-direction: column;
+ row-gap: 10px;
+ justify-content: center;
+ align-items: center;
+}
+#dateTime{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ font-weight: bold;
+ margin:20px
+}
+#tournaments{
+ width: 100%;
+ display: flex;
+}
+.formLabel{
+ display: flex;
+ flex-direction: column;
+}
+.view{
+ font-size: 15px;
+}
+td, th{
+ padding: 10px;
+}
+#formsPlayers{
+ display: flex;
+ flex-direction: column;
+}
+#userInfo{
+ display: flex;
+ flex-direction: column;
+}
+.collection{
+ width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+input[type=submit] {
+ padding: 3px;
+ border-radius: 25%;
+ border: 1px solid black;
+ background-color: #f06657;
+ color: white;
+}
+button{
+  background-color: #ee9a65;
+  border: 1px solid rgb(240, 35, 12);
+  border-radius: 10%;
+  color: white;
+  padding: 2px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.logForm{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ row-gap: 10px;
+}
+.logForm > h3, h4{
+ width: 100%;
+ text-align: left;
+}
+.userRef {
+ display: flex;
+ flex-direction: column;
+ flex:10;
+ justify-content: center;
+ align-items: center;
+}

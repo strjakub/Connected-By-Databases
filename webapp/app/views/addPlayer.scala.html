@@ -1,0 +1,21 @@
+@(playerForm: Form[playerData])(teams:Seq[Team])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@defining(play.core.PlayVersion.current) { version =>
+    <body>
+        @helper.form(action = routes.PlayerController.addPlayer(),Symbol("class") -> "forms") {
+            @helper.CSRF.formField
+            <label class="formLabel">Name<input type="text" name="name"></label>
+            <label class="formLabel">Surname<input type="text" name="surname"></label>
+            <label class="formLabel">Date of birth<input type="date" name="dateOfBirth"></label>
+            <label class="formLabel">Team<select name="teamID">
+                @for((team,i) <- teams.zipWithIndex){
+                    <option value="@team._id">@team.name</option>
+                }
+            </select> </label>
+            <div class="playerStats">
+                <label class="statInput">Goals<input type="number" name="goals" size="3"></label>
+                <label class="statInput">Appearances<input type="number" name="appearances" size="3"></label>
+            </div>
+            <button type="submit">Add player</button>
+        }
+    </body>
+}

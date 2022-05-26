@@ -1,0 +1,49 @@
+@(title:String)(siema: Html)(elo: Html)(players:Seq[Player])(teams:Seq[Team])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@main("Players") {
+    @defining(play.core.PlayVersion.current) { version =>
+        <div class="collection">
+            <div class="form">
+                @siema
+            </div>
+            <table class="view">
+                <tr class="singleton">
+                    <th>Name and surname</th>
+                    <th>Team</th>
+                    <th>Date of birth</th>
+                    <th>Appearances</th>
+                    <th>Goals</th>
+                </tr>
+                @for((player,i) <- players.zipWithIndex) {
+                    <tr class="singleton">
+                        <td>@player.name @player.surname </td>
+                        <td>@if(!teams.exists(el => el._id == player.teamID)){
+                            Brak klubu
+                        }else{
+                            @teams.find(el => el._id == player.teamID).get.name
+                        }</td>
+                        <td>@player.dateOfBirth.format("yyyy-MM-dd")</td>
+                        <td>@player.appearances</td>
+                        <td>@player.goals</td>
+                        <td>
+                            <form method="post" action="@routes.PlayerController.deletePlayer()">
+                                @helper.CSRF.formField
+                            <input type="hidden" name="index" value="@player._id">
+                            <input type="submit" value="Delete">
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="@routes.PlayerController.editPlayer()">
+                                @helper.CSRF.formField
+                            <input type="hidden" name="index" value="@player._id">
+                            <input type="submit" value="Edit">
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class = "form">
+                @elo
+            </div>
+        </div>
+    }
+}
