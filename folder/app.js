@@ -568,6 +568,26 @@ app.get("/user/:username/:password", async (req, res) => {
     })
 });
 
+//==================================================================
+
+app.get("/games/bydate", async (req, res) => {
+    Game.find({$and: [{date: {$gt: req.body.from}}, {date: {$lt: req.body.to}}]}).sort({date:1}).limit(5).exec((err, result) =>{
+        res.send(result);
+    })
+});
+
+app.get("/tournaments/bydate", async (req, res) => {
+    Tournament.find({$and: [{date: {$gt: req.body.from}}, {date: {$lt : req.body.to}}]}).sort({date:1}).limit(3).exec((err, result) =>{
+        res.send(result);
+    })
+});
+
+app.get("/players/bygoals", async (req, res) => {
+    Player.find({goals: {$gt: req.body.goals}}).sort({goals:-1}).exec((err, result) =>{
+        res.send(result);
+    })
+});
+
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost${port}`);
 });
