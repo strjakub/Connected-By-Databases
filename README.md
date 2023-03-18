@@ -1,7 +1,7 @@
-# DataBase-II-Project
-Aplikacja do organizacji turniejów piłkarskich
+# Connected by databases
+Application for organizing football tournaments.
 
-### Technologie:  
+### Technology stack:  
 - MongoDB
 - Scala Play Framework
 - sbt
@@ -9,28 +9,28 @@ Aplikacja do organizacji turniejów piłkarskich
 - Express Node.js
 - Docker
 
-### Skład :
+### Team :
 - Skowron Mateusz
 - Strojewski Jakub
 - Wójcik Michał
 
-# [Documentation Here](Documentation.pdf)
+# [Documentation](Documentation.pdf)
 
 ### Setup:
-Po pobraniu projektu wypakowujemy go. Na początku przechodzimy do serwera - w pliku .env uzupełniamy stosowne dane dostępowe do bazy:
+After downloading, unzip the project. At the beginning, we go to server's .env file and fill authentication data:
 ```
 $ cd DataBase-II-Project-main/server
 $ nano .env
 ```
-Następnie za pomocą platformy Docker budujemy obraz i uruchamiamy go:
+Then using Docker platform we build the image and run it:
 ```
 $ docker build -t server .
 $ docker run -p 3001:3001 server
 ```
-W tym momencie możemy zbudować aplikację webową - otwieramy drugi terminal i wpisujemy poniższe polecenia. 
+Now we can build our web app - we move to second terminal and pass the following commands:
 ```
 $ cd ../webapp/target/docker/stage
 $ docker build -t webapp .
 $ docker run --network=host -p 9000:9000 webapp
 ```
-Wpisujemy w przeglądarce http://localhost:9000 i możemy korzystać z platformy :))
+Next we enter http://localhost:9000 and enjoy using the platform :)))
