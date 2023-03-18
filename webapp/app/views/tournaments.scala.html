@@ -1,0 +1,42 @@
+@(title:String)(siema : Html)(elo: Html)(tours:Seq[Tournament])(teams:Seq[Team])(games:Seq[Game])(implicit request : RequestHeader)
+
+@main("Tournaments") {
+  @defining(play.core.PlayVersion.current) { version =>
+      <div class="collection">
+        <div class="form">
+            @siema
+        </div>
+        <table class="view">
+            <thead class="singleton">
+                <th>Tournament name</th>
+                <th>Place</th>
+                <th>Date</th>
+            </thead>
+            @for(tour <- tours){
+                <tr class="singleton">
+                    <td>@tour.name</td>
+                    <td>@tour.place</td>
+                    <td>@tour.date.format("yyyy-MM-dd")</td>
+                    <td>
+                        <form method="post" action="@routes.TournamentController.showTournamentPage()">
+                            @helper.CSRF.formField
+                            <input type="hidden" name="index" value="@tour._id">
+                            <input type="submit" value="Show">
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="@routes.TournamentController.editTournament()">
+                            @helper.CSRF.formField
+                            <input type="hidden" name="index" value="@tour._id">
+                            <input type="submit" value="Edit">
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="form">
+            @elo
+        </div>
+      </div>
+  }
+}

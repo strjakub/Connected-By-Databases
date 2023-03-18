@@ -1,0 +1,15 @@
+@(tournamentEditForm: Form[tourToEditData])(tournamentToEdit: Option[Tournament])(wantToEdit: Boolean)(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@defining(play.core.PlayVersion.current) { version =>
+    <body>
+        @if(wantToEdit){
+            @helper.form(action = routes.TournamentController.edit(),Symbol("class") -> "forms") {
+                @helper.CSRF.formField
+                <label class="formLabel"><input type="hidden" name="_id" value="@tournamentToEdit.get._id"></label>
+                <label class="formLabel">New Name<input type="text" name="name" value="@tournamentToEdit.get.name"></label>
+                <label class="formLabel"> New place<input type="text" name="place" value="@tournamentToEdit.get.place"></label>
+                <label class="formLabel">New Date<input type="date" name="date" value="@tournamentToEdit.get.date"></label>
+                <button type="submit">Update</button>
+            }
+        }
+    </body>
+}

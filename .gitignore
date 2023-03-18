@@ -1,0 +1,14 @@
+/webapp/logs/
+/webapp/.bsp
+/webapp/project/metals.sbt
+/webapp/.metals
+/webapp/project/project
+/webapp/project/target
+/webapp/target/*
+!/webapp/target/docker
+*.eml
+/dist/
+.cache
+.idea/
+.vscode/
+/server/node_modules

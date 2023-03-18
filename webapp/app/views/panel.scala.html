@@ -1,0 +1,46 @@
+@(optionUser: Option[User])(referees:Seq[Referee])(form:Html)(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@main("Panel") {
+    @defining(play.core.PlayVersion.current) { version =>
+        <div class="collection">
+            <div id="userInfo">
+                <h2> Hello @optionUser.get.username! </h2>
+                <p>Your roles: </p>
+                <ul>
+                @for(role <- optionUser.get.roles){
+                    <li>@role</li>
+                }
+                </ul>
+                @if(optionUser.get.isBanned){
+                    <p>You're banned!</p>
+                }else{
+                    <p>Your account is OK!</p>
+                }
+            </div>
+            <div class="form">
+                @form
+            </div>
+            <table class="view">
+                <thead class="singleton">
+                    <th>Name and surname</th>
+                    <th>Date of birth</th>
+                    <th>Nationality</th>
+                </thead>
+                @for((referee,i) <- referees.zipWithIndex){
+                    <tr>
+                        <td>@referee.getData()</td>
+                        <td>@referee.dateOfBirth.format("yyyy-MM-dd")</td>
+                        <td>@referee.nationality</td>
+                        <td>
+                            <form method="post" action="@routes.UserPanelController.deleteReferee()">
+                                @helper.CSRF.formField
+                            <input type="hidden" name="index" value="@referee._id">
+                            <input type="submit" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+}

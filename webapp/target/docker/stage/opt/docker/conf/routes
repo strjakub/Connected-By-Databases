@@ -1,0 +1,35 @@
+# Routes
+
+#ANOTHER PAGE?
+GET     /                                   controllers.HomeController.home()
+
+GET     /login                              controllers.AuthUserController.login()
+GET     /register                           controllers.AuthUserController.register()
+POST    /validatePost                       controllers.AuthUserController.validateLoginPost()
+POST    /createUser                         controllers.AuthUserController.createUser()
+GET     /logout                             controllers.AuthUserController.logout()
+GET     /panel                              controllers.UserPanelController.panel()
+GET    /createReferee                       controllers.UserPanelController.createReferee()
+POST    /deleteReferee                      controllers.UserPanelController.deleteReferee()
+GET     /home                               controllers.HomeController.home()
+POST    /sort                               controllers.HomeController.sortScorers()
+GET     /players                            controllers.PlayerController.players()
+GET    /addPlayer                           controllers.PlayerController.addPlayer()
+POST    /deletePlayer                       controllers.PlayerController.deletePlayer()
+POST    /editPlayer                         controllers.PlayerController.editPlayer()
+POST    /editP                              controllers.PlayerController.edit()
+GET     /teams                              controllers.TeamController.teams()
+GET    /addTeam                             controllers.TeamController.addTeam()
+POST    /editTeam                           controllers.TeamController.editTeam()
+POST    /editTm                             controllers.TeamController.edit()
+POST    /deleteTeam                         controllers.TeamController.deleteTeam()
+GET     /tournaments                        controllers.TournamentController.tournaments()
+GET    /addTournament                       controllers.TournamentController.addTournament()
+POST    /editTournament                     controllers.TournamentController.editTournament()
+POST    /editT                              controllers.TournamentController.edit()
+POST    /addGame                            controllers.TournamentController.fillGame()
+POST    /showTournamentPage                 controllers.TournamentController.showTournamentPage()
+GET   /tournament/:id                       controllers.TournamentController.show(id: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

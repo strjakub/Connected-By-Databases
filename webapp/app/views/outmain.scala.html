@@ -1,0 +1,39 @@
+@*
+* This template is called from the `home` template. This template
+* handles the rendering of the page header and body tags. It takes
+* two arguments, a `String` for the title of the page and an `Html`
+* object to insert into the body of the page.
+*@
+@(title: String)(content: Html)(implicit flash: Flash)
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
+        <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/bootstrap.min.css")'>
+        @*        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/jquery.js")"></script>*@
+@*        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/bootstrap.min.js")"></script>*@
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="logo">ŁĄCZĄ NAS BAZY</div>
+            </nav>
+        </header>
+        <article>
+            @content
+            <div class="flash-message">
+                @flash.get("error")
+                @flash.get("success")
+            </div>
+        </article>
+        <footer>
+            @commonFooter()
+        </footer>
+    </body>
+
+</html>

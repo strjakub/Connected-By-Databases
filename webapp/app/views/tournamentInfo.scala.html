@@ -1,0 +1,75 @@
+@(tour: Tournament)(games: Seq[Game])(teams : Seq[Team])(players:Seq[Player])(refs:Seq[Referee])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@main("Teams") {
+    @defining(play.core.PlayVersion.current) { version =>
+    <div class="collection">
+
+        <form class = "form" method="post" action="@routes.TournamentController.fillGame()">
+                @helper.CSRF.formField
+                <h1>@tour.name</h1>
+                <input name="tournamentID" type="hidden" value="@tour._id">
+                <label class="formLabel">
+                    Game<select name="_id" >
+                @for((game,i) <- games.filter(el => el.tourID == tour._id).zipWithIndex){
+                    <option value="@game._id">
+                        @teams.find(el => el._id == game.team1ID).get.name
+                        @game.result
+                        @teams.find(el => el._id == game.team2ID ).get.name
+                    </option>
+                }
+                </select>
+                </label>
+                <label class="formLabel">
+                    Result <input type="text" name="result">
+                </label>
+                <label class="formLabel">
+                    Date <input name="date" type="datetime-local">
+                </label>
+                <label class="formLabel">
+                    Referee <select name="refereeID">
+                @for(ref <- refs){
+                    <option value="@ref._id">@ref.name @ref.surname</option>
+                }
+                </select>
+                </label>
+                <label class="formLabel">
+                    Scorers <select name="scorers[]" multiple>
+                @for(player <- players.filter(el => tour.teams.contains(el.teamID)).sortBy(el => el.surname)){
+                    <option value="@player._id">@player.name @player.surname</option>
+                }
+                </select>
+                </label>
+                <button type="submit">Update game info</button>
+        </form>
+        <table class="view">
+            <thead class="singleton">
+                <th>Team nr.1</th>
+                <th>Result</th>
+                <th>Team nr.2</th>
+                <th>Referee</th>
+                <th>Date of game</th>
+                <th>Scorers of goals</th>
+            </thead>
+            @for(game <- games){
+                <tr>
+                    <td>@teams.find(el => el._id == game.team1ID).get.name</td>
+                    <td>@game.result</td>
+                    <td>@teams.find(el => el._id == game.team2ID).get.name</td>
+                    <td>
+                        @if(game.refereeID == "000000000000000000000000"){
+                            No referee assigned yet
+                        } else {
+                            @refs.find(el => el._id == game.refereeID).get.getData()
+                        }
+                    </td>
+                    <td>@game.date.format("yyyy-MM-dd HH:mm")</td>
+                    <td>
+                        @for((scorer, i) <- game.scorers.zipWithIndex){
+                            <li> @(i + 1) @players.find(el => el._id == scorer).get.getData() </li>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    }
+}
